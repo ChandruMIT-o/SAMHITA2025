@@ -1,11 +1,11 @@
 import "./App.css";
 // import AnimatedText from "./components/SplitText";
-import Page from "./Page";
+import Page3 from "./Page3";
 
 function App() {
 	return (
 		<>
-			<Page />
+			<Page3 />
 		</>
 	);
 }

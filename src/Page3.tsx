@@ -5,12 +5,6 @@ import ScrollReveal from "./components/ScrollReveal";
 import { motion, useAnimation, useScroll } from "framer-motion";
 import { useEffect } from "react";
 import { ImageCarousel } from "./components/ImageCarousal";
-import {
-	Accordion,
-	AccordionItem,
-	AccordionButton,
-	AccordionPanel,
-} from "@chakra-ui/accordion";
 
 const Page3: React.FC = () => {
 	const controls = useAnimation();
@@ -86,25 +80,6 @@ const Page3: React.FC = () => {
 				velocity={100} // adjust the scroll speed as desired
 				numCopies={5} // number of repeated copies for continuous scroll
 			/>
-
-			<Accordion>
-				<AccordionItem header="What is Lorem Ipsum?">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-					do eiusmod tempor incididunt ut labore et dolore magna
-					aliqua.
-				</AccordionItem>
-
-				<AccordionItem header="Where does it come from?">
-					Quisque eget luctus mi, vehicula mollis lorem. Proin
-					fringilla vel erat quis sodales. Nam ex enim, eleifend
-					venenatis lectus vitae, accumsan auctor mi.
-				</AccordionItem>
-
-				<AccordionItem header="Why do we use it?">
-					Suspendisse massa risus, pretium id interdum in, dictum sit
-					amet ante. Fusce vulputate purus sed tempus feugiat.
-				</AccordionItem>
-			</Accordion>
 		</div>
 	);
 };

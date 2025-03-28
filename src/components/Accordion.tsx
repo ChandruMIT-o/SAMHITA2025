@@ -1,51 +1,65 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import "./FAQAccordion.css";
 
-type AccordionProps = {
-	title: string;
-	content: string;
-};
+interface FAQ {
+	question: string;
+	answer: string;
+}
 
-const Accordion = ({ title, content }: AccordionProps) => {
-	const [isOpen, setIsOpen] = useState(false);
+const faqs: FAQ[] = [
+	{
+		question: "What are the prices for the competitions?",
+		answer: "The prices vary based on the competition type. Please check the event page for details.",
+	},
+	{
+		question: "Will lunch be arranged for all the participants?",
+		answer: "Yes, lunch will be provided to all registered participants.",
+	},
+	{
+		question: "What is the deadline for registration?",
+		answer: "The registration deadline is mentioned on the official event page.",
+	},
+	{
+		question: "Can I participate in multiple competitions?",
+		answer: "Yes, participants can register for multiple competitions as long as schedules do not overlap.",
+	},
+];
+
+const FAQAccordion: React.FC = () => {
+	const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
+	const toggleFAQ = (index: number) => {
+		setActiveIndex(activeIndex === index ? null : index);
+	};
 
 	return (
-		<div className="w-full max-w-lg mx-auto my-3">
-			<motion.div
-				initial={false}
-				animate={{ backgroundColor: isOpen ? "#222" : "#111" }}
-				className="border border-gray-700 rounded-lg overflow-hidden shadow-md"
-			>
-				{/* Accordion Header */}
-				<button
-					onClick={() => setIsOpen(!isOpen)}
-					className="w-full p-4 flex justify-between items-center text-white text-lg font-medium"
-				>
-					{title}
-					<motion.span
-						animate={{ rotate: isOpen ? 180 : 0 }}
-						transition={{ duration: 0.2 }}
+		<div className="faq-container">
+			<h2 className="faq-title">Have any Questions?</h2>
+			<div className="faq-list">
+				{faqs.map((faq, index) => (
+					<div
+						key={index}
+						className={`faq-item ${
+							activeIndex === index ? "active" : ""
+						}`}
 					>
-						▼
-					</motion.span>
-				</button>
-
-				{/* Accordion Content */}
-				<motion.div
-					initial={{ height: 0, opacity: 0 }}
-					animate={
-						isOpen
-							? { height: "auto", opacity: 1 }
-							: { height: 0, opacity: 0 }
-					}
-					transition={{ duration: 0.3 }}
-					className="overflow-hidden"
-				>
-					<div className="p-4 text-gray-300">{content}</div>
-				</motion.div>
-			</motion.div>
+						<button
+							className="faq-question"
+							onClick={() => toggleFAQ(index)}
+						>
+							<span>{faq.question}</span>
+							<span className="faq-icon">
+								{activeIndex === index ? "▲" : "▼"}
+							</span>
+						</button>
+						{activeIndex === index && (
+							<p className="faq-answer">{faq.answer}</p>
+						)}
+					</div>
+				))}
+			</div>
 		</div>
 	);
 };
 
-export default Accordion;
+export default FAQAccordion;

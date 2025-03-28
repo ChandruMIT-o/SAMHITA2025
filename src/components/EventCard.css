@@ -1,0 +1,121 @@
+.tilted-card-figure {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	perspective: 800px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	transition: transform 0.1s ease-in-out;
+	margin: 0px;
+}
+
+.tilted-card-figure:active {
+	transform: scale(0.98);
+}
+
+.tilted-card-mobile-alert {
+	position: absolute;
+	top: 1rem;
+	text-align: center;
+	font-size: 0.875rem;
+	display: none;
+}
+
+@media (max-width: 640px) {
+	.tilted-card-mobile-alert {
+		display: block;
+	}
+	.tilted-card-caption {
+		display: none;
+	}
+}
+
+.tilted-card-inner {
+	position: relative;
+	transform-style: preserve-3d;
+}
+
+.tilted-card-img {
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	object-fit: cover;
+	border-radius: 15px;
+	will-change: transform;
+	transform: translateZ(0);
+
+	border-radius: 15px;
+	border-width: 5px;
+	border-style: dotted;
+	border-color: transparent;
+}
+
+.titled-card-img-selected {
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	object-fit: cover;
+	border-radius: 15px;
+	will-change: transform;
+	transform: translateZ(0);
+
+	border-radius: 15px;
+	border-width: 5px;
+	border-style: dotted;
+	border-color: #c086ff;
+}
+
+.tilted-card-overlay {
+	position: absolute;
+	top: 10px;
+	left: 30px;
+	z-index: 2;
+	will-change: transform;
+	transform: translateZ(30px);
+	/* Additional styling as needed */
+}
+
+.tilted-card-title {
+	font-family: "Hanken Grotesk";
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: white;
+	letter-spacing: 0.5px;
+}
+
+.tilted-card-title-row {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	position: absolute;
+	top: 106%;
+}
+
+.tilted-card-caption-row {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	position: absolute;
+	top: 115%;
+}
+
+.tilted-card-caption {
+	font-family: "Hanken Grotesk";
+	font-size: 1.2rem;
+	font-weight: bold;
+	color: #9292a4;
+	letter-spacing: 0.5px;
+}
+
+.titled-card-caption2 {
+	font-family: "Hanken Grotesk";
+	font-size: 1.2rem;
+	font-weight: bold;
+	color: #c086ff;
+	letter-spacing: 0.5px;
+}

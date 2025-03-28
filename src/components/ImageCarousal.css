@@ -1,0 +1,22 @@
+.parallax {
+	position: relative;
+	overflow: hidden;
+	width: 100vw;
+}
+
+.scroller {
+	display: flex;
+	white-space: nowrap;
+	align-items: center;
+	gap: 30px;
+}
+
+.scroller img {
+	/* flex-shrink: 0; */
+	/* Optionally set a max height or width to control image sizing */
+	/* max-height: 200px; */
+	/* You can remove or adjust margin if needed */
+	margin-right: 10px;
+
+	border-radius: 30px;
+}

@@ -1,0 +1,10 @@
+.r-rows {
+	display: flex;
+	gap: 20px;
+	flex-direction: column;
+}
+
+.r-row1 {
+	display: flex;
+	gap: 30px;
+}

@@ -1,5 +1,9 @@
-import React, { useState } from "react";
-import "./FAQAccordion.css";
+import React from "react";
+import { Accordion, AccordionTab } from "primereact/accordion";
+import "primereact/resources/themes/viva-dark/theme.css"; // Dark theme
+import "primereact/resources/primereact.min.css";
+import "primeicons/primeicons.css";
+import "./Accordion.css";
 
 interface FAQ {
 	question: string;
@@ -26,38 +30,16 @@ const faqs: FAQ[] = [
 ];
 
 const FAQAccordion: React.FC = () => {
-	const [activeIndex, setActiveIndex] = useState<number | null>(null);
-
-	const toggleFAQ = (index: number) => {
-		setActiveIndex(activeIndex === index ? null : index);
-	};
-
 	return (
 		<div className="faq-container">
 			<h2 className="faq-title">Have any Questions?</h2>
-			<div className="faq-list">
+			<Accordion multiple>
 				{faqs.map((faq, index) => (
-					<div
-						key={index}
-						className={`faq-item ${
-							activeIndex === index ? "active" : ""
-						}`}
-					>
-						<button
-							className="faq-question"
-							onClick={() => toggleFAQ(index)}
-						>
-							<span>{faq.question}</span>
-							<span className="faq-icon">
-								{activeIndex === index ? "▲" : "▼"}
-							</span>
-						</button>
-						{activeIndex === index && (
-							<p className="faq-answer">{faq.answer}</p>
-						)}
-					</div>
+					<AccordionTab key={index} header={faq.question}>
+						<p>{faq.answer}</p>
+					</AccordionTab>
 				))}
-			</div>
+			</Accordion>
 		</div>
 	);
 };

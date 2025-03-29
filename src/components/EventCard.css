@@ -54,20 +54,40 @@
 	border-color: transparent;
 }
 
+@keyframes gradientBorder {
+	0% {
+		border-image-source: linear-gradient(45deg, #ff00ff, #ff9900);
+	}
+	25% {
+		border-image-source: linear-gradient(90deg, #ff9900, #00ff99);
+	}
+	50% {
+		border-image-source: linear-gradient(135deg, #00ff99, #0099ff);
+	}
+	75% {
+		border-image-source: linear-gradient(180deg, #0099ff, #ff00ff);
+	}
+	100% {
+		border-image-source: linear-gradient(225deg, #ff00ff, #ff9900);
+	}
+}
+
 .titled-card-img-selected {
 	position: absolute;
 	top: 0;
 	left: 0;
 
 	object-fit: cover;
-	border-radius: 15px;
+	/* border-radius: 15px; */
 	will-change: transform;
 	transform: translateZ(0);
 
-	border-radius: 15px;
 	border-width: 5px;
 	border-style: dotted;
-	border-color: #c086ff;
+	border-image-slice: 1;
+	border-image-source: linear-gradient(45deg, #ff00ff, #ff9900);
+
+	animation: gradientBorder 3s linear infinite;
 }
 
 .tilted-card-overlay {

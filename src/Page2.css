@@ -1,7 +1,0 @@
-.event-grid {
-	display: grid;
-	grid-template-columns: repeat(2, minmax(200px, 1fr));
-	width: 90%;
-	gap: 200px;
-	column-gap: 0px;
-}

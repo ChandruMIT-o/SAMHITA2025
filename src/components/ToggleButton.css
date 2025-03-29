@@ -1,6 +1,6 @@
 .toggle-container {
 	--active-color: #92008e;
-	--inactive-color: #d3d3d6;
+	--inactive-color: white;
 	aspect-ratio: 292 / 142;
 	height: 1.875em;
 	position: relative;
@@ -25,7 +25,7 @@
 }
 
 .toggle-background {
-	fill: var(--inactive-color);
+	fill: #fae9ff;
 	transition: fill 0.4s;
 }
 
@@ -73,11 +73,11 @@
 }
 
 .toggle-input:checked + .toggle .toggle-icon.on {
-	fill: #fff;
+	fill: var(--inactive-color);
 }
 
 .toggle-icon.off {
-	fill: #eaeaec;
+	fill: var(--active-color);
 }
 
 .toggle-input:checked + .toggle .toggle-icon.off {

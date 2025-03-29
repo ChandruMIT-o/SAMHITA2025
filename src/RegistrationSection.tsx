@@ -3,7 +3,7 @@ import "./RegistrationSection.css";
 import Input from "./components/InputBtn";
 import MultiEventSelect from "./components/MultiEventSelect";
 import ShinyText from "./components/InstagramBtn";
-import { color, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import Magnet from "./components/RegistrationButton";
 import user_icon from "./assets/user-icon.svg";
 import loc_icon from "./assets/loc-icon.svg";
@@ -100,7 +100,7 @@ const RegistrationSection: React.FC = () => {
 		<div
 			style={{
 				width: "100vw",
-				height: "200vh",
+				height: "160vh",
 				minHeight: "100vh",
 				background: "#0D0D0D",
 				color: "#ffffff",

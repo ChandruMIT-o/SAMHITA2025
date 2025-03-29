@@ -1,0 +1,135 @@
+.passcards-figure {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	perspective: 800px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	transition: transform 0.1s ease-in-out;
+	margin: 0px;
+}
+
+.passcards-figure:active {
+	transform: scale(0.98);
+}
+
+.passcards-mobile-alert {
+	position: absolute;
+	top: 1rem;
+	text-align: center;
+	font-size: 0.875rem;
+	display: none;
+}
+
+@media (max-width: 640px) {
+	.passcards-mobile-alert {
+		display: block;
+	}
+	.passcards-caption {
+		display: none;
+	}
+}
+
+.passcards-inner {
+	position: relative;
+	transform-style: preserve-3d;
+}
+
+.passcards-img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	object-fit: cover;
+	border-radius: 15px;
+	will-change: transform;
+	transform: translateZ(0);
+	border-radius: 15px;
+	border-width: 5px;
+	border-style: dotted;
+	border-color: transparent;
+}
+
+@keyframes gradientBorder {
+	0% {
+		border-image-source: linear-gradient(45deg, #ff00ff, #ff9900);
+	}
+	25% {
+		border-image-source: linear-gradient(90deg, #ff9900, #00ff99);
+	}
+	50% {
+		border-image-source: linear-gradient(135deg, #00ff99, #0099ff);
+	}
+	75% {
+		border-image-source: linear-gradient(180deg, #0099ff, #ff00ff);
+	}
+	100% {
+		border-image-source: linear-gradient(225deg, #ff00ff, #ff9900);
+	}
+}
+
+.passcards-img-selected {
+	position: absolute;
+	top: 0;
+	left: 0;
+	object-fit: cover;
+	will-change: transform;
+	transform: translateZ(0);
+	border-width: 5px;
+	border-style: dotted;
+	border-image-slice: 1;
+	border-image-source: linear-gradient(45deg, #ff00ff, #ff9900);
+	animation: gradientBorder 3s linear infinite;
+}
+
+.passcards-overlay {
+	position: absolute;
+	top: 10px;
+	left: 30px;
+	z-index: 2;
+	will-change: transform;
+	transform: translateZ(30px);
+	/* Additional styling as needed */
+}
+
+.passcards-title {
+	font-family: "Hanken Grotesk";
+	font-size: 1.2rem;
+	font-weight: bold;
+	color: white;
+	letter-spacing: 0.5px;
+}
+
+.passcards-title-row {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	position: absolute;
+	top: 106%;
+}
+
+.passcards-caption-row {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	position: absolute;
+	top: 115%;
+}
+
+.passcards-caption {
+	font-family: "Hanken Grotesk";
+	font-size: 1rem;
+	font-weight: bold;
+	color: #9292a4;
+	letter-spacing: 0.5px;
+}
+
+.passcards-caption2 {
+	font-family: "Hanken Grotesk";
+	font-size: 1.2rem;
+	font-weight: bold;
+	color: #c086ffa4;
+	letter-spacing: 0.5px;
+}

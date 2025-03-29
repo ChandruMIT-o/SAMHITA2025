@@ -1,11 +1,10 @@
 import "./App.css";
-// import FAQSection from "./FAQSection";
-import RegistrationSection from "./RegistrationSection";
+import HomeSection from "./HomeSection";
 
 function App() {
 	return (
 		<>
-			<RegistrationSection />
+			<HomeSection />
 		</>
 	);
 }

@@ -10,12 +10,12 @@
 	-webkit-background-clip: text;
 	background-clip: text;
 	display: inline-block;
-	animation: shine 5s linear infinite;
+	animation: shine2 5s linear infinite;
 
 	font-family: "Saira";
 }
 
-@keyframes shine {
+@keyframes shine2 {
 	0% {
 		background-position: 100%;
 	}

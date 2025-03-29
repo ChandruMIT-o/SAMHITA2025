@@ -13,6 +13,15 @@ const HomeSection: React.FC = () => {
 	return (
 		<div className="home-section-container">
 			<VideoBackground videoSrc="src/assets/BGVIDEO.mp4" />
+			<div className="top-home-subsection">
+				<div className="ITA-text">ITA</div>
+				<div className="logo-array">
+					<img className="logo" src="src/assets/logo/AU.png"></img>
+					<img className="logo" src="src/assets/logo/MIT.png"></img>
+					<img className="logo" src="src/assets/logo/MIT75.png"></img>
+					<img className="logo" src="src/assets/logo/ITA.png"></img>
+				</div>
+			</div>
 			<div className="middle-home-subsection">
 				<AnimatedText
 					text="SAMHITA '25"

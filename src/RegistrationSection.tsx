@@ -1,9 +1,15 @@
 import React from "react";
-import "./Page4.css";
+import "./RegistrationSection.css";
 import Input from "./components/InputBtn";
 import MultiEventSelect from "./components/MultiEventSelect";
+import ShinyText from "./components/InstagramBtn";
+import { color, motion } from "framer-motion";
+import Magnet from "./components/RegistrationButton";
+import user_icon from "./assets/user-icon.svg";
+import loc_icon from "./assets/loc-icon.svg";
+import insta_icon from "./assets/insta-icon.svg";
 
-const Page3: React.FC = () => {
+const RegistrationSection: React.FC = () => {
 	const UserIcon = (
 		<svg
 			width="36"
@@ -102,51 +108,133 @@ const Page3: React.FC = () => {
 				flexDirection: "column",
 				alignItems: "flex-start",
 				justifyContent: "flex-start",
-				padding: "100px",
+				padding: "8%",
 			}}
 		>
-			<div>
-				<div className="r-rows">
-					<div className="r-row1">
-						<Input
-							label="Full Name"
-							placeholder="Your name!"
-							icon={UserIcon}
-							width="420px"
-						/>
-						<Input
-							label="Year of Study"
-							placeholder="Your name!"
-							icon={YearOfStudyIcon}
-						/>
+			<div className="r-section">
+				<motion.div className="r-section-headings">
+					<ShinyText text="✦ Registration"></ShinyText>
+
+					<div className="r-heading">
+						Let’s get you here, shall we?
 					</div>
-					<div className="r-row1">
-						<Input
-							label="Email"
-							placeholder="Your name!"
-							icon={MailIcon}
-							width="320px"
-						/>
-						<Input
-							label="Phone"
-							placeholder="+91"
-							icon={PhoneIcon}
-							width="300px"
-						/>
+				</motion.div>
+
+				<div className="registration-inputs-container">
+					<div className="r-rows">
+						<div className="r-row1">
+							<Input
+								label="Full Name"
+								placeholder="Your name!"
+								icon={UserIcon}
+								width="400px"
+							/>
+							<Input
+								label="Year of Study"
+								placeholder="Your name!"
+								icon={YearOfStudyIcon}
+								width="180px"
+							/>
+						</div>
+						<div className="r-row1">
+							<Input
+								label="Email"
+								placeholder="Your name!"
+								icon={MailIcon}
+								width="300px"
+							/>
+							<Input
+								label="Phone"
+								placeholder="+91"
+								icon={PhoneIcon}
+								width="280px"
+							/>
+						</div>
+						<div className="r-row1">
+							<Input
+								label="Institute Name"
+								placeholder="Enter full institute name"
+								icon={InstituteIcon}
+								width="610px"
+							/>
+						</div>
+						<Magnet
+							className="paybtncontainer"
+							disabled={false}
+							magnetStrength={8}
+						>
+							<div className="payportelbtn">Pay Portal</div>
+						</Magnet>
 					</div>
-					<div className="r-row1">
-						<Input
-							label="Institute Name"
-							placeholder="Enter full institute name"
-							icon={InstituteIcon}
-							width="650px"
-						/>
-					</div>
+
 					<MultiEventSelect />
+				</div>
+
+				<div className="general-info">
+					<ShinyText text="✦ Contact & Location ✦"></ShinyText>
+					<div className="gi-row1">
+						<div className="contact-chip">
+							<img className="contact-icon" src={user_icon}></img>
+							<div className="contact-name">Usha</div>
+							<div className="contact-number">
+								+91 76676 34519
+							</div>
+						</div>
+						<div className="contact-chip">
+							<img className="contact-icon" src={user_icon}></img>
+							<div className="contact-name">Shreesh</div>
+							<div className="contact-number">
+								+91 76676 34519
+							</div>
+						</div>
+						<div className="contact-chip">
+							<img className="contact-icon" src={user_icon}></img>
+							<div className="contact-name">Sai</div>
+							<div className="contact-number">
+								+91 76676 34519
+							</div>
+						</div>
+					</div>
+					<div className="gi-row1">
+						<div className="contact-chip">
+							<img className="contact-icon" src={loc_icon}></img>
+							<div className="contact-name">
+								IT Department{" "}
+								<span style={{ color: "#c086ff" }}>.</span>{" "}
+								Madras Institute of Technology{" "}
+								<span style={{ color: "#c086ff" }}>.</span>
+								Chromepet{" "}
+								<span style={{ color: "#c086ff" }}>.</span>{" "}
+								Chennai
+							</div>
+						</div>
+					</div>
+					<div className="gi-row1">
+						<Magnet
+							className="paybtncontainer"
+							disabled={false}
+							magnetStrength={8}
+						>
+							<div className="insta-chip">
+								<img
+									className="insta-icon"
+									src={insta_icon}
+								></img>
+								<div className="insta-number">
+									Follow us on Instagram!
+								</div>
+							</div>
+						</Magnet>
+					</div>
+					<div className="gi-row1">
+						<div className="copyright-text">
+							© 2025 ITA. All rights reserved.
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	);
 };
 
-export default Page3;
+export default RegistrationSection;

@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Accordion, AccordionTab } from "primereact/accordion";
-import "primereact/resources/themes/viva-dark/theme.css"; // Dark theme
+import "primereact/resources/themes/lara-dark-purple/theme.css"; // Dark theme
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import "./Accordion.css";
@@ -30,10 +30,18 @@ const faqs: FAQ[] = [
 ];
 
 const FAQAccordion: React.FC = () => {
+	const [activeIndex, setActiveIndex] = useState<number | number[]>(0);
+
+	const onTabChange = (index: number) => {
+		setActiveIndex(activeIndex === index ? -1 : index);
+	};
+
 	return (
 		<div className="faq-container">
-			<h2 className="faq-title">Have any Questions?</h2>
-			<Accordion multiple>
+			<Accordion
+				activeIndex={activeIndex}
+				onTabChange={(e) => onTabChange(e.index)}
+			>
 				{faqs.map((faq, index) => (
 					<AccordionTab key={index} header={faq.question}>
 						<p>{faq.answer}</p>

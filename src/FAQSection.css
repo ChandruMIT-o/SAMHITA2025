@@ -1,0 +1,28 @@
+.faq-section {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.left-faqs-section {
+	flex: 1;
+	display: flex;
+	justify-content: start;
+	align-items: start;
+	flex-direction: column;
+	padding: 10%;
+}
+
+.right-faqs-section {
+	flex: 3;
+	align-self: center;
+}
+
+.heading {
+	font-family: "Saira";
+	font-size: 3.2rem;
+	font-weight: 500;
+	width: 80%;
+	text-align: left;
+	line-height: 60px;
+}

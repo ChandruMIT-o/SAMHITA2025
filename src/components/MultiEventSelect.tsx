@@ -65,12 +65,13 @@ export default function MultiEventSelect() {
 		<div
 			style={{
 				width: "650px",
-				margin: "2rem auto",
-				backgroundColor: "#0d0d0d",
-				padding: "1rem",
-				borderRadius: "12px",
+				display: "flex",
+				flexDirection: "column",
+				gap: "10px",
+				alignItems: "flex-start",
 			}}
 		>
+			<div className="input-label">Select Events</div>
 			<MultiSelect
 				value={selectedEvents}
 				options={groupedEvents}
@@ -83,15 +84,13 @@ export default function MultiEventSelect() {
 				display="chip"
 				filter
 				placeholder="Select Events"
-				style={{ width: "650px", height: "50px", borderRadius: "12px" }} // Fixed width and height
+				style={{ width: "650px", height: "50px" }} // Fixed width and height
 			/>
 
 			<DataTable
 				value={selectedEvents}
 				style={{
-					marginTop: "1rem",
 					width: "650px",
-					borderRadius: "12px",
 				}}
 			>
 				<Column field="label" header="Event" />

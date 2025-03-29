@@ -8,10 +8,15 @@ import ShinyText from "./components/InstagramBtn";
 
 import "./HomeSection.css";
 import VideoBackground from "./components/VideoBackground";
+import NavBar from "./components/NavBar";
+import insta_icon from "./assets/insta-icon.svg";
+import Login from "./Login";
 
 const HomeSection: React.FC = () => {
 	return (
 		<div className="home-section-container">
+			<NavBar></NavBar>
+			<Login></Login>
 			<VideoBackground videoSrc="src/assets/BGVIDEO.mp4" />
 			<div className="top-home-subsection">
 				<div className="ITA-text">ITA</div>
@@ -61,12 +66,18 @@ const HomeSection: React.FC = () => {
 						animationType="word"
 						letter_spacing="3px"
 					/>
-					<ShinyText
-						text="INSTRAGRAM ⤤"
-						disabled={false}
-						speed={3}
-						className="custom-class"
-					/>
+					<div className="insta-chip">
+						<img className="insta-icon" src={insta_icon}></img>
+						<div className="insta-number">
+							<ShinyText
+								text="INSTRAGRAM ⤤"
+								disabled={false}
+								speed={3}
+								className="custom-class"
+							/>
+						</div>
+					</div>
+
 					<div>
 						<Magnet padding={50} magnetStrength={5}>
 							{

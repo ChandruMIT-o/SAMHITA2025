@@ -1,10 +1,10 @@
 import "./App.css";
-import EventsPage from "./EventsPage";
+import HomeSection from "./HomeSection";
 
 function App() {
 	return (
 		<>
-			<EventsPage />
+			<HomeSection />
 		</>
 	);
 }

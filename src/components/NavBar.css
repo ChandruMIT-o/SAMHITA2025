@@ -1,0 +1,38 @@
+.nav-menu-bar {
+	display: flex;
+	gap: 30px;
+	background-color: rgba(23, 0, 44, 0.8);
+	padding: 5px 5px 5px 30px;
+	border-radius: 100px;
+	backdrop-filter: blur(1px);
+
+	position: fixed;
+	top: 3%;
+
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: 2;
+}
+
+.page-name {
+	font-weight: 900;
+	font-size: 1.1rem;
+	align-self: center;
+}
+
+.nav-options {
+	display: flex;
+	gap: 20px;
+	align-items: center;
+}
+
+.nav-button {
+	background-color: white;
+	width: fit-content;
+	color: #0d0d0d;
+	font-weight: 800;
+	padding: 10px 30px;
+	border-radius: 50px;
+	cursor: pointer;
+	border: none;
+}

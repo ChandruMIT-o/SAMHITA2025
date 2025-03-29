@@ -1,0 +1,19 @@
+.loginbtns {
+	display: flex;
+	gap: 10px;
+
+	position: absolute;
+	right: 3%;
+	top: 3%;
+}
+
+.login-btn {
+	background-color: white;
+	width: fit-content;
+	color: #0d0d0d;
+	font-weight: 900;
+	padding: 13px 30px;
+	border-radius: 50px;
+	cursor: pointer;
+	border: none;
+}

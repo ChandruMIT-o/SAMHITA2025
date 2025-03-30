@@ -92,8 +92,8 @@
 
 .tilted-card-overlay {
 	position: absolute;
-	top: 10px;
-	left: 30px;
+	right: -25px;
+	bottom: -25px;
 	z-index: 2;
 	will-change: transform;
 	transform: translateZ(30px);

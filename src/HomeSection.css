@@ -215,3 +215,9 @@
 	font-weight: bolder;
 	color: #c086ff;
 }
+
+.blendin {
+	position: absolute;
+	top: 87%;
+	z-index: 3;
+}

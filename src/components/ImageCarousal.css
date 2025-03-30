@@ -12,11 +12,7 @@
 }
 
 .scroller img {
-	/* flex-shrink: 0; */
-	/* Optionally set a max height or width to control image sizing */
 	/* max-height: 200px; */
-	/* You can remove or adjust margin if needed */
-	margin-right: 10px;
-
+	object-fit: contain;
 	border-radius: 30px;
 }

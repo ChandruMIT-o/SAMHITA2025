@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import AnimatedText from "./components/AnimatedText";
 import Magnet from "./components/RegistrationButton";
 
@@ -13,11 +13,19 @@ import insta_icon from "./assets/insta-icon.svg";
 import Login from "./Login";
 
 const HomeSection: React.FC = () => {
+	useEffect(() => {
+		const scrollY = sessionStorage.getItem("scrollPosition");
+		if (scrollY) {
+			window.scrollTo(0, parseInt(scrollY, 10)); // Restore scroll position
+			sessionStorage.removeItem("scrollPosition"); // Clear after restoring
+		}
+	}, []);
 	return (
 		<div className="home-section-container">
 			<NavBar></NavBar>
 			<Login></Login>
 			<VideoBackground videoSrc="src/assets/BGVIDEO.mp4" />
+			<img className="blendin" src="src/assets/icons/Blendin.png"></img>
 			<div className="top-home-subsection">
 				<div className="ITA-text">ITA</div>
 				<div className="logo-array">

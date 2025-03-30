@@ -112,7 +112,13 @@ const RegistrationSection: React.FC = () => {
 			}}
 		>
 			<div className="r-section">
-				<motion.div className="r-section-headings">
+				<motion.div
+					initial={{ opacity: 0, y: 100 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					exit={{ opacity: 0, y: -100 }}
+					transition={{ duration: 0.5 }}
+					className="r-section-headings"
+				>
 					<ShinyText text="✦ Registration"></ShinyText>
 
 					<div className="r-heading">
@@ -120,7 +126,13 @@ const RegistrationSection: React.FC = () => {
 					</div>
 				</motion.div>
 
-				<div className="registration-inputs-container">
+				<motion.div
+					initial={{ opacity: 0, y: 100 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					exit={{ opacity: 0, y: -100 }}
+					transition={{ duration: 0.5 }}
+					className="registration-inputs-container"
+				>
 					<div className="r-rows">
 						<div className="r-row1">
 							<Input
@@ -168,7 +180,7 @@ const RegistrationSection: React.FC = () => {
 					</div>
 
 					<MultiEventSelect />
-				</div>
+				</motion.div>
 
 				<div className="general-info">
 					<ShinyText text="✦ Contact & Location ✦"></ShinyText>

@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { auth, signInWithGoogle, logout } from "./firebase";
 import { onAuthStateChanged, User } from "firebase/auth";
 
+const placeholderProfile = "src/assets/user-icon.svg";
 import "./Login.css";
-import ShinyText from "./components/InstagramBtn";
 
 const Login: React.FC = () => {
 	const [user, setUser] = useState<User | null>(null);
@@ -30,13 +30,10 @@ const Login: React.FC = () => {
 				<>
 					<div className="login-btn">
 						Welcome,{" "}
-						<ShinyText
-							text={
-								user && user.displayName
-									? user.displayName
-									: " "
-							}
-						/>
+						<span style={{ color: "#92008E" }}>
+							{" "}
+							{user.displayName}
+						</span>
 					</div>
 
 					<button className="login-btn" onClick={handleLogout}>

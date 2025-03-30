@@ -1,5 +1,6 @@
+// PassCard.tsx
 import type { SpringOptions } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import "./PassCard.css";
 import ShinyText from "./InstagramBtn";
@@ -22,7 +23,10 @@ interface PassCardProps {
 	eventTitle?: string;
 	eventType?: string;
 	eventTag?: string;
-	eventSelection?: boolean;
+	// Removed eventSelection, now using a controlled prop:
+	isSelected: boolean;
+	// Callback to notify parent when toggled:
+	onToggle: () => void;
 }
 
 const springValues: SpringOptions = {
@@ -33,7 +37,6 @@ const springValues: SpringOptions = {
 
 export default function PassCard({
 	imageSrc,
-	// Updated to portrait dimensions: height > width
 	containerHeight = "400px",
 	containerWidth = "283px",
 	imageHeight = "400px",
@@ -46,7 +49,8 @@ export default function PassCard({
 	eventTitle = "ToS",
 	eventType = "Technical",
 	eventTag = "NEW",
-	eventSelection = false,
+	isSelected,
+	onToggle,
 	altText = "",
 }: PassCardProps) {
 	const ref = useRef<HTMLElement>(null);
@@ -63,28 +67,17 @@ export default function PassCard({
 		mass: 1,
 	});
 
-	const [lastY, setLastY] = useState<number>(0);
-	const [isToggled, setIsToggled] = useState<boolean>(eventSelection);
-
 	function handleMouse(e: React.MouseEvent<HTMLElement>) {
 		if (!ref.current) return;
-
 		const rect = ref.current.getBoundingClientRect();
 		const offsetX = e.clientX - rect.left - rect.width / 2;
 		const offsetY = e.clientY - rect.top - rect.height / 2;
-
 		const rotationX = (offsetY / (rect.height / 2)) * -rotateAmplitude;
 		const rotationY = (offsetX / (rect.width / 2)) * rotateAmplitude;
-
 		rotateX.set(rotationX);
 		rotateY.set(rotationY);
-
 		x.set(e.clientX - rect.left);
 		y.set(e.clientY - rect.top);
-
-		const velocityY = offsetY - lastY;
-		rotateFigcaption.set(-velocityY * 0.6);
-		setLastY(offsetY);
 	}
 
 	function handleMouseEnter() {
@@ -100,9 +93,9 @@ export default function PassCard({
 		rotateFigcaption.set(0);
 	}
 
-	// Toggle switch state when the whole card is clicked
+	// Instead of toggling internal state, we call parent's onToggle.
 	function handleCardClick() {
-		setIsToggled((prev) => !prev);
+		onToggle();
 	}
 
 	return (
@@ -118,7 +111,7 @@ export default function PassCard({
 			onMouseMove={handleMouse}
 			onMouseEnter={handleMouseEnter}
 			onMouseLeave={handleMouseLeave}
-			onClick={handleCardClick} // Entire card is now clickable
+			onClick={handleCardClick}
 		>
 			{showMobileWarning && (
 				<div className="passcards-mobile-alert">
@@ -140,7 +133,7 @@ export default function PassCard({
 					src={imageSrc}
 					alt={altText}
 					className={
-						!isToggled ? "passcards-img" : "passcards-img-selected"
+						!isSelected ? "passcards-img" : "passcards-img-selected"
 					}
 					style={{
 						width: imageWidth,
@@ -157,8 +150,8 @@ export default function PassCard({
 					<motion.div className="passcards-title">
 						{eventTitle}
 					</motion.div>
-					{/* Pass the current toggle state to the Switch */}
-					<Switch isOn={isToggled} />
+					{/* Use the current selection state */}
+					<Switch isOn={isSelected} />
 				</div>
 				<div className="passcards-caption-row">
 					<div className="passcards-caption">{eventType}</div>

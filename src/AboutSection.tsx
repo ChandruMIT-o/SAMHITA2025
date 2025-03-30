@@ -24,56 +24,57 @@ const AboutSection: React.FC = () => {
 	}, [controls, scrollY]);
 
 	const images = [
-		"https://placehold.co/520x300",
-		"https://placehold.co/412x412",
-		"https://placehold.co/520x300",
-		"https://placehold.co/412x412",
+		"src/assets/about_us_photos/P1.png",
+		"src/assets/about_us_photos/P2.png",
+		"src/assets/about_us_photos/P3.png",
+		"src/assets/about_us_photos/P4.png",
+		"src/assets/about_us_photos/P5.png",
+		"src/assets/about_us_photos/P6.png",
 	];
 
 	return (
 		<div
 			style={{
 				width: "100vw",
-				height: "200vh",
-				minHeight: "100vh",
+				height: "150vh",
 				background: "#0D0D0D",
 				color: "#ffffff",
 				display: "flex",
 				flexDirection: "column",
 				alignItems: "center",
-				justifyContent: "flex-end",
-				paddingBottom: "300px",
+				justifyContent: "center",
 			}}
 		>
 			<motion.div
-				initial={{ opacity: 0, y: 50 }}
+				initial={{ opacity: 0, y: 30 }}
 				animate={controls}
-				transition={{ duration: 0.5 }}
+				transition={{ duration: 0.3 }}
+				style={{
+					display: "flex",
+					flexDirection: "column",
+					alignItems: "center",
+					justifyContent: "center",
+				}}
 			>
-				<ShinyText text="✤ ABOUT US"></ShinyText>
-
-				<motion.div
-					initial={{ opacity: 0, y: 50 }}
-					animate={controls}
-					transition={{ duration: 0.5 }}
-				></motion.div>
-				<div className="about-text-container-container">
-					<ScrollReveal
-						baseOpacity={0.1}
-						containerClassName="about-text-container"
-						textClassName="about-text"
-					>
-						Founded in 2001, the Information Technology Association
-						(ITA) empowers students with hands-on experience in
-						emerging technologies while fostering innovation and
-						collaboration. We proudly present to you SAMHITA: A tech
-						fest where you can compete, create, and showcase your
-						skills across a range of technical and non-technical
-						events. Get ready to push your limits and be part of
-						something extraordinary!
-					</ScrollReveal>
+				<div className="about-section-tag">
+					<ShinyText text="✤ ABOUT US"></ShinyText>
 				</div>
 			</motion.div>
+			<div className="about-text-container-container">
+				<ScrollReveal
+					baseOpacity={0.1}
+					containerClassName="about-text-container"
+					textClassName="about-text"
+				>
+					Founded in 2001, the Information Technology Association
+					(ITA) empowers students with hands-on experience in emerging
+					technologies while fostering innovation and collaboration.
+					We proudly present to you SAMHITA: A tech fest where you can
+					compete, create, and showcase your skills across a range of
+					technical and non-technical events. Get ready to push your
+					limits and be part of something extraordinary!
+				</ScrollReveal>
+			</div>
 
 			<ImageCarousel
 				images={images}

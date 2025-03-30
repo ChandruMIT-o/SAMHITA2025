@@ -4,14 +4,14 @@
 	background-color: rgba(23, 0, 44, 0.8);
 	padding: 5px 5px 5px 30px;
 	border-radius: 100px;
-	backdrop-filter: blur(1px);
+	backdrop-filter: blur(10px);
 
 	position: fixed;
 	top: 3%;
 
 	left: 50%;
 	transform: translateX(-50%);
-	z-index: 2;
+	z-index: 50;
 }
 
 .page-name {

@@ -1,9 +1,12 @@
+// TiltedCard.tsx
 import type { SpringOptions } from "framer-motion";
 import { useRef, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import "./EventCard.css";
 import ShinyText from "./InstagramBtn";
 import Switch from "./ToggleBtn";
+import CircularText from "./MoreBtn";
 
 interface TiltedCardProps {
 	imageSrc: React.ComponentProps<"img">["src"];
@@ -22,7 +25,12 @@ interface TiltedCardProps {
 	eventTitle?: string;
 	eventType?: string;
 	eventTag?: string;
-	eventSelection?: boolean;
+	// Remove internal eventSelection
+	isSelected: boolean;
+	// New prop: disable toggling when selection is forced by a pass.
+	disableToggle?: boolean;
+	// Callback to notify parent when toggled.
+	onToggle: () => void;
 }
 
 const springValues: SpringOptions = {
@@ -45,10 +53,13 @@ export default function TiltedCard({
 	eventTitle = "ToS",
 	eventType = "Technical",
 	eventTag = "NEW",
-	eventSelection = false,
+	isSelected,
+	disableToggle = false,
+	onToggle,
 	altText = "",
 }: TiltedCardProps) {
 	const ref = useRef<HTMLElement>(null);
+	const navigate = useNavigate();
 
 	const x = useMotionValue(0);
 	const y = useMotionValue(0);
@@ -63,24 +74,18 @@ export default function TiltedCard({
 	});
 
 	const [lastY, setLastY] = useState<number>(0);
-	const [isToggled, setIsToggled] = useState<boolean>(eventSelection);
 
 	function handleMouse(e: React.MouseEvent<HTMLElement>) {
 		if (!ref.current) return;
-
 		const rect = ref.current.getBoundingClientRect();
 		const offsetX = e.clientX - rect.left - rect.width / 2;
 		const offsetY = e.clientY - rect.top - rect.height / 2;
-
 		const rotationX = (offsetY / (rect.height / 2)) * -rotateAmplitude;
 		const rotationY = (offsetX / (rect.width / 2)) * rotateAmplitude;
-
 		rotateX.set(rotationX);
 		rotateY.set(rotationY);
-
 		x.set(e.clientX - rect.left);
 		y.set(e.clientY - rect.top);
-
 		const velocityY = offsetY - lastY;
 		rotateFigcaption.set(-velocityY * 0.6);
 		setLastY(offsetY);
@@ -99,9 +104,16 @@ export default function TiltedCard({
 		rotateFigcaption.set(0);
 	}
 
-	// Toggle switch state when the whole card is clicked
+	// Only allow toggle if not forced (disableToggle === false)
 	function handleCardClick() {
-		setIsToggled((prev) => !prev);
+		if (!disableToggle) {
+			onToggle();
+		}
+	}
+
+	function handleOverlayClick(e: React.MouseEvent<HTMLDivElement>) {
+		e.stopPropagation();
+		navigate(`/event/${eventTitle}`);
 	}
 
 	return (
@@ -117,7 +129,7 @@ export default function TiltedCard({
 			onMouseMove={handleMouse}
 			onMouseEnter={handleMouseEnter}
 			onMouseLeave={handleMouseLeave}
-			onClick={handleCardClick} // Entire card is now clickable
+			onClick={handleCardClick}
 		>
 			{showMobileWarning && (
 				<div className="tilted-card-mobile-alert">
@@ -139,7 +151,7 @@ export default function TiltedCard({
 					src={imageSrc}
 					alt={altText}
 					className={
-						!isToggled
+						!isSelected
 							? "tilted-card-img"
 							: "titled-card-img-selected"
 					}
@@ -150,16 +162,23 @@ export default function TiltedCard({
 				/>
 
 				{displayOverlayContent && overlayContent && (
-					<motion.div className="tilted-card-overlay">
-						{overlayContent}
+					<motion.div
+						className="tilted-card-overlay"
+						onClick={handleOverlayClick}
+					>
+						<CircularText
+							text="MORE*ON*THIS*EVENT*"
+							onHover="speedUp"
+							spinDuration={20}
+							className="custom-class"
+						/>
 					</motion.div>
 				)}
 				<div className="tilted-card-title-row">
 					<motion.div className="tilted-card-title">
 						{eventTitle}
 					</motion.div>
-					{/* Pass the current toggle state to the Switch */}
-					<Switch isOn={isToggled} />
+					<Switch isOn={isSelected} />
 				</div>
 				<div className="tilted-card-caption-row">
 					<div className="tilted-card-caption">{eventType}</div>

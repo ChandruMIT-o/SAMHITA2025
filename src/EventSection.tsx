@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+// EventSection.tsx
+import React, { useContext } from "react";
 import TiltedCard from "./components/EventCard";
 import EventMenu from "./components/EventMenu";
 import { motion } from "framer-motion";
 import "./EventSection.css";
 import ShinyText from "./components/InstagramBtn";
 import PassCard from "./components/PassCard";
+import { RegistrationContext } from "./RegistrationContext";
 
 // Example event data
 const events = [
@@ -115,9 +117,48 @@ const eventTypes = [
 ];
 
 const EventSection: React.FC = () => {
-	const [selectedType, setSelectedType] = useState<string>("All");
+	const {
+		selectedPass,
+		selectedIndividualEventTitles,
+		updatePass,
+		updateIndividualEvents,
+	} = useContext(RegistrationContext);
+	const [selectedType, setSelectedType] = React.useState<string>("All");
 
-	// Filter events based on selected type
+	const handlePassToggle = (passType: string) => {
+		updatePass(selectedPass === passType ? null : passType);
+	};
+
+	const handleEventToggle = (eventTitle: string) => {
+		if (selectedIndividualEventTitles.includes(eventTitle)) {
+			updateIndividualEvents(
+				selectedIndividualEventTitles.filter((t) => t !== eventTitle)
+			);
+		} else {
+			updateIndividualEvents([
+				...selectedIndividualEventTitles,
+				eventTitle,
+			]);
+		}
+	};
+
+	const isEventForced = (event: (typeof events)[number]) => {
+		if (selectedPass === "TECH" && event.type === "Technical") return true;
+		if (
+			selectedPass === "GLOBAL" &&
+			(event.type === "Technical" || event.type === "Non-Technical")
+		)
+			return true;
+		if (selectedPass === "NON-TECH" && event.type === "Non-Technical")
+			return true;
+		return false;
+	};
+
+	const getEventSelection = (event: (typeof events)[number]): boolean => {
+		if (isEventForced(event)) return true;
+		return selectedIndividualEventTitles.includes(event.title);
+	};
+
 	const filteredEvents =
 		selectedType === "All"
 			? events
@@ -126,8 +167,7 @@ const EventSection: React.FC = () => {
 	return (
 		<div
 			style={{
-				width: "95vw",
-				height: "800vh",
+				width: "100%",
 				background: "#0D0D0D",
 				color: "#ffffff",
 				display: "flex",
@@ -138,38 +178,43 @@ const EventSection: React.FC = () => {
 			}}
 		>
 			<motion.div className="r-section-headings">
-				<ShinyText text="✦ Registration"></ShinyText>
-
+				<ShinyText text="✦ Registration" />
 				<div className="e-heading">
 					Come and show us what you have got!
 				</div>
 			</motion.div>
-			<ShinyText text="Passes & Combo tickets"></ShinyText>
+			<ShinyText text="Passes & Combo tickets" />
 			<div className="passcards-holder">
 				<PassCard
 					imageSrc="src/assets/event_passes/TECH PASS.png"
 					eventTitle="TECH"
 					eventType="Pass"
 					eventTag="Rs. 249"
-					overlayContent={<div style={{ color: "white" }}></div>}
+					overlayContent={<div style={{ color: "white" }} />}
+					isSelected={selectedPass === "TECH"}
+					onToggle={() => handlePassToggle("TECH")}
 				/>
 				<PassCard
 					imageSrc="src/assets/event_passes/GLOBAL PASS.png"
 					eventTitle="GLOBAL"
 					eventType="Pass"
 					eventTag="Rs.500"
-					overlayContent={<div style={{ color: "white" }}></div>}
+					overlayContent={<div style={{ color: "white" }} />}
 					containerHeight="480px"
 					containerWidth="339px"
 					imageHeight="480px"
 					imageWidth="339px"
+					isSelected={selectedPass === "GLOBAL"}
+					onToggle={() => handlePassToggle("GLOBAL")}
 				/>
 				<PassCard
 					imageSrc="src/assets/event_passes/NONTECH PASS.png"
 					eventTitle="NON-TECH"
 					eventType="Pass"
 					eventTag="Rs. 249"
-					overlayContent={<div style={{ color: "white" }}></div>}
+					overlayContent={<div style={{ color: "white" }} />}
+					isSelected={selectedPass === "NON-TECH"}
+					onToggle={() => handlePassToggle("NON-TECH")}
 				/>
 			</div>
 
@@ -190,31 +235,42 @@ const EventSection: React.FC = () => {
 				animate={{ opacity: 1 }}
 				transition={{ duration: 1 }}
 			>
-				{filteredEvents.map((event, index) => (
-					<motion.div
-						key={event.title}
-						layout
-						initial={{ opacity: 0, y: 50 }}
-						animate={{ opacity: 1, y: 0 }}
-						exit={{ opacity: 0, y: -50 }}
-						transition={{
-							opacity: { duration: 0.5, delay: index * 0.3 },
-							layout: { duration: 1.2, ease: "easeInOut" },
-						}}
-					>
-						<TiltedCard
-							imageSrc={event.imageSrc}
-							overlayContent={
-								<p className="tilted-card-demo-text">
-									{event.title}
-								</p>
-							}
-							eventTitle={event.title}
-							eventType={event.type}
-							eventTag={event.tag}
-						/>
-					</motion.div>
-				))}
+				{filteredEvents.map((event, index) => {
+					const forced = isEventForced(event);
+					const selected = getEventSelection(event);
+					const displayTag =
+						forced && selectedPass
+							? `${selectedPass} Pass Applied!`
+							: event.tag;
+					return (
+						<motion.div
+							key={event.title}
+							layout
+							initial={{ opacity: 0, y: 50 }}
+							animate={{ opacity: 1, y: 0 }}
+							exit={{ opacity: 0, y: -50 }}
+							transition={{
+								opacity: { duration: 0.5, delay: index * 0.3 },
+								layout: { duration: 1.2, ease: "easeInOut" },
+							}}
+						>
+							<TiltedCard
+								imageSrc={event.imageSrc}
+								overlayContent={
+									<p className="tilted-card-demo-text">
+										{event.title}
+									</p>
+								}
+								eventTitle={event.title}
+								eventType={event.type}
+								eventTag={displayTag}
+								isSelected={selected}
+								disableToggle={forced}
+								onToggle={() => handleEventToggle(event.title)}
+							/>
+						</motion.div>
+					);
+				})}
 			</motion.div>
 		</div>
 	);

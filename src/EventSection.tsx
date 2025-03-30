@@ -1,5 +1,5 @@
 // EventSection.tsx
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import TiltedCard from "./components/EventCard";
 import EventMenu from "./components/EventMenu";
 import { motion } from "framer-motion";
@@ -7,106 +7,15 @@ import "./EventSection.css";
 import ShinyText from "./components/InstagramBtn";
 import PassCard from "./components/PassCard";
 import { RegistrationContext } from "./RegistrationContext";
+import { db } from "./firebase"; // Import Firestore instance
+import { collection, getDocs } from "firebase/firestore";
 
-// Example event data
-const events = [
-	{
-		title: "Coding Quest",
-		type: "Technical",
-		tag: "POPULAR",
-		imageSrc: "src/assets/event_posters/CODING QUEST.png",
-	},
-	{
-		title: "Street Coding",
-		type: "Technical",
-		tag: "NEW",
-		imageSrc: "src/assets/event_posters/STREET CODING.png",
-	},
-	{
-		title: "Ninja Coding",
-		type: "Technical",
-		tag: "POPULAR",
-		imageSrc: "src/assets/event_posters/NINJA CODING.png",
-	},
-	{
-		title: "AI Impromptu",
-		type: "Technical",
-		tag: "AI",
-		imageSrc: "src/assets/event_posters/AI IMPROMPTU.png",
-	},
-	{
-		title: "Call of Query",
-		type: "Technical",
-		tag: "DATABASE",
-		imageSrc: "src/assets/event_posters/CALL OF QUERY.png",
-	},
-	{
-		title: "Tournament of Strategies",
-		type: "Technical",
-		tag: "NEW",
-		imageSrc: "src/assets/event_posters/TOS.png",
-	},
-	{
-		title: "Reverse Coding",
-		type: "Technical",
-		tag: "CHALLENGE",
-		imageSrc: "src/assets/event_posters/REVERSE CODING.png",
-	},
-	{
-		title: "Squid Games",
-		type: "Technical",
-		tag: "FUN",
-		imageSrc: "src/assets/event_posters/SQUID GAME.png",
-	},
-	{
-		title: "Treasure Hunt",
-		type: "Non-Technical",
-		tag: "ADVENTURE",
-		imageSrc: "src/assets/event_posters/TREASURE HUNT.png",
-	},
-	{
-		title: "IPL Auction",
-		type: "Non-Technical",
-		tag: "STRATEGY",
-		imageSrc: "src/assets/event_posters/IPL AUCTION.png",
-	},
-	{
-		title: "Fandom Quiz",
-		type: "Non-Technical",
-		tag: "QUIZ",
-		imageSrc: "src/assets/event_posters/FANDOM QUIZ.png",
-	},
-	{
-		title: "Connections",
-		type: "Non-Technical",
-		tag: "LOGIC",
-		imageSrc: "src/assets/event_posters/CONNECTIONS.png",
-	},
-	{
-		title: "ADZAP",
-		type: "Non-Technical",
-		tag: "CREATIVE",
-		imageSrc: "src/assets/event_posters/ADZAP.png",
-	},
-	{
-		title: "Escape Room",
-		type: "Non-Technical",
-		tag: "PUZZLE",
-		imageSrc: "src/assets/event_posters/ESCAPE ROOM.png",
-	},
-	{
-		title: "Hackathon",
-		type: "Signature Event",
-		tag: "BIG EVENT",
-		imageSrc: "src/assets/event_posters/HACKATHON.png",
-	},
-	{
-		title: "Paper Presentation",
-		type: "Signature Event",
-		tag: "ACADEMIC",
-		imageSrc: "src/assets/event_posters/PAPER PRESENTATION.png",
-	},
-];
+interface Event {
+	title: string;
+	type: string;
+	tag: string; // Will store price instead of tag
+	imageSrc: string;
+}
 
 const eventTypes = [
 	"All",
@@ -124,7 +33,35 @@ const EventSection: React.FC = () => {
 		updateIndividualEvents,
 	} = useContext(RegistrationContext);
 	const [selectedType, setSelectedType] = React.useState<string>("All");
+	const [events, setEvents] = useState<Event[]>([]);
 
+	useEffect(() => {
+		const fetchEvents = async () => {
+			try {
+				const querySnapshot = await getDocs(
+					collection(db, "Samhita25")
+				);
+				const fetchedEvents: Event[] = querySnapshot.docs.map(
+					(doc) => ({
+						title: doc.data().eventName,
+						type: doc.data().eventType,
+						tag: `₹${doc.data().price}`, // Store price as tag
+						imageSrc: `src/assets/event_posters/${doc
+							.data()
+							.eventName.toUpperCase()}.png`, // Convert to uppercase
+					})
+				);
+
+				console.log(fetchEvents);
+
+				setEvents(fetchedEvents);
+			} catch (error) {
+				console.error("Error fetching events:", error);
+			}
+		};
+
+		fetchEvents();
+	}, []);
 	const handlePassToggle = (passType: string) => {
 		updatePass(selectedPass === passType ? null : passType);
 	};

@@ -191,7 +191,6 @@ const EventsPage: React.FC = () => {
 			<div className="ep-right-section">
 				<div className="ep-row1">
 					<div className="ep-date-chips">{event.dateChips}</div>
-					<div className="ep-enroll-btn">Enroll</div>
 				</div>
 				{event.poster && (
 					<img

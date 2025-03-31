@@ -1,0 +1,104 @@
+.scroll-list-container {
+	position: relative;
+	width: 100%;
+}
+
+.scroll-list {
+	max-height: 100%;
+	overflow-y: auto;
+}
+
+.scroll-list::-webkit-scrollbar {
+	width: 8px;
+}
+
+.scroll-list::-webkit-scrollbar-track {
+	background: #111116;
+}
+
+.scroll-list::-webkit-scrollbar-thumb {
+	background: #222;
+	border-radius: 4px;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+	display: none;
+}
+.no-scrollbar {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+.item {
+	padding: 20px 30px 20px 30px;
+	background-color: #111116;
+	border-radius: 10px;
+	margin-bottom: 1rem;
+
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.item.selected {
+	background-color: #191920;
+}
+
+.item-text {
+	color: white;
+	margin: 0;
+}
+
+.top-gradient {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 50px;
+	background: linear-gradient(to bottom, #111116, transparent);
+	pointer-events: none;
+	transition: opacity 0.3s ease;
+}
+
+.bottom-gradient {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 100px;
+	background: linear-gradient(to top, #111116, transparent);
+	pointer-events: none;
+	transition: opacity 0.3s ease;
+}
+
+.float-button {
+	text-decoration: none;
+	padding: 10px;
+	padding-right: 15px;
+	bottom: 30px;
+	right: 30px;
+	color: #fff;
+	background-color: #25d366;
+	border-radius: 25px 30px 5px 25px;
+	z-index: 100;
+	font-family: Arial;
+	font-size: 1rem;
+	animation: whatsapp-animation 0.5s ease-in-out;
+	box-shadow: 1px 2px 5px 2px rgba(30, 30, 30, 0.3);
+	transition: all 0.3s ease-out;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.float-button:hover {
+	background-color: #25d33c;
+	color: #fff;
+}
+
+.fa-whatsapp {
+	font-size: 2rem !important;
+	padding-right: 5px;
+	padding-left: 5px;
+}

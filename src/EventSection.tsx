@@ -141,37 +141,70 @@ const EventSection: React.FC = () => {
 			</motion.div>
 			<ShinyText text="Passes & Combo tickets" />
 			<div className="passcards-holder">
-				<PassCard
-					imageSrc="assets/event_passes/TECH PASS.png"
-					eventTitle="TECH"
-					eventType="Pass"
-					eventTag="Rs. 249"
-					overlayContent={<div style={{ color: "white" }} />}
-					isSelected={selectedPass === "TECH"}
-					onToggle={() => handlePassToggle("TECH")}
-				/>
-				<PassCard
-					imageSrc="assets/event_passes/GLOBAL PASS.png"
-					eventTitle="GLOBAL"
-					eventType="Pass"
-					eventTag="Rs.500"
-					overlayContent={<div style={{ color: "white" }} />}
-					containerHeight="480px"
-					containerWidth="339px"
-					imageHeight="480px"
-					imageWidth="339px"
-					isSelected={selectedPass === "GLOBAL"}
-					onToggle={() => handlePassToggle("GLOBAL")}
-				/>
-				<PassCard
-					imageSrc="assets/event_passes/NONTECH PASS.png"
-					eventTitle="NON-TECH"
-					eventType="Pass"
-					eventTag="Rs. 249"
-					overlayContent={<div style={{ color: "white" }} />}
-					isSelected={selectedPass === "NON-TECH"}
-					onToggle={() => handlePassToggle("NON-TECH")}
-				/>
+				<motion.div
+					initial={{ opacity: 0 }}
+					whileInView={{ opacity: 1 }}
+					exit={{ opacity: 0 }}
+					transition={{
+						duration: 0.2,
+						ease: "easeInOut",
+						delay: 0.7,
+					}}
+				>
+					<PassCard
+						imageSrc="assets/event_passes/TECH PASS.png"
+						eventTitle="TECH"
+						eventType="Pass"
+						eventTag="Rs. 249"
+						overlayContent={<div style={{ color: "white" }} />}
+						isSelected={selectedPass === "TECH"}
+						onToggle={() => handlePassToggle("TECH")}
+					/>
+				</motion.div>
+				<motion.div
+					initial={{ opacity: 0 }}
+					whileInView={{ opacity: 1 }}
+					exit={{ opacity: 0 }}
+					transition={{
+						duration: 0.2,
+						ease: "easeInOut",
+						delay: 0.4,
+					}}
+				>
+					<PassCard
+						imageSrc="assets/event_passes/GLOBAL PASS.png"
+						eventTitle="GLOBAL"
+						eventType="Pass"
+						eventTag="Rs.500"
+						overlayContent={<div style={{ color: "white" }} />}
+						containerHeight="480px"
+						containerWidth="339px"
+						imageHeight="480px"
+						imageWidth="339px"
+						isSelected={selectedPass === "GLOBAL"}
+						onToggle={() => handlePassToggle("GLOBAL")}
+					/>
+				</motion.div>
+				<motion.div
+					initial={{ opacity: 0 }}
+					whileInView={{ opacity: 1 }}
+					exit={{ opacity: 0 }}
+					transition={{
+						duration: 0.2,
+						ease: "easeInOut",
+						delay: 0.7,
+					}}
+				>
+					<PassCard
+						imageSrc="assets/event_passes/NONTECH PASS.png"
+						eventTitle="NON-TECH"
+						eventType="Pass"
+						eventTag="Rs. 249"
+						overlayContent={<div style={{ color: "white" }} />}
+						isSelected={selectedPass === "NON-TECH"}
+						onToggle={() => handlePassToggle("NON-TECH")}
+					/>
+				</motion.div>
 			</div>
 
 			<div className="gooey-menu">

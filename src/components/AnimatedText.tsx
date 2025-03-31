@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import "./AnimatedText.css";
 
 interface AnimatedTextProps {
 	text: string;
@@ -55,6 +56,7 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
 					key={i}
 					custom={i}
 					variants={animationVariants}
+					className="hero"
 					style={{
 						display: "inline-block",
 						fontFamily: font_family,

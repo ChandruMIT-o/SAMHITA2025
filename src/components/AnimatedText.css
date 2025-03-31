@@ -1,0 +1,8 @@
+.hero {
+	background: url("https://img.freepik.com/premium-photo/seamless-pattern-with-abstract-bold-thick-line-wallpaper-background-design-generative-ai_159242-21309.jpg")
+		center/cover;
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	display: inline-block;
+}

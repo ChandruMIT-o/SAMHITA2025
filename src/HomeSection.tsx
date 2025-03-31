@@ -11,6 +11,7 @@ import VideoBackground from "./components/VideoBackground";
 import NavBar from "./components/NavBar";
 import insta_icon from "/assets/insta-icon.svg";
 import Login from "./Login";
+import { motion } from "framer-motion";
 
 const HomeSection: React.FC = () => {
 	useEffect(() => {
@@ -74,17 +75,29 @@ const HomeSection: React.FC = () => {
 						animationType="word"
 						letter_spacing="3px"
 					/>
-					<div className="insta-chip">
+					<motion.div
+						whileHover={{ scale: 1.05 }}
+						whileTap={{ scale: 0.9 }}
+						className="insta-chip"
+						initial={{ y: -10, opacity: 0 }}
+						animate={{ y: 0, opacity: 1 }}
+						exit={{ y: -10, opacity: 0 }}
+						transition={{ duration: 0.5, ease: "easeOut" }}
+					>
 						<img className="insta-icon" src={insta_icon}></img>
-						<div className="insta-number">
-							<ShinyText
-								text="INSTRAGRAM ⤤"
-								disabled={false}
-								speed={3}
-								className="custom-class"
-							/>
-						</div>
-					</div>
+						<Magnet padding={50} magnetStrength={5}>
+							{
+								<div className="insta-number">
+									<ShinyText
+										text="INSTRAGRAM ⤤"
+										disabled={false}
+										speed={3}
+										className="custom-class"
+									/>
+								</div>
+							}
+						</Magnet>
+					</motion.div>
 
 					<div>
 						<Magnet padding={50} magnetStrength={5}>

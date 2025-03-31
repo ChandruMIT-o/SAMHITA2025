@@ -8,6 +8,7 @@ import AboutSection from "./AboutSection";
 import EventsPage from "./EventsPage";
 import { Routes, Route } from "react-router-dom";
 import { RegistrationProvider } from "./RegistrationContext";
+import UserProfilePage from "./UserProfilePage";
 
 function App() {
 	return (
@@ -28,6 +29,7 @@ function App() {
 				}
 			/>
 			<Route path="/event/:event_name" element={<EventsPage />} />
+			<Route path="/user" element={<UserProfilePage />} />
 		</Routes>
 	);
 }

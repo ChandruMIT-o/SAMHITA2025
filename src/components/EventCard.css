@@ -106,6 +106,24 @@
 	font-weight: bold;
 	color: white;
 	letter-spacing: 0.5px;
+	text-overflow: ellipsis;
+}
+
+/* Dynamically reduce font size for long titles */
+.tilted-card-title.long-title {
+	font-size: 1.2rem;
+	white-space: nowrap; /* Prevents text from wrapping */
+	overflow: hidden; /* Hides the overflow */
+	text-overflow: ellipsis; /* Adds "..." if text overflows */
+	max-width: 90%; /* Adjusts width to prevent overflow */
+}
+
+.tilted-card-title.very-long-title {
+	font-size: 1rem;
+	white-space: nowrap; /* Prevents text from wrapping */
+	overflow: hidden; /* Hides the overflow */
+	text-overflow: ellipsis; /* Adds "..." if text overflows */
+	max-width: 90%; /* Adjusts width to prevent overflow */
 }
 
 .tilted-card-title-row {

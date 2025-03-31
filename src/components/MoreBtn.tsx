@@ -131,7 +131,7 @@ const CircularText: React.FC<CircularTextProps> = ({
 					</span>
 				);
 			})}
-			<img src="src/assets/icons/MoreBtn.svg" />
+			<img src="assets/icons/MoreBtn.svg" />
 		</motion.div>
 	);
 };

@@ -3,67 +3,55 @@ import { doc, setDoc, getDocs, collection } from "firebase/firestore";
 
 const allEvents = [
 	{
-		title: "Unlocking the Power of Gen-AI and Conversational AI",
+		title: "GenAI & Conversational AI",
 		type: "Workshops",
 		tag: "BY IITM-RESEARCH PARK",
 	},
+	{ title: "Cloud & Data Management", type: "Workshops", tag: "BY NATWEST" },
 	{
-		title: "Unleashing The Power of Cloud Computing and Data Management",
-		type: "Workshops",
-		tag: "BY NATWEST",
-	},
-	{
-		title: "The IT Behind Drones: Beginners to Advanced Level",
+		title: "Drones: Beginner to Advanced",
 		type: "Workshops",
 		tag: "BY 360 FLYING CLUB",
 	},
+	{ title: "Career Launchpad", type: "Workshops", tag: "POPULAR" },
+	{ title: "MERN Stack", type: "Workshops", tag: "BY TEKION" },
 	{
-		title: "Career Launchpad:Placement Session",
-		type: "Workshops",
-		tag: "POPULAR",
-	},
-	{
-		title: "Mastering MERN-STACK - Build scalable apps",
-		type: "Workshops",
-		tag: "BY TEKION",
-	},
-	{
-		title: "Unlocking the Power of Gen-AI and Conversational AI + Mastering MERN-STACK - Build scalable apps",
+		title: "GenAI & Conversational AI + MERN Stack",
 		type: "Combo-Workshops",
 		tag: "COMBO-1",
 	},
 	{
-		title: "Unlocking the Power of Gen-AI and Conversational AI + Career Launchpad:Placement Session",
+		title: "GenAI & Conversational AI + Career Launchpad",
 		type: "Combo-Workshops",
 		tag: "COMBO-2",
 	},
 	{
-		title: "Unleashing The Power of Cloud Computing and Data Management + Mastering MERN-STACK - Build scalable apps",
+		title: "Cloud & Data Management + MERN Stack",
 		type: "Combo-Workshops",
 		tag: "COMBO-3",
 	},
 	{
-		title: "Unleashing The Power of Cloud Computing and Data Management + Career Launchpad:Placement Session",
+		title: "Cloud & Data Management + Career Launchpad",
 		type: "Combo-Workshops",
 		tag: "COMBO-4",
 	},
 	{
-		title: "The IT Behind Drones: Beginners to Advanced Level + Career Launchpad:Placement Session",
+		title: "Drones: Beginner to Advanced + Career Launchpad",
 		type: "Combo-Workshops",
 		tag: "COMBO-5",
 	},
 	{
-		title: "The IT Behind Drones: Beginners to Advanced Level + Mastering MERN-STACK - Build scalable apps",
+		title: "Drones: Beginner to Advanced + MERN Stack",
 		type: "Combo-Workshops",
 		tag: "COMBO-6",
 	},
 	{
-		title: "Unlocking the Power of Gen-AI and Conversational AI + Mastering MERN-STACK - Build scalable apps + Unleashing The Power of Cloud Computing and Data Management",
+		title: "GenAI & Conversational AI + MERN Stack + Cloud & Data Management",
 		type: "Combo-Workshops",
 		tag: "COMBO-7",
 	},
 	{
-		title: "Unlocking the Power of Gen-AI and Conversational AI + Career Launchpad:Placement Session + Unleashing The Power of Cloud Computing and Data Management",
+		title: "GenAI & Conversational AI + Career Launchpad + Cloud & Data Management",
 		type: "Combo-Workshops",
 		tag: "COMBO-8",
 	},

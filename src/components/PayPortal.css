@@ -1,0 +1,10 @@
+.payportelbtn {
+	background-color: white;
+	color: #0d0d0d;
+	border: none;
+	padding: 13px 40px;
+	cursor: pointer;
+	font-size: 1.1rem;
+	font-weight: 700;
+	border-radius: 50px;
+}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useMemo } from "react";
+import { useState, useEffect, useContext, useMemo } from "react";
 import { MultiSelect, MultiSelectChangeEvent } from "primereact/multiselect";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
@@ -27,7 +27,13 @@ export interface EventGroup {
 // ---------------------------
 // Fetch Data from Firestore and Group
 // ---------------------------
-export default function MultiEventSelect() {
+interface MultiEventSelectProps {
+	setFullAmount: React.Dispatch<React.SetStateAction<number>>;
+}
+
+export default function MultiEventSelect({
+	setFullAmount,
+}: MultiEventSelectProps) {
 	const {
 		selectedPass,
 		selectedIndividualEventTitles,
@@ -254,6 +260,8 @@ export default function MultiEventSelect() {
 			.forEach((ev) => {
 				total += typeof ev.price === "number" ? ev.price : 0;
 			});
+
+		setFullAmount(total);
 		return total;
 	}
 

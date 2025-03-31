@@ -2,14 +2,14 @@ import React, { useEffect } from "react";
 import AnimatedText from "./components/AnimatedText";
 import Magnet from "./components/RegistrationButton";
 
-import RegisterBtn from "./assets/button.png"; //+
+import RegisterBtn from "/assets/button.png"; //+
 import ShinyText from "./components/InstagramBtn";
 // import AnimatedBackground from "./components/AnimatedBackground";
 
 import "./HomeSection.css";
 import VideoBackground from "./components/VideoBackground";
 import NavBar from "./components/NavBar";
-import insta_icon from "./assets/insta-icon.svg";
+import insta_icon from "/assets/insta-icon.svg";
 import Login from "./Login";
 
 const HomeSection: React.FC = () => {
@@ -24,15 +24,15 @@ const HomeSection: React.FC = () => {
 		<div className="home-section-container">
 			<NavBar></NavBar>
 			<Login></Login>
-			<VideoBackground videoSrc="src/assets/BGVIDEO.mp4" />
-			<img className="blendin" src="src/assets/icons/Blendin.png"></img>
+			<VideoBackground videoSrc="/assets/BGVIDEO.mp4" />
+			<img className="blendin" src="/assets/icons/Blendin.png"></img>
 			<div className="top-home-subsection">
 				<div className="ITA-text">ITA</div>
 				<div className="logo-array">
-					<img className="logo" src="src/assets/logo/AU.png"></img>
-					<img className="logo" src="src/assets/logo/MIT.png"></img>
-					<img className="logo" src="src/assets/logo/MIT75.png"></img>
-					<img className="logo" src="src/assets/logo/ITA.png"></img>
+					<img className="logo" src="/assets/logo/AU.png"></img>
+					<img className="logo" src="/assets/logo/MIT.png"></img>
+					<img className="logo" src="/assets/logo/MIT75.png"></img>
+					<img className="logo" src="/assets/logo/ITA.png"></img>
 				</div>
 			</div>
 			<div className="middle-home-subsection">

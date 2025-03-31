@@ -1,6 +1,10 @@
 import React, { useState } from "react";
-import { Accordion, AccordionTab } from "primereact/accordion";
-import "primereact/resources/themes/lara-dark-purple/theme.css"; // Dark theme
+import {
+	Accordion,
+	AccordionTab,
+	AccordionTabChangeEvent,
+} from "primereact/accordion";
+import "primereact/resources/themes/lara-dark-purple/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import "./Accordion.css";
@@ -30,18 +34,19 @@ const faqs: FAQ[] = [
 ];
 
 const FAQAccordion: React.FC = () => {
-	const [activeIndex, setActiveIndex] = useState<number | number[]>(0);
+	const [activeIndex, setActiveIndex] = useState<number | number[] | null>(
+		null
+	);
 
-	const onTabChange = (index: number) => {
-		setActiveIndex(activeIndex === index ? -1 : index);
+	const onTabChange = (event: AccordionTabChangeEvent) => {
+		// Ensure event.index is treated as a single number (handle array case)
+		const index = Array.isArray(event.index) ? event.index[0] : event.index;
+		setActiveIndex(activeIndex === index ? null : index);
 	};
 
 	return (
 		<div className="faq-container">
-			<Accordion
-				activeIndex={activeIndex}
-				onTabChange={(e) => onTabChange(e.index)}
-			>
+			<Accordion activeIndex={activeIndex} onTabChange={onTabChange}>
 				{faqs.map((faq, index) => (
 					<AccordionTab key={index} header={faq.question}>
 						<p>{faq.answer}</p>

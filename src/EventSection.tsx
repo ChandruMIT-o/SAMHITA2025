@@ -23,6 +23,7 @@ const eventTypes = [
 	"Non-Technical",
 	"Signature Event",
 	"Workshops",
+	"Combo-Workshops",
 ];
 
 const EventSection: React.FC = () => {
@@ -46,15 +47,29 @@ const EventSection: React.FC = () => {
 						title: doc.data().eventName,
 						type: doc.data().eventType,
 						tag: `₹${doc.data().price}`, // Store price as tag
-						imageSrc: `src/assets/event_posters/${doc
+						imageSrc: `/assets/event_posters/${doc
 							.data()
 							.eventName.toUpperCase()}.png`, // Convert to uppercase
 					})
 				);
 
-				console.log(fetchEvents);
+				// Define the sorting order
+				const typeOrder = [
+					"Signature Events",
+					"Technical",
+					"Non-Technical",
+					"Workshops",
+					"Combo-Workshops",
+				];
 
-				setEvents(fetchedEvents);
+				// Sort the events based on typeOrder
+				const sortedEvents = fetchedEvents.sort((a, b) => {
+					return (
+						typeOrder.indexOf(a.type) - typeOrder.indexOf(b.type)
+					);
+				});
+
+				setEvents(sortedEvents);
 			} catch (error) {
 				console.error("Error fetching events:", error);
 			}
@@ -62,6 +77,7 @@ const EventSection: React.FC = () => {
 
 		fetchEvents();
 	}, []);
+
 	const handlePassToggle = (passType: string) => {
 		updatePass(selectedPass === passType ? null : passType);
 	};
@@ -123,7 +139,7 @@ const EventSection: React.FC = () => {
 			<ShinyText text="Passes & Combo tickets" />
 			<div className="passcards-holder">
 				<PassCard
-					imageSrc="src/assets/event_passes/TECH PASS.png"
+					imageSrc="assets/event_passes/TECH PASS.png"
 					eventTitle="TECH"
 					eventType="Pass"
 					eventTag="Rs. 249"
@@ -132,7 +148,7 @@ const EventSection: React.FC = () => {
 					onToggle={() => handlePassToggle("TECH")}
 				/>
 				<PassCard
-					imageSrc="src/assets/event_passes/GLOBAL PASS.png"
+					imageSrc="assets/event_passes/GLOBAL PASS.png"
 					eventTitle="GLOBAL"
 					eventType="Pass"
 					eventTag="Rs.500"
@@ -145,7 +161,7 @@ const EventSection: React.FC = () => {
 					onToggle={() => handlePassToggle("GLOBAL")}
 				/>
 				<PassCard
-					imageSrc="src/assets/event_passes/NONTECH PASS.png"
+					imageSrc="assets/event_passes/NONTECH PASS.png"
 					eventTitle="NON-TECH"
 					eventType="Pass"
 					eventTag="Rs. 249"

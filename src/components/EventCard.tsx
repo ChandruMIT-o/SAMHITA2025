@@ -175,9 +175,18 @@ export default function TiltedCard({
 					</motion.div>
 				)}
 				<div className="tilted-card-title-row">
-					<motion.div className="tilted-card-title">
+					<motion.div
+						className={`tilted-card-title ${
+							eventTitle.length > 20
+								? "long-title"
+								: eventTitle.length > 30
+								? "very-long-title"
+								: ""
+						}`}
+					>
 						{eventTitle}
 					</motion.div>
+
 					<Switch isOn={isSelected} />
 				</div>
 				<div className="tilted-card-caption-row">

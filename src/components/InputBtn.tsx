@@ -4,8 +4,11 @@ import "./InputBtn.css";
 type InputProps = {
 	label: string;
 	placeholder: string;
-	icon?: React.ReactNode; // Allows passing any JSX element as an icon
+	icon?: React.ReactNode;
 	width?: string;
+	name: string;
+	value: string;
+	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 const Input: React.FC<InputProps> = ({
@@ -13,25 +16,23 @@ const Input: React.FC<InputProps> = ({
 	placeholder,
 	icon,
 	width = "200px",
+	name,
+	value,
+	onChange,
 }) => {
 	return (
 		<div className="input-container">
 			<div className="input-label">{label}</div>
-
-			<div
-				className="group"
-				style={{
-					width: width,
-				}}
-			>
+			<div className="group" style={{ width }}>
 				{icon}
-
 				<input
-					id="query"
+					id={name}
+					name={name}
 					className="input"
 					type="text"
 					placeholder={placeholder}
-					name="searchbar"
+					value={value}
+					onChange={onChange}
 				/>
 			</div>
 		</div>

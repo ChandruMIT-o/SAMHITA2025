@@ -24,12 +24,12 @@ const AboutSection: React.FC = () => {
 	}, [controls, scrollY]);
 
 	const images = [
-		"src/assets/about_us_photos/P1.png",
-		"src/assets/about_us_photos/P2.png",
-		"src/assets/about_us_photos/P3.png",
-		"src/assets/about_us_photos/P4.png",
-		"src/assets/about_us_photos/P5.png",
-		"src/assets/about_us_photos/P6.png",
+		"/assets/about_us_photos/P1.png",
+		"/assets/about_us_photos/P2.png",
+		"/assets/about_us_photos/P3.png",
+		"/assets/about_us_photos/P4.png",
+		"/assets/about_us_photos/P5.png",
+		"/assets/about_us_photos/P6.png",
 	];
 
 	return (

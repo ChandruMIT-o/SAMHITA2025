@@ -122,6 +122,20 @@
 	gap: 10px;
 }
 
+.super-title {
+	font-size: 6rem;
+	font-family: "Saira Stencil One";
+	letter-spacing: 5px;
+}
+
+.hero {
+	background: url("/assets/clip.png") center/cover;
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	display: inline-block;
+}
+
 .logo {
 	width: 80px;
 	height: 80px;
@@ -135,18 +149,22 @@
 	transform: scale(1.1);
 }
 
-.middle-home-subsection {
-	/* justify-self: center; */
-}
-
-.footer-home-subsection {
-	/* justify-self: flex-end; */
-}
-
 .ITA-text {
 	font-family: "Saira Stencil One";
 	font-size: 2.2rem;
 	letter-spacing: 0.5px;
+}
+
+.footer-home-subsection {
+	display: flex;
+	flex-direction: column;
+}
+
+.footer-home {
+	margin-top: -20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
 }
 
 @keyframes glow {
@@ -215,10 +233,82 @@
 .insta-number {
 	font-weight: bolder;
 	color: #c086ff;
+	-webkit-text-fill-color: #c086ff;
 }
 
 .blendin {
 	position: absolute;
 	top: 87%;
 	z-index: 3;
+}
+
+.month {
+	font-size: 1.6rem;
+	font-family: "Saira";
+	font-weight: 700;
+	letter-spacing: 2px;
+}
+
+.dates {
+	font-size: 2.8rem;
+	font-family: "Saira";
+	font-weight: bold;
+	letter-spacing: 3px;
+}
+
+@media (max-width: 768px) {
+	.home-section-container {
+		height: fit-content;
+	}
+
+	.description {
+		font-size: 1.5rem;
+		width: 100%;
+		text-align: center;
+	}
+
+	.super-title {
+		font-size: 5rem;
+		font-family: "Saira Stencil One";
+		letter-spacing: 5px;
+		text-align: center;
+		line-height: 6rem;
+
+		margin-top: 10px;
+	}
+
+	.top-home-subsection {
+		display: flex;
+		flex-direction: column;
+		margin-top: 80px;
+		justify-content: center;
+		align-items: center;
+		gap: 10px;
+	}
+
+	.ITA-text {
+		order: 2;
+	}
+
+	.logo-array {
+		transform: scale(0.7);
+	}
+	.footer-home-subsection {
+		display: flex;
+		flex-direction: column;
+		margin-top: 20px;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.footer-home {
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		gap: 30px;
+	}
+
+	.blendin {
+		visibility: hidden;
+	}
 }

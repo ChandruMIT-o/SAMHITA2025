@@ -5,7 +5,7 @@ type InputProps = {
 	label: string;
 	placeholder: string;
 	icon?: React.ReactNode;
-	width?: string;
+	flex?: number;
 	name: string;
 	value: string;
 	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -15,7 +15,7 @@ const Input: React.FC<InputProps> = ({
 	label,
 	placeholder,
 	icon,
-	width = "200px",
+	flex = 1,
 	name,
 	value,
 	onChange,
@@ -23,7 +23,7 @@ const Input: React.FC<InputProps> = ({
 	return (
 		<div className="input-container">
 			<div className="input-label">{label}</div>
-			<div className="group" style={{ width }}>
+			<div className="group" style={{ flex: flex }}>
 				{icon}
 				<input
 					id={name}

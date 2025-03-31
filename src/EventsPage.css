@@ -1,7 +1,7 @@
 .event-page-container {
 	background-color: #0d0d0d;
 
-	height: 100%;
+	height: fit-content;
 	width: 100%;
 
 	color: white;
@@ -149,4 +149,27 @@
 	flex-direction: column;
 	gap: 25px;
 	margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+	.event-page-container {
+		flex-direction: column;
+	}
+
+	.ep-left-section {
+		order: 2;
+	}
+
+	.ep-right-section {
+		margin-top: 100px;
+	}
+
+	.ep-back-btn {
+		top: 30px;
+		left: 30px;
+	}
+
+	.ep-poster {
+		width: 100%;
+	}
 }

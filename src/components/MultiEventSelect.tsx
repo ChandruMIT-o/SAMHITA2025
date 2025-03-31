@@ -8,7 +8,7 @@ import "primeicons/primeicons.css";
 import { RegistrationContext } from "../RegistrationContext";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
-
+import "./MultiEventSelect.css";
 // ---------------------------
 // Data Definitions
 // ---------------------------
@@ -315,15 +315,7 @@ export default function MultiEventSelect({
 	};
 
 	return (
-		<div
-			style={{
-				width: "650px",
-				display: "flex",
-				flexDirection: "column",
-				gap: "10px",
-				alignItems: "flex-start",
-			}}
-		>
+		<div className="right-side">
 			<div className="input-label">Select Events</div>
 			<MultiSelect
 				value={multiSelectValue}
@@ -335,15 +327,12 @@ export default function MultiEventSelect({
 				display="chip"
 				filter
 				placeholder="Select Events"
-				style={{ width: "650px", height: "50px" }}
 			/>
-			<DataTable value={dataTableRows} style={{ width: "650px" }}>
+			<DataTable value={dataTableRows} className="multi-select">
 				<Column field="label" header="Name" />
 				<Column field="price" header="Price" />
 			</DataTable>
-			<div style={{ marginTop: "10px", fontWeight: "bold" }}>
-				Total Price: {totalPrice}
-			</div>
+			<div className="total-price">Total Price: {totalPrice}</div>
 		</div>
 	);
 }

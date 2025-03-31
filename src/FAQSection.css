@@ -2,6 +2,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	gap: 5%;
 }
 
 .left-faqs-section {
@@ -10,12 +11,13 @@
 	justify-content: start;
 	align-items: start;
 	flex-direction: column;
-	padding: 10%;
+	padding-left: 10%;
 }
 
 .right-faqs-section {
 	flex: 3;
 	align-self: center;
+	padding-right: 10%;
 }
 
 .heading {
@@ -25,4 +27,31 @@
 	width: 80%;
 	text-align: left;
 	line-height: 60px;
+}
+
+@media (max-width: 768px) {
+	.faq-section {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		gap: 0%;
+	}
+
+	.left-faqs-section {
+		flex: 1;
+		display: flex;
+		justify-content: center;
+		align-items: start;
+		flex-direction: column;
+		padding-left: 10%;
+		padding-top: 15%;
+	}
+
+	.right-faqs-section {
+		flex: 1;
+		align-self: center;
+		padding-right: 0%;
+		justify-content: start;
+	}
 }

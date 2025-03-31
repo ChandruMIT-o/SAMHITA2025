@@ -37,44 +37,18 @@ const HomeSection: React.FC = () => {
 				</div>
 			</div>
 			<div className="middle-home-subsection">
-				<AnimatedText
-					text="SAMHITA '25"
-					font_size="6rem"
-					font_family="Saira Stencil One"
-					font_weight="regular"
-					letter_spacing="5px"
-					animationType="letter"
-				/>
+				<div className="super-title">
+					<span className="hero">SAMHITA</span> '25
+				</div>
 				<div className="description">
 					Intercollegiate tech symposium, hosted by MIT's Department
 					of Information Technology.
 				</div>
 			</div>
 			<div className="footer-home-subsection">
-				<AnimatedText
-					text="APRIL"
-					font_size="1.6rem"
-					font_family="Saira"
-					font_weight="700"
-					animationType="word"
-					letter_spacing="2px"
-				/>
-				<div
-					style={{
-						marginTop: "-20px",
-						display: "flex",
-						justifyContent: "space-between",
-						alignItems: "flex-end",
-					}}
-				>
-					<AnimatedText
-						text="12 & 13"
-						font_size="2.8rem"
-						font_family="Saira"
-						font_weight="bold"
-						animationType="word"
-						letter_spacing="3px"
-					/>
+				<div className="month">APRIL</div>
+				<div className="footer-home hero">
+					<div className="dates">12 & 13</div>
 					<motion.div
 						whileHover={{ scale: 1.05 }}
 						whileTap={{ scale: 0.9 }}
@@ -88,12 +62,7 @@ const HomeSection: React.FC = () => {
 						<Magnet padding={50} magnetStrength={5}>
 							{
 								<div className="insta-number">
-									<ShinyText
-										text="INSTRAGRAM ⤤"
-										disabled={false}
-										speed={3}
-										className="custom-class"
-									/>
+									<ShinyText text="Instagram ⤤"></ShinyText>
 								</div>
 							}
 						</Magnet>

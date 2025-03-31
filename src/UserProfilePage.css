@@ -72,3 +72,20 @@
 	display: flex;
 	gap: 1rem;
 }
+
+@media (max-width: 768px) {
+	.up-page-container {
+		padding-top: 100px;
+	}
+	.up-back-btn {
+		left: 30px;
+	}
+	.headup {
+		flex-direction: column;
+		margin-bottom: 10px;
+	}
+	.up-detail-card {
+		flex-direction: column;
+		width: 100%;
+	}
+}

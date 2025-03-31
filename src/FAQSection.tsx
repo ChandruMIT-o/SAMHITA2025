@@ -8,8 +8,7 @@ const FAQSection: React.FC = () => {
 		<div
 			style={{
 				width: "100vw",
-				height: "100vh",
-				minHeight: "100vh",
+				height: "100%",
 				background: "#0D0D0D",
 				color: "#ffffff",
 			}}

@@ -121,26 +121,12 @@ const RegistrationSection: React.FC = () => {
 	};
 
 	return (
-		<div
-			style={{
-				width: "100vw",
-				height: "160vh",
-				minHeight: "100vh",
-				background: "#0D0D0D",
-				color: "#ffffff",
-				display: "flex",
-				flexDirection: "column",
-				alignItems: "flex-start",
-				justifyContent: "flex-start",
-				padding: "8%",
-			}}
-			id="registration"
-		>
+		<div className="registration-section" id="registration">
 			<div className="r-section">
 				<motion.div
-					initial={{ opacity: 0, y: 100 }}
+					initial={{ opacity: 0, y: 50 }}
 					whileInView={{ opacity: 1, y: 0 }}
-					exit={{ opacity: 0, y: -100 }}
+					exit={{ opacity: 0, y: -50 }}
 					transition={{ duration: 0.5 }}
 					className="r-section-headings"
 				>
@@ -153,15 +139,15 @@ const RegistrationSection: React.FC = () => {
 				</motion.div>
 
 				<motion.div
-					initial={{ opacity: 0, y: 100 }}
+					initial={{ opacity: 0, y: 50 }}
 					whileInView={{ opacity: 1, y: 0 }}
-					exit={{ opacity: 0, y: -100 }}
+					exit={{ opacity: 0, y: -50 }}
 					transition={{ duration: 0.5 }}
 					className="registration-inputs-container"
 				>
 					{/* The form can use onBlur to trigger validation on leaving inputs */}
 					<form
-						className="registration-inputs-container"
+						className="registration-form-container"
 						onBlur={validate}
 					>
 						<div className="r-rows">
@@ -171,13 +157,14 @@ const RegistrationSection: React.FC = () => {
 										display: "flex",
 										flexDirection: "column",
 										gap: "10px",
+										flex: 2,
 									}}
 								>
 									<Input
 										label="Full Name"
 										placeholder="Your full name!"
 										icon={<UserIcon />}
-										width="400px"
+										flex={2}
 										name="fullName"
 										value={formData.fullName}
 										onChange={handleInputChange}
@@ -193,13 +180,14 @@ const RegistrationSection: React.FC = () => {
 										display: "flex",
 										flexDirection: "column",
 										gap: "10px",
+										flex: 1,
 									}}
 								>
 									<Input
 										label="Year of Study"
-										placeholder="Enter your year of study"
+										placeholder="Year of study"
 										icon={<YearOfStudyIcon />}
-										width="180px"
+										flex={2}
 										name="yearOfStudy"
 										value={formData.yearOfStudy}
 										onChange={handleInputChange}
@@ -217,13 +205,14 @@ const RegistrationSection: React.FC = () => {
 										display: "flex",
 										flexDirection: "column",
 										gap: "10px",
+										flex: 3,
 									}}
 								>
 									<Input
 										label="Email"
 										placeholder="Enter your email"
 										icon={<MailIcon />}
-										width="300px"
+										flex={1}
 										name="email"
 										value={formData.email}
 										onChange={handleInputChange}
@@ -239,13 +228,14 @@ const RegistrationSection: React.FC = () => {
 										display: "flex",
 										flexDirection: "column",
 										gap: "10px",
+										flex: 2,
 									}}
 								>
 									<Input
 										label="Phone"
 										placeholder="+91"
 										icon={<PhoneIcon />}
-										width="280px"
+										flex={2}
 										name="phone"
 										value={formData.phone}
 										onChange={handleInputChange}
@@ -263,13 +253,14 @@ const RegistrationSection: React.FC = () => {
 										display: "flex",
 										flexDirection: "column",
 										gap: "10px",
+										flex: 1,
 									}}
 								>
 									<Input
 										label="Institute Name"
 										placeholder="Enter full institute name"
 										icon={<InstituteIcon />}
-										width="610px"
+										flex={1}
 										name="instituteName"
 										value={formData.instituteName}
 										onChange={handleInputChange}
@@ -357,11 +348,7 @@ const RegistrationSection: React.FC = () => {
 						</div>
 					</div>
 					<div className="gi-row1">
-						<Magnet
-							className="paybtncontainer"
-							disabled={false}
-							magnetStrength={8}
-						>
+						<Magnet disabled={false} magnetStrength={8}>
 							<div className="insta-chip">
 								<img
 									className="insta-icon"

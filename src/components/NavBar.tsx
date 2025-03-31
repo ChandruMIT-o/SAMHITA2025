@@ -1,11 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import "./NavBar.css";
 
 const NavBar: React.FC = () => {
+	const [isOpen, setIsOpen] = useState(false);
+
+	const toggleMenu = () => {
+		setIsOpen(!isOpen);
+	};
+
 	return (
 		<div className="nav-menu-bar">
-			<div className="page-name">SAMHITA '25</div>
-			<div className="nav-options">
+			<div className="nav-header">
+				<div className="page-name">SAMHITA '25</div>
+				<div className="menu-toggle" onClick={toggleMenu}>
+					<div className="bar1"></div>
+					<div className="bar2"></div>
+					<div className="bar3"></div>
+				</div>
+			</div>
+			<div className={`nav-options ${isOpen ? "open" : ""}`}>
 				<a href="#home" className="nav-option">
 					Home
 				</a>
@@ -21,8 +34,13 @@ const NavBar: React.FC = () => {
 				<a href="#contact" className="nav-option">
 					Contact
 				</a>
+				{/* Mobile-only registration button */}
+				<a href="#registration" className="nav-button mobile">
+					Registration
+				</a>
 			</div>
-			<a href="#registration" className="nav-button">
+			{/* Desktop-only registration button */}
+			<a href="#registration" className="nav-button desktop">
 				Registration
 			</a>
 		</div>

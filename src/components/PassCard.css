@@ -133,3 +133,21 @@
 	color: #c086ffa4;
 	letter-spacing: 0.5px;
 }
+
+@media (max-width: 768px) {
+	.passcards-figure {
+		margin-bottom: 50px;
+	}
+
+	.tpass {
+		order: 2;
+	}
+
+	.gpass {
+		transform: scale(1);
+	}
+
+	.npass {
+		order: 3;
+	}
+}

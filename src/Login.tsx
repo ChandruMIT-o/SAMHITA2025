@@ -62,7 +62,6 @@ const Login: React.FC = () => {
 			{user ? (
 				<>
 					<div className="login-btn">
-						Welcome,{" "}
 						<span style={{ color: "#92008E" }}>
 							{user.displayName}
 						</span>

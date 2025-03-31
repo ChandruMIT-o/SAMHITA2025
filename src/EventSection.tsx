@@ -120,19 +120,7 @@ const EventSection: React.FC = () => {
 			: events.filter((event) => event.type === selectedType);
 
 	return (
-		<div
-			style={{
-				width: "100%",
-				background: "#0D0D0D",
-				color: "#ffffff",
-				display: "flex",
-				flexDirection: "column",
-				alignItems: "center",
-				padding: "3%",
-				gap: "50px",
-			}}
-			id="events"
-		>
+		<div className="event-container" id="events">
 			<motion.div className="r-section-headings">
 				<ShinyText text="✦ Events" />
 				<div className="e-heading">
@@ -148,8 +136,9 @@ const EventSection: React.FC = () => {
 					transition={{
 						duration: 0.2,
 						ease: "easeInOut",
-						delay: 0.7,
+						delay: 0.5,
 					}}
+					className="tpass"
 				>
 					<PassCard
 						imageSrc="assets/event_passes/TECH PASS.png"
@@ -168,8 +157,9 @@ const EventSection: React.FC = () => {
 					transition={{
 						duration: 0.2,
 						ease: "easeInOut",
-						delay: 0.4,
+						delay: 0.3,
 					}}
+					className="gpass"
 				>
 					<PassCard
 						imageSrc="assets/event_passes/GLOBAL PASS.png"
@@ -192,8 +182,9 @@ const EventSection: React.FC = () => {
 					transition={{
 						duration: 0.2,
 						ease: "easeInOut",
-						delay: 0.7,
+						delay: 0.5,
 					}}
+					className="npass"
 				>
 					<PassCard
 						imageSrc="assets/event_passes/NONTECH PASS.png"

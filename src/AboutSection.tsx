@@ -30,37 +30,26 @@ const AboutSection: React.FC = () => {
 		"/assets/about_us_photos/P4.png",
 		"/assets/about_us_photos/P5.png",
 		"/assets/about_us_photos/P6.png",
+		"/assets/about_us_photos/P1.png",
+		"/assets/about_us_photos/P2.png",
+		"/assets/about_us_photos/P3.png",
+		"/assets/about_us_photos/P4.png",
+		"/assets/about_us_photos/P5.png",
+		"/assets/about_us_photos/P6.png",
 	];
 
 	return (
-		<div
-			style={{
-				width: "100vw",
-				height: "150vh",
-				background: "#0D0D0D",
-				color: "#ffffff",
-				display: "flex",
-				flexDirection: "column",
-				alignItems: "center",
-				justifyContent: "center",
-			}}
-			id="about"
-		>
+		<section className="about-section" id="about">
 			<motion.div
 				initial={{ opacity: 0, y: 30 }}
 				animate={controls}
 				transition={{ duration: 0.3 }}
-				style={{
-					display: "flex",
-					flexDirection: "column",
-					alignItems: "center",
-					justifyContent: "center",
-				}}
 			>
 				<div className="about-section-tag">
 					<ShinyText text="✤ ABOUT US"></ShinyText>
 				</div>
 			</motion.div>
+
 			<div className="about-text-container-container">
 				<ScrollReveal
 					baseOpacity={0.1}
@@ -77,12 +66,8 @@ const AboutSection: React.FC = () => {
 				</ScrollReveal>
 			</div>
 
-			<ImageCarousel
-				images={images}
-				velocity={100} // adjust the scroll speed as desired
-				numCopies={5} // number of repeated copies for continuous scroll
-			/>
-		</div>
+			<ImageCarousel images={images} velocity={100} numCopies={5} />
+		</section>
 	);
 };
 

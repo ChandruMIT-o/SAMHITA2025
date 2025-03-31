@@ -1,15 +1,27 @@
+.registration-section {
+	width: 100vw;
+	height: fit-content;
+	background-color: #0d0d0d;
+	color: white;
+	display: flex;
+	flex-direction: column;
+	padding: 10%;
+}
+
 .r-rows {
 	display: flex;
 	gap: 20px;
 	flex-direction: column;
+
+	flex: 1;
 }
 
-.r-row1 {
+.registration-form-container {
 	display: flex;
 	gap: 30px;
 }
 
-.registration-inputs-container {
+.r-row1 {
 	display: flex;
 	gap: 30px;
 }
@@ -187,4 +199,58 @@
 .error {
 	color: #ab04d8;
 	font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+	.registration-form-container {
+		display: flex;
+		flex-direction: column;
+		gap: 15px;
+
+		/* transform: scale(0.8); */
+	}
+
+	.gi-row1 {
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	.general-info {
+		display: flex;
+		flex-direction: column;
+		gap: 30px;
+		justify-content: center;
+		align-items: center;
+		margin-top: 100px;
+	}
+
+	.registration-section {
+		width: 100vw;
+		height: fit-content;
+		background-color: #0d0d0d;
+		color: white;
+		display: flex;
+		flex-direction: column;
+		padding: 10%;
+	}
+
+	.r-section-headings {
+		width: 90%;
+	}
+
+	.paybtncontainer {
+		align-self: flex-start;
+	}
+
+	.r-row1 {
+		flex-direction: column;
+	}
+	.copyright-text {
+		margin-bottom: 100px;
+	}
+
+	.gi-row1 {
+		display: flex;
+		gap: 20px;
+	}
 }

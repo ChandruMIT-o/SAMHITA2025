@@ -1,0 +1,16 @@
+.right-side {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	flex: 1;
+}
+
+.multi-select {
+	height: 50%;
+}
+
+.total-price {
+	margin-top: 10px;
+	font-weight: 700;
+	font-size: 1.1rem;
+}

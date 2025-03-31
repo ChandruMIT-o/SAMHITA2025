@@ -17,3 +17,12 @@
 	cursor: pointer;
 	border: none;
 }
+
+@media (max-width: 768px) {
+	.loginbtns {
+		position: relative;
+		justify-self: center;
+		align-self: center;
+		margin-top: 50px;
+	}
+}

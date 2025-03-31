@@ -1,7 +1,5 @@
 .tilted-card-figure {
 	position: relative;
-	width: 100%;
-	height: 100%;
 	perspective: 800px;
 	display: flex;
 	flex-direction: column;
@@ -10,6 +8,7 @@
 	cursor: pointer;
 	transition: transform 0.1s ease-in-out;
 	margin: 0px;
+	padding: 0px;
 }
 
 .tilted-card-figure:active {
@@ -156,4 +155,15 @@
 	font-weight: bold;
 	color: #c086ff;
 	letter-spacing: 0.5px;
+}
+
+@media (max-width: 768px) {
+	@media (max-width: 768px) {
+		.tilted-card-figure {
+			transform: scale(0.7);
+		}
+		.tilted-card-figure:active {
+			transform: scale(0.68);
+		}
+	}
 }

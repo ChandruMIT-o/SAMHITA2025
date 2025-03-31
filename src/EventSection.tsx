@@ -78,6 +78,8 @@ const EventSection: React.FC = () => {
 		fetchEvents();
 	}, []);
 
+	console.log(events);
+
 	const handlePassToggle = (passType: string) => {
 		updatePass(selectedPass === passType ? null : passType);
 	};

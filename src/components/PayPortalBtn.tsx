@@ -26,7 +26,7 @@ const PayPortalBtn: React.FC<PayPortalBtnProps> = ({
 		});
 	};
 
-	// console.log(disabled, amount, name, email, contact);
+	console.log(disabled, amount, name, email, contact);
 
 	const displayRazorpay = async () => {
 		if (disabled || amount <= 0 || !name || !email || !contact) {

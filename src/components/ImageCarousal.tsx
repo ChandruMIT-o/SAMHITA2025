@@ -113,7 +113,7 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
 		});
 
 		const directionFactor = useRef<number>(1);
-		useAnimationFrame((t, delta) => {
+		useAnimationFrame((_, delta) => {
 			let moveBy =
 				directionFactor.current * baseVelocity * (delta / 1000);
 

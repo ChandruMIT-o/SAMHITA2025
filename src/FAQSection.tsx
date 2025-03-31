@@ -14,6 +14,7 @@ const FAQSection: React.FC = () => {
 				color: "#ffffff",
 			}}
 			className="faq-section"
+			id="faqs"
 		>
 			<motion.div className="left-faqs-section">
 				<ShinyText text="✤ FAQs"></ShinyText>

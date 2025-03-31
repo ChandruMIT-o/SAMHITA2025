@@ -1,17 +1,30 @@
 import React from "react";
 import "./NavBar.css";
+
 const NavBar: React.FC = () => {
 	return (
 		<div className="nav-menu-bar">
 			<div className="page-name">SAMHITA '25</div>
 			<div className="nav-options">
-				<div className="nav-option">Home</div>
-				<div className="nav-option">About</div>
-				<div className="nav-option">Events</div>
-				<div className="nav-option">FAQs</div>
-				<div className="nav-option">Contact</div>
+				<a href="#home" className="nav-option">
+					Home
+				</a>
+				<a href="#about" className="nav-option">
+					About
+				</a>
+				<a href="#events" className="nav-option">
+					Events
+				</a>
+				<a href="#faqs" className="nav-option">
+					FAQs
+				</a>
+				<a href="#contact" className="nav-option">
+					Contact
+				</a>
 			</div>
-			<div className="nav-button">Registration</div>
+			<a href="#registration" className="nav-button">
+				Registration
+			</a>
 		</div>
 	);
 };

@@ -134,6 +134,7 @@ const RegistrationSection: React.FC = () => {
 				justifyContent: "flex-start",
 				padding: "8%",
 			}}
+			id="registration"
 		>
 			<div className="r-section">
 				<motion.div
@@ -143,7 +144,9 @@ const RegistrationSection: React.FC = () => {
 					transition={{ duration: 0.5 }}
 					className="r-section-headings"
 				>
-					<ShinyText text="✦ Registration" />
+					<div>
+						<ShinyText text="✦ Registration" />
+					</div>
 					<div className="r-heading">
 						Let’s get you here, shall we?
 					</div>
@@ -163,76 +166,120 @@ const RegistrationSection: React.FC = () => {
 					>
 						<div className="r-rows">
 							<div className="r-row1">
-								<Input
-									label="Full Name"
-									placeholder="Your full name!"
-									icon={<UserIcon />}
-									width="400px"
-									name="fullName"
-									value={formData.fullName}
-									onChange={handleInputChange}
-								/>
-								{errors.fullName && (
-									<div className="error">
-										{errors.fullName}
-									</div>
-								)}
-								<Input
-									label="Year of Study"
-									placeholder="Enter your year of study"
-									icon={<YearOfStudyIcon />}
-									width="180px"
-									name="yearOfStudy"
-									value={formData.yearOfStudy}
-									onChange={handleInputChange}
-								/>
-								{errors.yearOfStudy && (
-									<div className="error">
-										{errors.yearOfStudy}
-									</div>
-								)}
+								<div
+									style={{
+										display: "flex",
+										flexDirection: "column",
+										gap: "10px",
+									}}
+								>
+									<Input
+										label="Full Name"
+										placeholder="Your full name!"
+										icon={<UserIcon />}
+										width="400px"
+										name="fullName"
+										value={formData.fullName}
+										onChange={handleInputChange}
+									/>
+									{errors.fullName && (
+										<div className="error">
+											{errors.fullName}
+										</div>
+									)}
+								</div>
+								<div
+									style={{
+										display: "flex",
+										flexDirection: "column",
+										gap: "10px",
+									}}
+								>
+									<Input
+										label="Year of Study"
+										placeholder="Enter your year of study"
+										icon={<YearOfStudyIcon />}
+										width="180px"
+										name="yearOfStudy"
+										value={formData.yearOfStudy}
+										onChange={handleInputChange}
+									/>
+									{errors.yearOfStudy && (
+										<div className="error">
+											{errors.yearOfStudy}
+										</div>
+									)}
+								</div>
 							</div>
 							<div className="r-row1">
-								<Input
-									label="Email"
-									placeholder="Enter your email"
-									icon={<MailIcon />}
-									width="300px"
-									name="email"
-									value={formData.email}
-									onChange={handleInputChange}
-								/>
-								{errors.email && (
-									<div className="error">{errors.email}</div>
-								)}
-								<Input
-									label="Phone"
-									placeholder="+91"
-									icon={<PhoneIcon />}
-									width="280px"
-									name="phone"
-									value={formData.phone}
-									onChange={handleInputChange}
-								/>
-								{errors.phone && (
-									<div className="error">{errors.phone}</div>
-								)}
+								<div
+									style={{
+										display: "flex",
+										flexDirection: "column",
+										gap: "10px",
+									}}
+								>
+									<Input
+										label="Email"
+										placeholder="Enter your email"
+										icon={<MailIcon />}
+										width="300px"
+										name="email"
+										value={formData.email}
+										onChange={handleInputChange}
+									/>
+									{errors.email && (
+										<div className="error">
+											{errors.email}
+										</div>
+									)}
+								</div>
+								<div
+									style={{
+										display: "flex",
+										flexDirection: "column",
+										gap: "10px",
+									}}
+								>
+									<Input
+										label="Phone"
+										placeholder="+91"
+										icon={<PhoneIcon />}
+										width="280px"
+										name="phone"
+										value={formData.phone}
+										onChange={handleInputChange}
+									/>
+									{errors.phone && (
+										<div className="error">
+											{errors.phone}
+										</div>
+									)}
+								</div>
 							</div>
 							<div className="r-row1">
-								<Input
-									label="Institute Name"
-									placeholder="Enter full institute name"
-									icon={<InstituteIcon />}
-									width="610px"
-									name="instituteName"
-									value={formData.instituteName}
-									onChange={handleInputChange}
-								/>
-								{errors.instituteName && (
-									<div className="error">
-										{errors.instituteName}
-									</div>
-								)}
+								<div
+									style={{
+										display: "flex",
+										flexDirection: "column",
+										gap: "10px",
+									}}
+								>
+									<Input
+										label="Institute Name"
+										placeholder="Enter full institute name"
+										icon={<InstituteIcon />}
+										width="610px"
+										name="instituteName"
+										value={formData.instituteName}
+										onChange={handleInputChange}
+									/>
+									{errors.instituteName && (
+										<div className="error">
+											{errors.instituteName}
+										</div>
+									)}
+								</div>
 							</div>
 							<Magnet
 								className="paybtncontainer"
@@ -253,7 +300,9 @@ const RegistrationSection: React.FC = () => {
 				</motion.div>
 
 				<div className="general-info">
-					<ShinyText text="✦ Contact & Location ✦" />
+					<div id="contact">
+						<ShinyText text="✦ Contact & Location ✦" />
+					</div>
 					<div className="gi-row1">
 						<div className="contact-chip">
 							<img

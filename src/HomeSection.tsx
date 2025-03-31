@@ -21,7 +21,7 @@ const HomeSection: React.FC = () => {
 		}
 	}, []);
 	return (
-		<div className="home-section-container">
+		<div id="home" className="home-section-container">
 			<NavBar></NavBar>
 			<Login></Login>
 			<VideoBackground videoSrc="/assets/BGVIDEO.mp4" />

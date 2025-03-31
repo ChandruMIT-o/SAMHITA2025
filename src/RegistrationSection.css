@@ -183,3 +183,8 @@
 	font-weight: bolder;
 	color: #c086ff;
 }
+
+.error {
+	color: #ab04d8;
+	font-size: 0.9rem;
+}

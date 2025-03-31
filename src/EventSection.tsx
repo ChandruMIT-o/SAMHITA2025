@@ -129,9 +129,10 @@ const EventSection: React.FC = () => {
 				padding: "3%",
 				gap: "50px",
 			}}
+			id="events"
 		>
 			<motion.div className="r-section-headings">
-				<ShinyText text="✦ Registration" />
+				<ShinyText text="✦ Events" />
 				<div className="e-heading">
 					Come and show us what you have got!
 				</div>

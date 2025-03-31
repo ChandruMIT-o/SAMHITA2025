@@ -44,6 +44,7 @@ const AboutSection: React.FC = () => {
 				alignItems: "center",
 				justifyContent: "center",
 			}}
+			id="about"
 		>
 			<motion.div
 				initial={{ opacity: 0, y: 30 }}

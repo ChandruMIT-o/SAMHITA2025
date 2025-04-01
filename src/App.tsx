@@ -9,6 +9,9 @@ import EventsPage from "./EventsPage";
 import { Routes, Route } from "react-router-dom";
 import { RegistrationProvider } from "./RegistrationContext";
 import UserProfilePage from "./UserProfilePage";
+import SignUp from "./SignUp";
+import SignIn from "./SignIn";
+import ForgotPassword from "./ForgotPassword";
 
 function App() {
 	return (
@@ -29,6 +32,9 @@ function App() {
 			/>
 			<Route path="/event/:event_name" element={<EventsPage />} />
 			<Route path="/user" element={<UserProfilePage />} />
+			<Route path="/signup" element={<SignUp />} />
+			<Route path="/signin" element={<SignIn />} />
+			<Route path="/passswordreset" element={<ForgotPassword />} />
 		</Routes>
 	);
 }

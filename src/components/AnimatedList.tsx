@@ -201,7 +201,7 @@ const AnimatedList: React.FC<AnimatedListProps> = ({
 								className="float-button"
 								target="_blank"
 								rel="noopener noreferrer"
-								href={whatsappLinks[index].trim()}
+								href={whatsappLinks[index]}
 							>
 								<img
 									className="fa fa-whatsapp"

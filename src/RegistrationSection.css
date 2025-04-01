@@ -245,9 +245,6 @@
 	.r-row1 {
 		flex-direction: column;
 	}
-	.copyright-text {
-		margin-bottom: 100px;
-	}
 
 	.gi-row1 {
 		display: flex;

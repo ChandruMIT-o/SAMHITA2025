@@ -1,0 +1,141 @@
+.signup-section {
+	width: 100vw;
+	height: 100vh;
+	background-color: #0d0d0d;
+	color: white;
+	display: flex;
+	flex-direction: column;
+	box-sizing: border-box;
+	display: flex;
+	justify-content: center;
+	align-self: center;
+	padding-left: 30%;
+	padding-right: 30%;
+}
+
+.signup-rows {
+	display: flex;
+	gap: 20px;
+	flex-direction: column;
+	flex: 1;
+}
+
+.signup-form-container {
+	display: flex;
+	gap: 30px;
+}
+
+.signup-row {
+	display: flex;
+	gap: 30px;
+}
+
+.signup-content {
+	display: flex;
+	flex-direction: column;
+	gap: 50px;
+}
+
+.signup-headings {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 10px;
+}
+
+.signup-heading {
+	font-family: "Saira";
+	font-size: 3.2rem;
+	font-weight: 700;
+	width: 100%;
+	text-align: left;
+	line-height: 60px;
+}
+
+/* The remaining CSS selectors remain unchanged */
+
+.signinuprow {
+	display: flex;
+	justify-content: space-between;
+}
+
+.signupbtn {
+	background-color: white;
+	color: #0d0d0d;
+	border: none;
+	padding: 13px 40px;
+	cursor: pointer;
+	font-size: 1rem;
+	font-weight: 700;
+	border-radius: 50px;
+	width: fit-content;
+}
+
+.toSignIn {
+	background-color: #fef3c7;
+	color: #0d0d0d;
+	border: none;
+	padding: 13px 40px;
+	cursor: pointer;
+	font-size: 1rem;
+	font-weight: 700;
+	border-radius: 50px;
+	width: fit-content;
+}
+
+@media (max-width: 768px) {
+	.signup-form-container {
+		display: flex;
+		flex-direction: column;
+		gap: 15px;
+	}
+
+	.gi-row1 {
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	.general-info {
+		display: flex;
+		flex-direction: column;
+		gap: 30px;
+		justify-content: center;
+		align-items: center;
+		margin-top: 100px;
+	}
+
+	.signup-section {
+		width: 100vw;
+		height: fit-content;
+		background-color: #0d0d0d;
+		color: white;
+		display: flex;
+		flex-direction: column;
+		padding: 10%;
+	}
+
+	.signup-headings {
+		width: 90%;
+	}
+
+	.paybtncontainer {
+		align-self: flex-start;
+	}
+
+	.signup-row {
+		flex-direction: column;
+	}
+
+	.gi-row1 {
+		display: flex;
+		gap: 20px;
+	}
+
+	.contact-name {
+		font-size: 1rem;
+	}
+
+	.contact-number {
+		font-size: 1rem;
+	}
+}

@@ -1,0 +1,154 @@
+.signin-section {
+	width: 100vw;
+	height: 100vh;
+	background-color: #0d0d0d;
+	color: white;
+	display: flex;
+	flex-direction: column;
+	box-sizing: border-box;
+	display: flex;
+	justify-content: center;
+	align-self: center;
+	padding-left: 35%;
+	padding-right: 35%;
+	gap: 30px;
+}
+
+.signin-rows {
+	display: flex;
+	gap: 20px;
+	flex-direction: column;
+	flex: 1;
+}
+
+.signin-form-container {
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+}
+
+.signin-row {
+	display: flex;
+	gap: 30px;
+}
+
+.signin-content {
+	display: flex;
+	flex-direction: column;
+	gap: 50px;
+}
+
+.signin-headings {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 30px;
+}
+
+.signin-heading {
+	font-family: "Saira";
+	font-size: 3.2rem;
+	font-weight: 700;
+	width: 100%;
+	text-align: left;
+	line-height: 60px;
+}
+
+/* The remaining CSS selectors remain unchanged */
+.signinuprow {
+	display: flex;
+	justify-content: space-between;
+}
+
+.signinbtn {
+	background-color: white;
+	color: #0d0d0d;
+	border: none;
+	padding: 13px 40px;
+	cursor: pointer;
+	font-size: 1rem;
+	font-weight: 700;
+	border-radius: 50px;
+	width: fit-content;
+}
+
+.toSignUp {
+	background-color: white;
+	color: #0d0d0d;
+	border: none;
+	padding: 13px 40px;
+	cursor: pointer;
+	font-size: 1rem;
+	font-weight: 700;
+	border-radius: 50px;
+	width: fit-content;
+}
+
+.forgotPassword {
+	background-color: #111116;
+	border: 1px solid #2b2b2b;
+	color: #fff;
+	border: none;
+	cursor: pointer;
+	font-size: 1rem;
+	font-weight: 700;
+	border-radius: 50px;
+	width: fit-content;
+}
+
+@media (max-width: 768px) {
+	.signin-form-container {
+		display: flex;
+		flex-direction: column;
+		gap: 15px;
+	}
+
+	.gi-row1 {
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	.general-info {
+		display: flex;
+		flex-direction: column;
+		gap: 30px;
+		justify-content: center;
+		align-items: center;
+		margin-top: 100px;
+	}
+
+	.signin-section {
+		width: 100vw;
+		height: 100vh;
+		background-color: #0d0d0d;
+		color: white;
+		display: flex;
+		flex-direction: column;
+		padding: 10%;
+	}
+
+	.signin-headings {
+		width: 90%;
+	}
+
+	.paybtncontainer {
+		align-self: flex-start;
+	}
+
+	.signin-row {
+		flex-direction: column;
+	}
+
+	.gi-row1 {
+		display: flex;
+		gap: 20px;
+	}
+
+	.contact-name {
+		font-size: 1rem;
+	}
+
+	.contact-number {
+		font-size: 1rem;
+	}
+}

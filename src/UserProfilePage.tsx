@@ -28,52 +28,67 @@ const UserProfilePage: React.FC = () => {
 
 			try {
 				// Fetch the user's document from the "users" collection using their email
-				const email = auth.currentUser.email as string;
-				const userDocRef = doc(db, "users", email);
-				const userDoc = await getDoc(userDocRef);
+				const uid = auth.currentUser.uid;
+				const uidMappingRef = doc(db, "uid_mapping", uid);
+				const uidMappingSnap = await getDoc(uidMappingRef);
 
-				if (userDoc.exists()) {
-					const userData = userDoc.data() as DocumentData;
-					setUsername(userData.username || "User");
+				if (uidMappingSnap.exists()) {
+					const userDocRef = doc(
+						db,
+						"users",
+						uidMappingSnap.data().docId
+					);
+					const userDoc = await getDoc(userDocRef);
 
-					// Set payment, pass, and registration timestamp details
-					setAmountPaid(userData.amountPaid || 0);
-					setUserPass(userData.pass || "none");
-					if (userData.registeredOn) {
-						// Convert Firestore Timestamp to a formatted date string
-						setRegisteredOn(
-							userData.registeredOn.toDate().toLocaleString()
+					if (userDoc.exists()) {
+						const userData = userDoc.data() as DocumentData;
+						setUsername(userData.fullName || "User");
+
+						// Set payment, pass, and registration timestamp details
+						setAmountPaid(userData.amountPaid || 0);
+						setUserPass(userData.pass || "none");
+						if (userData.registeredOn) {
+							// Convert Firestore Timestamp to a formatted date string
+							setRegisteredOn(
+								userData.registeredOn.toDate().toLocaleString()
+							);
+						}
+
+						// Retrieve eventsSelected array; default to empty if not found
+						const eventsSelected: string[] =
+							userData.eventsSelected || [];
+
+						// Use Promise.all to fetch all event documents concurrently
+						const eventsArray = await Promise.all(
+							eventsSelected.map(async (event) => {
+								// Remove all whitespaces from the event name to form the document ID
+								const eventId = event.replace(/\s+/g, "");
+								const eventDocRef = doc(
+									db,
+									"Samhita25",
+									eventId
+								);
+								const eventDoc = await getDoc(eventDocRef);
+								if (eventDoc.exists()) {
+									const eventData =
+										eventDoc.data() as DocumentData;
+									return {
+										eventName: eventData.eventName,
+										date: eventData.date,
+										wa: eventData.wa,
+									} as EventData;
+								}
+								return null;
+							})
+						);
+
+						// Filter out any events that weren't found (null values)
+						setEvents(
+							eventsArray.filter(
+								(ev) => ev !== null
+							) as EventData[]
 						);
 					}
-
-					// Retrieve eventsSelected array; default to empty if not found
-					const eventsSelected: string[] =
-						userData.eventsSelected || [];
-
-					// Use Promise.all to fetch all event documents concurrently
-					const eventsArray = await Promise.all(
-						eventsSelected.map(async (event) => {
-							// Remove all whitespaces from the event name to form the document ID
-							const eventId = event.replace(/\s+/g, "");
-							const eventDocRef = doc(db, "Samhita25", eventId);
-							const eventDoc = await getDoc(eventDocRef);
-							if (eventDoc.exists()) {
-								const eventData =
-									eventDoc.data() as DocumentData;
-								return {
-									eventName: eventData.eventName,
-									date: eventData.date,
-									wa: eventData.wa,
-								} as EventData;
-							}
-							return null;
-						})
-					);
-
-					// Filter out any events that weren't found (null values)
-					setEvents(
-						eventsArray.filter((ev) => ev !== null) as EventData[]
-					);
 				}
 			} catch (error) {
 				console.error("Error fetching user or event data:", error);

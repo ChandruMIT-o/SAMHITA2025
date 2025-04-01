@@ -233,6 +233,7 @@ const EventSection: React.FC = () => {
 								opacity: { duration: 0.5, delay: index * 0.1 },
 								layout: { duration: 1.2, ease: "easeInOut" },
 							}}
+							className="inside-event-grid"
 						>
 							<TiltedCard
 								imageSrc={event.imageSrc}

@@ -54,7 +54,14 @@
 	.event-grid {
 		display: grid;
 		grid-template-columns: 1fr; /* Single column layout */
-		gap: 0px;
+		width: 100vw;
+	}
+
+	.inside-event-grid {
+		width: 100vw;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 
 	.passcards-holder {
@@ -77,9 +84,5 @@
 
 	.event-grid > div:nth-child(n) {
 		margin-top: -100px;
-	}
-
-	.event-grid {
-		gap: -100px;
 	}
 }

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
-import { auth, signInWithGoogle, logout } from "./firebase";
+import { auth, logout } from "./firebase"; // Removed Google login
 import { onAuthStateChanged, User } from "firebase/auth";
-import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
 
 import "./Login.css";
 
@@ -10,6 +10,7 @@ const db = getFirestore(); // Initialize Firestore
 
 const Login: React.FC = () => {
 	const [user, setUser] = useState<User | null>(null);
+	const [fullName, setFullName] = useState<string | null>(null); // Store fullName
 	const navigate = useNavigate(); // Initialize navigate
 
 	useEffect(() => {
@@ -17,35 +18,51 @@ const Login: React.FC = () => {
 			setUser(currentUser);
 
 			if (currentUser) {
-				await checkAndCreateUser(currentUser);
+				const cachedFullName = localStorage.getItem(
+					`fullName_${currentUser.uid}`
+				);
+				if (cachedFullName) {
+					setFullName(cachedFullName); // Set fullName from cache if available
+				} else {
+					await fetchUserDetails(currentUser); // Fetch fullName if not found in cache
+				}
+			} else {
+				setFullName(null); // Reset fullName when user logs out
 			}
 		});
 
 		return () => unsubscribe();
 	}, []);
 
-	const checkAndCreateUser = async (currentUser: User) => {
-		if (!currentUser.email) return;
+	const fetchUserDetails = async (currentUser: User) => {
+		if (!currentUser.uid) return; // Ensure there's a valid uid
 
-		const userRef = doc(db, "users", currentUser.email);
-		const userSnap = await getDoc(userRef);
+		// Fetch the docId from the "uid_mapping" collection using the uid
+		const uidMappingRef = doc(db, "uid_mapping", currentUser.uid);
+		const uidMappingSnap = await getDoc(uidMappingRef);
 
-		if (!userSnap.exists()) {
-			await setDoc(userRef, {
-				email: currentUser.email,
-				username: currentUser.displayName || "",
-				fullName: "",
-				institute: "",
-				phone: "",
-				yearOfStudy: null,
-				amountPaid: 0,
-				paid: false,
-				paymentID: "",
-				eventsSelected: [],
-			});
-			console.log("New user document created");
+		if (uidMappingSnap.exists()) {
+			const docId = uidMappingSnap.data().docId; // Get the docId from the mapping
+
+			// Use the docId to fetch the user details from the "users" collection
+			const userRef = doc(db, "users", docId);
+			const userSnap = await getDoc(userRef);
+
+			if (userSnap.exists()) {
+				const userData = userSnap.data();
+				const fetchedFullName = userData.fullName || "Profile";
+				setFullName(fetchedFullName); // Set fullName
+
+				// Cache the fullName in local storage for future use
+				localStorage.setItem(
+					`fullName_${currentUser.uid}`,
+					fetchedFullName
+				);
+			} else {
+				console.error("User document not found in Firestore.");
+			}
 		} else {
-			console.log("User document already exists");
+			console.error("UID mapping not found.");
 		}
 	};
 
@@ -54,6 +71,10 @@ const Login: React.FC = () => {
 			"Are you sure you want to log out?"
 		);
 		if (confirmLogout) {
+			// Remove fullName from localStorage on logout
+			if (user?.uid) {
+				localStorage.removeItem(`fullName_${user.uid}`);
+			}
 			await logout();
 		}
 	};
@@ -71,9 +92,7 @@ const Login: React.FC = () => {
 						onClick={handleProfileClick}
 						style={{ cursor: "pointer" }}
 					>
-						<span style={{ color: "#92008E" }}>
-							{user.displayName}
-						</span>
+						<span style={{ color: "#92008E" }}>{fullName}</span>
 					</div>
 
 					<button className="login-btn" onClick={handleLogout}>
@@ -81,9 +100,20 @@ const Login: React.FC = () => {
 					</button>
 				</>
 			) : (
-				<button className="login-btn" onClick={signInWithGoogle}>
-					Login with Google
-				</button>
+				<>
+					<button
+						className="login-btn"
+						onClick={() => navigate("/signin")}
+					>
+						Sign In
+					</button>
+					<button
+						className="login-btn"
+						onClick={() => navigate("/signup")}
+					>
+						Sign Up
+					</button>
+				</>
 			)}
 		</div>
 	);

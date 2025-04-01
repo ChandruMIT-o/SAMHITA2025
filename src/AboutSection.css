@@ -1,6 +1,6 @@
 /* General Styles */
 .about-section {
-	width: 100%;
+	width: 100vw;
 	min-height: 150vh;
 	background: #0d0d0d;
 	color: #ffffff;
@@ -9,7 +9,7 @@
 	align-items: center;
 	justify-content: center;
 	padding: 5vw 10vw;
-	box-sizing: border-box;
+	overflow: hidden;
 }
 
 .about-section-tag {
@@ -17,7 +17,7 @@
 }
 
 .about-text-container-container {
-	width: 100%;
+	width: 100vw;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -51,11 +51,21 @@
 	}
 
 	.about-text {
-		font-size: 1.5rem;
+		font-size: 1.3rem;
 		line-height: 1.6;
 	}
 
 	.about-text-container {
 		width: 90%;
+	}
+}
+
+@media (max-width: 390px) {
+	.about-text {
+		font-size: 1rem;
+		padding: 20vw 0vw;
+	}
+	.about-section-tag {
+		margin-bottom: -50px;
 	}
 }

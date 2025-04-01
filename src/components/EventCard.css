@@ -158,12 +158,61 @@
 }
 
 @media (max-width: 768px) {
-	@media (max-width: 768px) {
-		.tilted-card-figure {
-			transform: scale(0.7);
-		}
-		.tilted-card-figure:active {
-			transform: scale(0.68);
-		}
+	.tilted-card-figure {
+		transform: scale(0.7);
+	}
+	.tilted-card-figure:active {
+		transform: scale(0.68);
+	}
+}
+
+@media (max-width: 550px) {
+	.tilted-card-figure {
+		transform: scale(0.6);
+	}
+	.tilted-card-figure:active {
+		transform: scale(0.58);
+	}
+	.tilted-card-title {
+		font-size: 1.7rem;
+	}
+
+	/* Dynamically reduce font size for long titles */
+	.tilted-card-title.long-title {
+		font-size: 1.3rem;
+	}
+
+	.tilted-card-title.very-long-title {
+		font-size: 1.1rem;
+	}
+}
+
+@media (max-width: 390px) {
+	.tilted-card-figure {
+		transform: scale(0.55);
+	}
+	.tilted-card-figure:active {
+		transform: scale(0.54);
+	}
+
+	.tilted-card-title {
+		font-size: 1.7rem;
+	}
+
+	/* Dynamically reduce font size for long titles */
+	.tilted-card-title.long-title {
+		font-size: 1.3rem;
+	}
+
+	.tilted-card-title.very-long-title {
+		font-size: 1.1rem;
+	}
+
+	.tilted-card-overlay {
+		transform: scale(1.3);
+	}
+
+	.titled-card-caption2 {
+		font-size: 1.5rem;
 	}
 }

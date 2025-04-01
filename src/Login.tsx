@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import { auth, signInWithGoogle, logout } from "./firebase";
 import { onAuthStateChanged, User } from "firebase/auth";
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
@@ -9,6 +10,7 @@ const db = getFirestore(); // Initialize Firestore
 
 const Login: React.FC = () => {
 	const [user, setUser] = useState<User | null>(null);
+	const navigate = useNavigate(); // Initialize navigate
 
 	useEffect(() => {
 		const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
@@ -29,7 +31,6 @@ const Login: React.FC = () => {
 		const userSnap = await getDoc(userRef);
 
 		if (!userSnap.exists()) {
-			// Create a new document with only email and username
 			await setDoc(userRef, {
 				email: currentUser.email,
 				username: currentUser.displayName || "",
@@ -57,11 +58,19 @@ const Login: React.FC = () => {
 		}
 	};
 
+	const handleProfileClick = () => {
+		navigate("/user"); // Navigate to /user page
+	};
+
 	return (
 		<div className="loginbtns">
 			{user ? (
 				<>
-					<div className="login-btn">
+					<div
+						className="login-btn"
+						onClick={handleProfileClick}
+						style={{ cursor: "pointer" }}
+					>
 						<span style={{ color: "#92008E" }}>
 							{user.displayName}
 						</span>

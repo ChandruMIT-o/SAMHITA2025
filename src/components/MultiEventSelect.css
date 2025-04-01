@@ -14,3 +14,11 @@
 	font-weight: 700;
 	font-size: 1.1rem;
 }
+
+.multiselect {
+	width: 100%;
+}
+
+.multiselect .multiselectpanel {
+	width: 50vw;
+}

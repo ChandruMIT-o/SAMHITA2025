@@ -327,7 +327,10 @@ export default function MultiEventSelect({
 				display="chip"
 				filter
 				placeholder="Select Events"
+				scrollHeight="400px"
+				virtualScrollerOptions={{ itemSize: 50 }}
 			/>
+
 			<DataTable value={dataTableRows} className="multi-select">
 				<Column field="label" header="Name" />
 				<Column field="price" header="Price" />

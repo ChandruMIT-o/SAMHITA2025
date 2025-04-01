@@ -94,9 +94,18 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
 		const copyRef = useRef<HTMLDivElement>(null);
 		const copyWidth = useRef<number>(0);
 
+		// Update width whenever the element's size changes
 		useLayoutEffect(() => {
 			if (copyRef.current) {
-				copyWidth.current = copyRef.current.offsetWidth;
+				const updateWidth = () => {
+					copyWidth.current = copyRef.current!.offsetWidth;
+				};
+				updateWidth();
+				const resizeObserver = new ResizeObserver(() => {
+					updateWidth();
+				});
+				resizeObserver.observe(copyRef.current);
+				return () => resizeObserver.disconnect();
 			}
 		}, []);
 
@@ -155,7 +164,7 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
 	}
 
 	return (
-		<section>
+		<section style={{ overflow: "hidden" }}>
 			<VelocityImages
 				className={className}
 				baseVelocity={velocity}

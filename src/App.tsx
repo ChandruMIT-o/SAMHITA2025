@@ -19,7 +19,6 @@ function App() {
 					<>
 						<HomeSection />
 						<AboutSection />
-						{/* Wrap both sections that need to share state */}
 						<RegistrationProvider>
 							<EventSection />
 							<FAQSection />

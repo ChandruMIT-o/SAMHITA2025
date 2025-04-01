@@ -230,7 +230,7 @@ const EventSection: React.FC = () => {
 							animate={{ opacity: 1, y: 0 }}
 							exit={{ opacity: 0, y: -50 }}
 							transition={{
-								opacity: { duration: 0.5, delay: index * 0.3 },
+								opacity: { duration: 0.5, delay: index * 0.1 },
 								layout: { duration: 1.2, ease: "easeInOut" },
 							}}
 						>

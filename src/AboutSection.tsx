@@ -2,7 +2,7 @@ import React from "react";
 import "./AboutSection.css";
 import ShinyText from "./components/InstagramBtn";
 import ScrollReveal from "./components/ScrollReveal";
-import { motion, useAnimation, useScroll } from "framer-motion";
+import { useAnimation, useScroll } from "framer-motion";
 import { useEffect } from "react";
 import { ImageCarousel } from "./components/ImageCarousal";
 
@@ -39,20 +39,14 @@ const AboutSection: React.FC = () => {
 	];
 
 	return (
-		<section className="about-section" id="about">
-			<motion.div
-				initial={{ opacity: 0, y: 30 }}
-				animate={controls}
-				transition={{ duration: 0.3 }}
-			>
-				<div className="about-section-tag">
-					<ShinyText text="✤ ABOUT US"></ShinyText>
-				</div>
-			</motion.div>
+		<div className="about-section" id="about">
+			<div className="about-section-tag" id="about">
+				<ShinyText text="✤ ABOUT US"></ShinyText>
+			</div>
 
 			<div className="about-text-container-container">
 				<ScrollReveal
-					baseOpacity={0.1}
+					baseOpacity={0.3}
 					containerClassName="about-text-container"
 					textClassName="about-text"
 				>
@@ -67,7 +61,7 @@ const AboutSection: React.FC = () => {
 			</div>
 
 			<ImageCarousel images={images} velocity={100} numCopies={5} />
-		</section>
+		</div>
 	);
 };
 

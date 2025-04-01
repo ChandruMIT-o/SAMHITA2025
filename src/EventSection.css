@@ -68,3 +68,18 @@
 		margin-top: 0px;
 	}
 }
+
+@media (max-width: 390px) {
+	/* Remove the margin shift for second-column items */
+	.event-grid > div:nth-child(2n) {
+		margin-top: -100px;
+	}
+
+	.event-grid > div:nth-child(n) {
+		margin-top: -100px;
+	}
+
+	.event-grid {
+		gap: -100px;
+	}
+}

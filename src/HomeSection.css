@@ -262,7 +262,7 @@
 	}
 
 	.description {
-		font-size: 1.5rem;
+		font-size: 1.3rem;
 		width: 100%;
 		text-align: center;
 	}
@@ -309,6 +309,12 @@
 	}
 
 	.blendin {
-		visibility: hidden;
+		display: none;
+	}
+}
+
+@media (max-width: 390px) {
+	.super-title {
+		font-size: 4rem;
 	}
 }

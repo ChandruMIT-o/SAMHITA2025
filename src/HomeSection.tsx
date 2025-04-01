@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import AnimatedText from "./components/AnimatedText";
 import Magnet from "./components/RegistrationButton";
 
 import RegisterBtn from "/assets/button.png"; //+

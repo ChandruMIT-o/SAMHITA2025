@@ -172,4 +172,8 @@
 	.ep-poster {
 		width: 100%;
 	}
+
+	.ep-duration-chips {
+		flex-wrap: wrap;
+	}
 }

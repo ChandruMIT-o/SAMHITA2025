@@ -253,4 +253,12 @@
 		display: flex;
 		gap: 20px;
 	}
+
+	.contact-name {
+		font-size: 1rem;
+	}
+
+	.contact-number {
+		font-size: 1rem;
+	}
 }

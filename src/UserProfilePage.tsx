@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { doc, getDoc, DocumentData } from "firebase/firestore";
+import { doc, getDoc, DocumentData, Timestamp } from "firebase/firestore";
 import { auth, db } from "./firebase"; // Adjust the import paths as needed
 import ShinyText from "./components/InstagramBtn";
 import AnimatedList from "./components/AnimatedList";
@@ -18,51 +18,58 @@ const UserProfilePage: React.FC = () => {
 	const navigate = useNavigate();
 	const [events, setEvents] = useState<EventData[]>([]);
 	const [username, setUsername] = useState<string>("User");
-	const [amountPaid, setAmountPaid] = useState<number>(0);
+	const [docId, setDocId] = useState<string>("0000"); // 4-digit unique ID
+	const [amountPaid, setAmountPaid] = useState<number[]>([]);
+	const [paymentIDs, setPaymentIDs] = useState<string[]>([]);
+	const [registeredOn, setRegisteredOn] = useState<string[]>([]);
 	const [userPass, setUserPass] = useState<string>("none");
-	const [registeredOn, setRegisteredOn] = useState<string>("");
 
 	useEffect(() => {
 		const fetchUserAndEvents = async () => {
 			if (!auth.currentUser) return; // Ensure a user is logged in
 
 			try {
-				// Fetch the user's document from the "users" collection using their email
+				// Fetch the user's document ID using their UID
 				const uid = auth.currentUser.uid;
 				const uidMappingRef = doc(db, "uid_mapping", uid);
 				const uidMappingSnap = await getDoc(uidMappingRef);
 
 				if (uidMappingSnap.exists()) {
-					const userDocRef = doc(
-						db,
-						"users",
-						uidMappingSnap.data().docId
-					);
+					const fetchedDocId = uidMappingSnap.data().docId;
+					setDocId(fetchedDocId);
+
+					const userDocRef = doc(db, "users", fetchedDocId);
 					const userDoc = await getDoc(userDocRef);
 
 					if (userDoc.exists()) {
 						const userData = userDoc.data() as DocumentData;
 						setUsername(userData.fullName || "User");
 
-						// Set payment, pass, and registration timestamp details
-						setAmountPaid(userData.amountPaid || 0);
+						// Set payment, pass, and registration details
+						setAmountPaid(userData.amountPaid || []);
+						setPaymentIDs(userData.paymentID || []);
 						setUserPass(userData.pass || "none");
-						if (userData.registeredOn) {
-							// Convert Firestore Timestamp to a formatted date string
-							setRegisteredOn(
-								userData.registeredOn.toDate().toLocaleString()
+
+						// Convert Firestore Timestamps to readable dates
+						if (
+							userData.registeredOn &&
+							Array.isArray(userData.registeredOn)
+						) {
+							const formattedDates = userData.registeredOn.map(
+								(timestamp: Timestamp) =>
+									timestamp.toDate().toLocaleString()
 							);
+							setRegisteredOn(formattedDates);
 						}
 
 						// Retrieve eventsSelected array; default to empty if not found
 						const eventsSelected: string[] =
 							userData.eventsSelected || [];
 
-						// Use Promise.all to fetch all event documents concurrently
+						// Fetch event details
 						const eventsArray = await Promise.all(
 							eventsSelected.map(async (event) => {
-								// Remove all whitespaces from the event name to form the document ID
-								const eventId = event.replace(/\s+/g, "");
+								const eventId = event.replace(/\s+/g, ""); // Remove spaces to form the document ID
 								const eventDocRef = doc(
 									db,
 									"Samhita25",
@@ -119,37 +126,58 @@ const UserProfilePage: React.FC = () => {
 			</div>
 			<ShinyText text="Profile" />
 			<div className="headup">
-				<div className="user-name">Hey {username}!</div>
+				<div className="user-name">
+					Hey {username} <span className="user-docid">({docId})</span>
+				</div>
 				{/* Conditionally display the pass chip if pass is not "none" */}
-				{userPass.toLowerCase() !== "none" && (
+				{userPass !== "none" && (
 					<div className="up-date-chip" key="aiImpromptuDate1">
 						<img
 							src="/assets/icons/passicon.svg"
 							className="up-logo"
 							alt="Pass Icon"
 						/>
-						<ShinyText text={`${userPass} Pass`} speed={1} />
+						<ShinyText text={`${userPass}`} speed={1} />
 					</div>
 				)}
 			</div>
-			<div className="up-detail-card">
-				<span style={{ color: "#C085FF" }}>Payment Received:</span> Rs.{" "}
-				{amountPaid}
-				<br />
-				<span style={{ color: "#C085FF" }}>Registered On:</span>{" "}
-				{registeredOn}
+
+			{/* User payment and registration details */}
+			<div className="detail-cards">
+				{amountPaid.map((amount, index) => (
+					<div className="up-detail-card" key={`payment-${index}`}>
+						<span style={{ color: "#C085FF" }}>
+							Payment Received:
+						</span>{" "}
+						Rs. {amount}
+						<br />
+						{paymentIDs[index] && (
+							<>
+								<span style={{ color: "#C085FF" }}>
+									Payment ID:
+								</span>{" "}
+								{paymentIDs[index]}
+								<br />
+							</>
+						)}
+						{registeredOn[index] && (
+							<>
+								<span style={{ color: "#C085FF" }}>
+									Registered On:
+								</span>{" "}
+								{registeredOn[index]}
+							</>
+						)}
+					</div>
+				))}
 			</div>
+
 			<div className="up-subhead">Registered Events</div>
 			<AnimatedList
 				eventNames={eventNames}
 				eventTimes={eventTimes}
 				whatsappLinks={whatsappLinks}
-				onItemSelect={(
-					eventName: string,
-					eventTime: string,
-					whatsappLink: string,
-					index: number
-				) => {
+				onItemSelect={(eventName, eventTime, whatsappLink, index) => {
 					console.log(eventName, eventTime, whatsappLink, index);
 				}}
 				showGradients={false}

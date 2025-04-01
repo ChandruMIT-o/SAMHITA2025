@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./RegistrationSection.css";
-import Input from "./components/InputBtn";
 import MultiEventSelect from "./components/MultiEventSelect";
 import ShinyText from "./components/InstagramBtn";
 import { motion } from "framer-motion";
@@ -8,117 +7,13 @@ import Magnet from "./components/RegistrationButton";
 import user_icon from "/assets/user-icon.svg";
 import loc_icon from "/assets/loc-icon.svg";
 import insta_icon from "/assets/insta-icon.svg";
-import {
-	InstituteIcon,
-	MailIcon,
-	PhoneIcon,
-	UserIcon,
-	YearOfStudyIcon,
-} from "./components/ICONS";
-import PayPortalBtn from "./components/PayPortalBtn";
+import Payment from "./components/Payment";
 
 const RegistrationSection: React.FC = () => {
-	// State to hold form field values
-	const [formData, setFormData] = useState({
-		fullName: "",
-		yearOfStudy: "",
-		email: "",
-		phone: "",
-		instituteName: "",
-	});
+	const [items, setItems] = useState<string[]>([]);
+	const [pass, setPass] = useState<string>("none");
 
 	const [fullAmount, setFullAmount] = useState(0);
-
-	// State to hold error messages for each field
-	const [errors, setErrors] = useState({
-		fullName: "",
-		yearOfStudy: "",
-		email: "",
-		phone: "",
-		instituteName: "",
-	});
-
-	// Handle input changes for controlled inputs
-	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const { name, value } = e.target;
-		setFormData((prev) => ({ ...prev, [name]: value }));
-	};
-
-	// Validate form fields and update errors state
-	const validate = () => {
-		let valid = true;
-		const newErrors = {
-			fullName: "",
-			yearOfStudy: "",
-			email: "",
-			phone: "",
-			instituteName: "",
-		};
-
-		// Full Name validation
-		if (!formData.fullName.trim()) {
-			newErrors.fullName = "Full name is required.";
-			valid = false;
-		}
-
-		// Year of Study validation
-		if (!formData.yearOfStudy.trim()) {
-			newErrors.yearOfStudy = "Year of study is required.";
-			valid = false;
-		} else if (isNaN(Number(formData.yearOfStudy))) {
-			newErrors.yearOfStudy = "Year of study must be a number.";
-			valid = false;
-		}
-
-		// Email validation
-		if (!formData.email.trim()) {
-			newErrors.email = "Email is required.";
-			valid = false;
-		} else {
-			const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-			if (!emailRegex.test(formData.email)) {
-				newErrors.email = "Invalid email format.";
-				valid = false;
-			}
-		}
-
-		// Phone validation
-		if (!formData.phone.trim()) {
-			newErrors.phone = "Phone number is required.";
-			valid = false;
-		} else {
-			const phoneRegex = /^[+]?[0-9]{10,15}$/;
-			if (!phoneRegex.test(formData.phone)) {
-				newErrors.phone = "Invalid phone number.";
-				valid = false;
-			}
-		}
-
-		// Institute Name validation
-		if (!formData.instituteName.trim()) {
-			newErrors.instituteName = "Institute name is required.";
-			valid = false;
-		}
-
-		setErrors(newErrors);
-		return valid;
-	};
-
-	// Compute if the form is valid to enable the payment button
-	const isFormValid = () => {
-		return (
-			formData.fullName.trim() !== "" &&
-			formData.yearOfStudy.trim() !== "" &&
-			formData.email.trim() !== "" &&
-			formData.phone.trim() !== "" &&
-			formData.instituteName.trim() !== "" &&
-			!errors.fullName &&
-			!errors.yearOfStudy &&
-			!errors.email &&
-			!errors.phone &&
-			!errors.instituteName
-		);
-	};
 
 	return (
 		<div className="registration-section" id="registration">
@@ -146,147 +41,26 @@ const RegistrationSection: React.FC = () => {
 					className="registration-inputs-container"
 				>
 					{/* The form can use onBlur to trigger validation on leaving inputs */}
-					<form
-						className="registration-form-container"
-						onBlur={validate}
-					>
-						<div className="r-rows">
-							<div className="r-row1">
-								<div
-									style={{
-										display: "flex",
-										flexDirection: "column",
-										gap: "10px",
-										flex: 2,
-									}}
-								>
-									<Input
-										label="Full Name"
-										placeholder="Your full name!"
-										icon={<UserIcon />}
-										flex={2}
-										name="fullName"
-										value={formData.fullName}
-										onChange={handleInputChange}
-									/>
-									{errors.fullName && (
-										<div className="error">
-											{errors.fullName}
-										</div>
-									)}
-								</div>
-								<div
-									style={{
-										display: "flex",
-										flexDirection: "column",
-										gap: "10px",
-										flex: 1,
-									}}
-								>
-									<Input
-										label="Year of Study"
-										placeholder="Year of study"
-										icon={<YearOfStudyIcon />}
-										flex={2}
-										name="yearOfStudy"
-										value={formData.yearOfStudy}
-										onChange={handleInputChange}
-									/>
-									{errors.yearOfStudy && (
-										<div className="error">
-											{errors.yearOfStudy}
-										</div>
-									)}
-								</div>
+					<form className="registration-form-container">
+						<MultiEventSelect
+							setFullAmount={setFullAmount}
+							setItems={setItems}
+							setPass={setPass}
+						/>
+						<Magnet
+							className="paybtncontainer"
+							disabled={false}
+							magnetStrength={8}
+						>
+							{/* <Payment className="payportelbtn">Pay Portal</Payment> */}
+							<div className="payment-section">
+								<Payment
+									amount={fullAmount}
+									items={items}
+									pass={pass}
+								></Payment>
 							</div>
-							<div className="r-row1">
-								<div
-									style={{
-										display: "flex",
-										flexDirection: "column",
-										gap: "10px",
-										flex: 3,
-									}}
-								>
-									<Input
-										label="Email"
-										placeholder="Enter your email"
-										icon={<MailIcon />}
-										flex={1}
-										name="email"
-										value={formData.email}
-										onChange={handleInputChange}
-									/>
-									{errors.email && (
-										<div className="error">
-											{errors.email}
-										</div>
-									)}
-								</div>
-								<div
-									style={{
-										display: "flex",
-										flexDirection: "column",
-										gap: "10px",
-										flex: 2,
-									}}
-								>
-									<Input
-										label="Phone"
-										placeholder="+91"
-										icon={<PhoneIcon />}
-										flex={2}
-										name="phone"
-										value={formData.phone}
-										onChange={handleInputChange}
-									/>
-									{errors.phone && (
-										<div className="error">
-											{errors.phone}
-										</div>
-									)}
-								</div>
-							</div>
-							<div className="r-row1">
-								<div
-									style={{
-										display: "flex",
-										flexDirection: "column",
-										gap: "10px",
-										flex: 1,
-									}}
-								>
-									<Input
-										label="Institute Name"
-										placeholder="Enter full institute name"
-										icon={<InstituteIcon />}
-										flex={1}
-										name="instituteName"
-										value={formData.instituteName}
-										onChange={handleInputChange}
-									/>
-									{errors.instituteName && (
-										<div className="error">
-											{errors.instituteName}
-										</div>
-									)}
-								</div>
-							</div>
-							<Magnet
-								className="paybtncontainer"
-								disabled={!isFormValid()}
-								magnetStrength={8}
-							>
-								<PayPortalBtn
-									disabled={!isFormValid()}
-									amount={fullAmount} // Example amount (in INR)
-									name={formData.fullName}
-									email={formData.email}
-									contact={formData.phone}
-								/>
-							</Magnet>
-						</div>
-						<MultiEventSelect setFullAmount={setFullAmount} />
+						</Magnet>
 					</form>
 				</motion.div>
 

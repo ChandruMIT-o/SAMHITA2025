@@ -9,6 +9,7 @@ import { RegistrationContext } from "../RegistrationContext";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 import "./MultiEventSelect.css";
+
 // ---------------------------
 // Data Definitions
 // ---------------------------
@@ -29,10 +30,14 @@ export interface EventGroup {
 // ---------------------------
 interface MultiEventSelectProps {
 	setFullAmount: React.Dispatch<React.SetStateAction<number>>;
+	setItems: React.Dispatch<React.SetStateAction<string[]>>;
+	setPass: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export default function MultiEventSelect({
 	setFullAmount,
+	setItems,
+	setPass,
 }: MultiEventSelectProps) {
 	const {
 		selectedPass,
@@ -314,6 +319,40 @@ export default function MultiEventSelect({
 		updateIndividualEvents(filteredIndividual);
 	};
 
+	const passes = new Set(["Global Pass", "Tech Pass", "Non-Tech Pass"]);
+
+	const extractedLabels: string[] = [];
+	const extractedPasses: string[] = [];
+
+	dataTableRows.forEach((row) => {
+		if (passes.has(row.label)) {
+			extractedPasses.push(row.label);
+		} else {
+			extractedLabels.push(row.label);
+		}
+	});
+
+	useEffect(() => {
+		const labels = dataTableRows.map((row) => row.label);
+
+		// Define pass types
+		const passTypes = ["Global Pass", "Tech Pass", "Non-Tech Pass"];
+
+		// Find pass type
+		const pass = labels.find((label) => passTypes.includes(label)) || "";
+
+		// Remove pass types from labels
+		const filteredLabels = labels.filter(
+			(label) => !passTypes.includes(label)
+		);
+
+		console.log(filteredLabels, pass);
+		if (pass && pass !== selectedPass) {
+			setPass(pass);
+		}
+		setItems(filteredLabels);
+	}, [selectedPass, setPass, setItems]);
+
 	return (
 		<div className="right-side">
 			<div className="input-label">Select Events</div>
@@ -327,14 +366,15 @@ export default function MultiEventSelect({
 				display="chip"
 				filter
 				placeholder="Select Events"
-				scrollHeight="400px"
+				// scrollHeight="400px"
 				virtualScrollerOptions={{ itemSize: 50 }}
+				className="multiselect"
 			/>
-
 			<DataTable value={dataTableRows} className="multi-select">
 				<Column field="label" header="Name" />
 				<Column field="price" header="Price" />
 			</DataTable>
+
 			<div className="total-price">Total Price: {totalPrice}</div>
 		</div>
 	);

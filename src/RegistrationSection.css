@@ -19,6 +19,7 @@
 .registration-form-container {
 	display: flex;
 	gap: 30px;
+	flex-direction: column;
 }
 
 .r-row1 {
@@ -49,7 +50,7 @@
 }
 
 .paybtncontainer {
-	align-self: flex-end;
+	align-self: center;
 }
 
 .payportelbtn {

@@ -167,10 +167,12 @@ const SignUp: React.FC = () => {
 					phone: formData.phone,
 					instituteName: formData.instituteName,
 					uid: user.uid, // optional: store the Firebase Auth user ID
-					amountPaid: 0,
+					amountPaid: [], // Empty array for amounts
 					paid: false,
-					paymentID: "",
+					paymentId: [], // Empty array for payment IDs
 					eventsSelected: [],
+					registeredOn: [], // Empty array for timestamps
+					pass: "",
 				});
 
 				// Store mapping of uid -> docId

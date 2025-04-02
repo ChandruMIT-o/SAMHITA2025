@@ -8,6 +8,11 @@ const NavBar: React.FC = () => {
 		setIsOpen(!isOpen);
 	};
 
+	// Function to close the menu when a link is clicked (for mobile view)
+	const closeMenu = () => {
+		setIsOpen(false);
+	};
+
 	return (
 		<div className="nav-menu-bar">
 			<div className="nav-header">
@@ -19,23 +24,27 @@ const NavBar: React.FC = () => {
 				</div>
 			</div>
 			<div className={`nav-options ${isOpen ? "open" : ""}`}>
-				<a href="#home" className="nav-option">
+				<a href="#home" className="nav-option" onClick={closeMenu}>
 					Home
 				</a>
-				<a href="#about" className="nav-option">
+				<a href="#about" className="nav-option" onClick={closeMenu}>
 					About
 				</a>
-				<a href="#events" className="nav-option">
+				<a href="#events" className="nav-option" onClick={closeMenu}>
 					Events
 				</a>
-				<a href="#faqs" className="nav-option">
+				<a href="#faqs" className="nav-option" onClick={closeMenu}>
 					FAQs
 				</a>
-				<a href="#contact" className="nav-option">
+				<a href="#contact" className="nav-option" onClick={closeMenu}>
 					Contact
 				</a>
 				{/* Mobile-only registration button */}
-				<a href="#registration" className="nav-button mobile">
+				<a
+					href="#registration"
+					className="nav-button mobile"
+					onClick={closeMenu}
+				>
 					Registration
 				</a>
 			</div>

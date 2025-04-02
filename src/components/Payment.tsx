@@ -108,8 +108,8 @@ const Payment: React.FC<PaymentProps> = ({ amount, items, pass }) => {
 		}
 
 		const options = {
-			// key: "rzp_live_kENOccTH8MltHT",
-			key: "rzp_test_cQf5jcExLIpXxz",
+			key: "rzp_live_kENOccTH8MltHT",
+			// key: "rzp_test_cQf5jcExLIpXxz",
 			amount: amount * 100, // Amount in paisa (1 INR = 100 paisa)
 			currency: "INR",
 			name: "Samhita '25",

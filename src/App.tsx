@@ -12,6 +12,8 @@ import UserProfilePage from "./UserProfilePage";
 import SignUp from "./SignUp";
 import SignIn from "./SignIn";
 import ForgotPassword from "./ForgotPassword";
+import PrivacyPolicy from "./PrivacyPolicy";
+import CancellationPolicy from "./CancellationPolicy";
 
 function App() {
 	return (
@@ -35,6 +37,11 @@ function App() {
 			<Route path="/signup" element={<SignUp />} />
 			<Route path="/signin" element={<SignIn />} />
 			<Route path="/passswordreset" element={<ForgotPassword />} />
+			<Route path="/policy" element={<PrivacyPolicy />} />
+			<Route
+				path="/cancellation_policy"
+				element={<CancellationPolicy />}
+			/>
 		</Routes>
 	);
 }

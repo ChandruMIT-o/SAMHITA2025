@@ -7,11 +7,13 @@ import Magnet from "./components/RegistrationButton";
 import user_icon from "/assets/user-icon.svg";
 import loc_icon from "/assets/loc-icon.svg";
 import insta_icon from "/assets/insta-icon.svg";
+import { useNavigate } from "react-router-dom";
 import Payment from "./components/Payment";
 
 const RegistrationSection: React.FC = () => {
 	const [items, setItems] = useState<string[]>([]);
 	const [pass, setPass] = useState<string>("none");
+	const navigate = useNavigate();
 
 	const [fullAmount, setFullAmount] = useState(0);
 
@@ -77,7 +79,7 @@ const RegistrationSection: React.FC = () => {
 							/>
 							<div className="contact-name">Usha</div>
 							<div className="contact-number">
-								+91 76676 34519
+								+91 9500 127141
 							</div>
 						</div>
 						<div className="contact-chip">
@@ -88,7 +90,7 @@ const RegistrationSection: React.FC = () => {
 							/>
 							<div className="contact-name">Shreesh</div>
 							<div className="contact-number">
-								+91 76676 34519
+								+91 82206 61199
 							</div>
 						</div>
 						<div className="contact-chip">
@@ -99,7 +101,7 @@ const RegistrationSection: React.FC = () => {
 							/>
 							<div className="contact-name">Sai</div>
 							<div className="contact-number">
-								+91 76676 34519
+								+91 91 73584 32694
 							</div>
 						</div>
 					</div>
@@ -131,7 +133,7 @@ const RegistrationSection: React.FC = () => {
 					<div className="gi-row1">
 						<Magnet disabled={false} magnetStrength={8}>
 							<a
-								href="https://www.instagram.com/ita_mit_india?igsh=emlnMWJ0cGk5bjN3"
+								href="https://www.instagram.com/samhita_mit/?igsh=aWp6OTJyZWR5cDFs#"
 								target="_blank"
 								rel="noopener noreferrer"
 								style={{ textDecoration: "none" }}
@@ -150,8 +152,20 @@ const RegistrationSection: React.FC = () => {
 						</Magnet>
 					</div>
 					<div className="gi-row1">
+						<div
+							className="copyright-text-link cancellation_policy"
+							onClick={() => navigate("/cancellation_policy")}
+						>
+							Cancellation Policy |
+						</div>
 						<div className="copyright-text">
 							© 2025 ITA. All rights reserved.
+						</div>
+						<div
+							className="copyright-text-link cancellation_policy"
+							onClick={() => navigate("/policy")}
+						>
+							| Privacy Policy
 						</div>
 					</div>
 				</div>

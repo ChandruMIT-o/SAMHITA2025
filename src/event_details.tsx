@@ -1,9 +1,9 @@
 const eventData: Record<string, any> = {
 	"Coding Quest": {
 		eventType: "Technical Event",
-		eventName: "Coding Quest",
+		eventName: "Code Quest",
 		eventDescription:
-			"Join Code Hunt – where coding, clues, and creativity collide! 🧩 Solve challenges, race against time, and outsmart your rivals – no skipping, no shortcuts! 🚀 Fastest team wins, so gear up for the ultimate brain-bending adventure!",
+			"Join Code Quest – where coding, clues, and creativity collide! 🧩 Solve challenges, race against time, and outsmart your rivals – no skipping, no shortcuts! 🚀 Fastest team wins, so gear up for the ultimate brain-bending adventure!",
 		roundsChips: [
 			<div className="ep-duration-chip" key="hack1">
 				<img
@@ -11,7 +11,7 @@ const eventData: Record<string, any> = {
 					className="ep-logo2"
 					alt="Duration Icon"
 				/>
-				<div className="ep-round-text">Preliminary</div>
+				<div className="ep-round-text">Single Round</div>
 				<div className="ep-duration">1 hr 15 mins</div>
 			</div>,
 		],
@@ -31,6 +31,14 @@ const eventData: Record<string, any> = {
 				/>
 				<div className="ep-price-amount">₹5000</div>
 			</div>,
+			<div className="ep-prize-chip" key="hackPrize2">
+				<img
+					src="/assets/icons/trophy2.svg"
+					className="ep-logo1"
+					alt="Prize Icon"
+				/>
+				<div className="ep-price-amount2">₹3500</div>
+			</div>,
 		],
 		dateChips: [
 			<div className="ep-date-chip" key="hackDate1">
@@ -40,14 +48,6 @@ const eventData: Record<string, any> = {
 					alt="Date Icon"
 				/>
 				<div className="ep-date">April 12</div>
-			</div>,
-			<div className="ep-date-chip" key="hackDate2">
-				<img
-					src="/assets/icons/date.svg"
-					className="ep-logo3"
-					alt="Date Icon"
-				/>
-				<div className="ep-date">April 13</div>
 			</div>,
 		],
 		poster: "/assets/event_posters/CODING QUEST.png",
@@ -64,7 +64,7 @@ const eventData: Record<string, any> = {
 					className="ep-logo2"
 					alt="Duration Icon"
 				/>
-				<div className="ep-round-text">Preliminary</div>
+				<div className="ep-round-text">Prelims</div>
 				<div className="ep-duration">Rolling event (30 mins)</div>
 			</div>,
 			<div className="ep-duration-chip" key="hack1">
@@ -92,17 +92,17 @@ const eventData: Record<string, any> = {
 				/>
 				<div className="ep-price-amount">₹5000</div>
 			</div>,
+			<div className="ep-prize-chip" key="paperPresentationPrize2">
+				<img
+					src="/assets/icons/trophy2.svg"
+					className="ep-logo1"
+					alt="Prize Icon"
+				/>
+				<div className="ep-price-amount2">₹3500</div>
+			</div>,
 		],
 		dateChips: [
 			<div className="ep-date-chip" key="hackDate1">
-				<img
-					src="/assets/icons/date.svg"
-					className="ep-logo3"
-					alt="Date Icon"
-				/>
-				<div className="ep-date">April 12</div>
-			</div>,
-			<div className="ep-date-chip" key="hackDate2">
 				<img
 					src="/assets/icons/date.svg"
 					className="ep-logo3"
@@ -132,11 +132,11 @@ const eventData: Record<string, any> = {
 		specifics: {
 			"Rules of the Event": [
 				"This is a single-player event.",
-				"There will be 5 rounds with each round ranging from 30 minutes to 1 hour.",
+				"There will be 4 rounds with each round ranging from 30 to 90 minutes.",
 				"Some rounds will require collaboration with other participants.",
-				"The first round will take place on Saturday, the 12th, while the remaining rounds will be held on Sunday, the 13th.",
+				"The first 2 rounds will take place on Saturday, the 12th, while the remaining rounds will be held on Sunday, the 13th.",
 				"Further instructions will be provided during the event. Any violation will result in disqualification.",
-				"The survivor(s) will get a cash prize of INR ????",
+				"The survivor(s) will get a cash prize of INR 5000",
 			],
 		},
 		prizeChips: [
@@ -147,6 +147,14 @@ const eventData: Record<string, any> = {
 					alt="Prize Icon"
 				/>
 				<div className="ep-price-amount">₹5000</div>
+			</div>,
+			<div className="ep-prize-chip" key="paperPresentationPrize2">
+				<img
+					src="/assets/icons/trophy2.svg"
+					className="ep-logo1"
+					alt="Prize Icon"
+				/>
+				<div className="ep-price-amount2">₹3500</div>
 			</div>,
 		],
 		dateChips: [
@@ -204,6 +212,14 @@ const eventData: Record<string, any> = {
 				/>
 				<div className="ep-price-amount">₹5000</div>
 			</div>,
+			<div className="ep-prize-chip" key="paperPresentationPrize2">
+				<img
+					src="/assets/icons/trophy2.svg"
+					className="ep-logo1"
+					alt="Prize Icon"
+				/>
+				<div className="ep-price-amount2">₹3500</div>
+			</div>,
 		],
 		dateChips: [
 			<div className="ep-date-chip" key="queryDate1">
@@ -218,7 +234,7 @@ const eventData: Record<string, any> = {
 		poster: "/assets/event_posters/CALL OF QUERY.png",
 	},
 	"Reverse Coding": {
-		eventType: "TechnicalEvent",
+		eventType: "Technical Event",
 		eventName: "Reverse Coding",
 		eventDescription:
 			"Unleash your inner codebreaker at 'Reverse Coding'! Decode, deconstruct, and debug as you tackle challenges in reverse. It's not just about solving problems; it’s about uncovering how they were made.",
@@ -257,6 +273,14 @@ const eventData: Record<string, any> = {
 					alt="Prize Icon"
 				/>
 				<div className="ep-price-amount">₹5000</div>
+			</div>,
+			<div className="ep-prize-chip" key="paperPresentationPrize2">
+				<img
+					src="/assets/icons/trophy2.svg"
+					className="ep-logo1"
+					alt="Prize Icon"
+				/>
+				<div className="ep-price-amount2">₹3500</div>
 			</div>,
 		],
 		dateChips: [
@@ -306,6 +330,14 @@ const eventData: Record<string, any> = {
 					alt="Prize Icon"
 				/>
 				<div className="ep-price-amount">₹5000</div>
+			</div>,
+			<div className="ep-prize-chip" key="paperPresentationPrize2">
+				<img
+					src="/assets/icons/trophy2.svg"
+					className="ep-logo1"
+					alt="Prize Icon"
+				/>
+				<div className="ep-price-amount2">₹3500</div>
 			</div>,
 		],
 		dateChips: [
@@ -387,15 +419,15 @@ const eventData: Record<string, any> = {
 					className="ep-logo1"
 					alt="Prize Icon"
 				/>
-				<div className="ep-price-amount">₹10000 Price Pool</div>
+				<div className="ep-price-amount">₹10000</div>
 			</div>,
 			<div className="ep-prize-chip" key="paperPresentationPrize2">
 				<img
 					src="/assets/icons/trophy2.svg"
-					className="ep-logo2"
+					className="ep-logo1"
 					alt="Prize Icon"
 				/>
-				<div className="ep-price-amount2">Each Team ₹499</div>
+				<div className="ep-price-amount2">₹7000</div>
 			</div>,
 		],
 		poster: "/assets/event_posters/HACKATHON.png",
@@ -421,7 +453,7 @@ const eventData: Record<string, any> = {
 					className="ep-logo3"
 					alt="Date Icon"
 				/>
-				<div className="ep-date">April 12</div>
+				<div className="ep-date">April 13</div>
 			</div>,
 		],
 		specifics: {
@@ -450,7 +482,7 @@ const eventData: Record<string, any> = {
 					className="ep-logo1"
 					alt="Prize Icon"
 				/>
-				<div className="ep-price-amount">$10000 Price Pool</div>
+				<div className="ep-price-amount">₹10000</div>
 			</div>,
 			<div className="ep-prize-chip" key="paperPresentationPrize2">
 				<img
@@ -458,7 +490,7 @@ const eventData: Record<string, any> = {
 					className="ep-logo1"
 					alt="Prize Icon"
 				/>
-				<div className="ep-price-amount2">Each Team $499</div>
+				<div className="ep-price-amount2">₹7000</div>
 			</div>,
 		],
 		poster: "/assets/event_posters/PAPER PRESENTATION.png",
@@ -511,6 +543,15 @@ const eventData: Record<string, any> = {
 					alt="Prize Icon"
 				/>
 				<div className="ep-price-amount">₹5000</div>
+				<div className="ep-prize-chip" key="paperPresentationPrize2">
+					<img
+						src="/assets/icons/trophy2.svg"
+						className="ep-logo1"
+						alt="Prize Icon"
+					/>
+					<div className="ep-price-amount2">₹3500</div>
+				</div>
+				,
 			</div>,
 		],
 		dateChips: [
@@ -537,7 +578,7 @@ const eventData: Record<string, any> = {
 					className="ep-logo2"
 					alt="Duration Icon"
 				/>
-				<div className="ep-round-text">Preliminary Round</div>
+				<div className="ep-round-text">Prelims</div>
 				<div className="ep-duration">3 hours</div>
 			</div>,
 			<div className="ep-duration-chip" key="adzapFinal">
@@ -546,7 +587,7 @@ const eventData: Record<string, any> = {
 					className="ep-logo2"
 					alt="Duration Icon"
 				/>
-				<div className="ep-round-text">Final Round</div>
+				<div className="ep-round-text">Finals</div>
 				<div className="ep-duration">2 hours</div>
 			</div>,
 		],
@@ -578,7 +619,7 @@ const eventData: Record<string, any> = {
 					className="ep-logo2"
 					alt="Date Icon"
 				/>
-				<div className="ep-date">April 12, 2025</div>
+				<div className="ep-date">April 12</div>
 			</div>,
 		],
 		prizeChips: [
@@ -643,6 +684,14 @@ const eventData: Record<string, any> = {
 				/>
 				<div className="ep-price-amount">₹4000</div>
 			</div>,
+			<div className="ep-prize-chip" key="paperPresentationPrize2">
+				<img
+					src="/assets/icons/trophy2.svg"
+					className="ep-logo1"
+					alt="Prize Icon"
+				/>
+				<div className="ep-price-amount2">₹3000</div>
+			</div>,
 		],
 		dateChips: [
 			<div className="ep-date-chip" key="huntDate1">
@@ -651,7 +700,7 @@ const eventData: Record<string, any> = {
 					className="ep-logo3"
 					alt="Date Icon"
 				/>
-				<div className="ep-date">April 12</div>
+				<div className="ep-date">April 13</div>
 			</div>,
 		],
 		poster: "/assets/event_posters/TREASURE HUNT.png",
@@ -708,6 +757,14 @@ const eventData: Record<string, any> = {
 				/>
 				<div className="ep-price-amount">₹4000</div>
 			</div>,
+			<div className="ep-prize-chip" key="paperPresentationPrize2">
+				<img
+					src="/assets/icons/trophy2.svg"
+					className="ep-logo1"
+					alt="Prize Icon"
+				/>
+				<div className="ep-price-amount2">₹3000</div>
+			</div>,
 		],
 		dateChips: [
 			<div className="ep-date-chip" key="iplDate1">
@@ -716,7 +773,7 @@ const eventData: Record<string, any> = {
 					className="ep-logo3"
 					alt="Date Icon"
 				/>
-				<div className="ep-date">April 13</div>
+				<div className="ep-date">April 12</div>
 			</div>,
 		],
 		poster: "/assets/event_posters/IPL AUCTION.png",
@@ -765,6 +822,14 @@ const eventData: Record<string, any> = {
 				/>
 				<div className="ep-price-amount">₹4000</div>
 			</div>,
+			<div className="ep-prize-chip" key="paperPresentationPrize2">
+				<img
+					src="/assets/icons/trophy2.svg"
+					className="ep-logo1"
+					alt="Prize Icon"
+				/>
+				<div className="ep-price-amount2">₹3000</div>
+			</div>,
 		],
 		dateChips: [
 			<div className="ep-date-chip" key="fandomDate1">
@@ -773,7 +838,7 @@ const eventData: Record<string, any> = {
 					className="ep-logo3"
 					alt="Date Icon"
 				/>
-				<div className="ep-date">April 14</div>
+				<div className="ep-date">April 13</div>
 			</div>,
 		],
 		poster: "/assets/event_posters/FANDOM QUIZ.png",
@@ -822,7 +887,15 @@ const eventData: Record<string, any> = {
 					className="ep-logo1"
 					alt="Prize Icon"
 				/>
-				<div className="ep-price-amount">$4000</div>
+				<div className="ep-price-amount">₹4000</div>
+			</div>,
+			<div className="ep-prize-chip" key="paperPresentationPrize2">
+				<img
+					src="/assets/icons/trophy2.svg"
+					className="ep-logo1"
+					alt="Prize Icon"
+				/>
+				<div className="ep-price-amount2">₹3000</div>
 			</div>,
 		],
 		dateChips: [
@@ -832,7 +905,7 @@ const eventData: Record<string, any> = {
 					className="ep-logo3"
 					alt="Date Icon"
 				/>
-				<div className="ep-date">April 15</div>
+				<div className="ep-date">April 12</div>
 			</div>,
 		],
 		poster: "/assets/event_posters/CONNECTIONS.png",
@@ -874,6 +947,14 @@ const eventData: Record<string, any> = {
 				/>
 				<div className="ep-price-amount">₹4000</div>
 			</div>,
+			<div className="ep-prize-chip" key="paperPresentationPrize2">
+				<img
+					src="/assets/icons/trophy2.svg"
+					className="ep-logo1"
+					alt="Prize Icon"
+				/>
+				<div className="ep-price-amount2">₹3000</div>
+			</div>,
 		],
 		dateChips: [
 			<div className="ep-date-chip" key="escapeDate1">
@@ -882,7 +963,7 @@ const eventData: Record<string, any> = {
 					className="ep-logo3"
 					alt="Date Icon"
 				/>
-				<div className="ep-date">April 14</div>
+				<div className="ep-date">April 13</div>
 			</div>,
 		],
 		poster: "/assets/event_posters/ESCAPE ROOM.png",
@@ -922,7 +1003,7 @@ const eventData: Record<string, any> = {
 					className="ep-logo3"
 					alt="Date Icon"
 				/>
-				<div className="ep-date">April 12</div>
+				<div className="ep-date">April 13</div>
 			</div>,
 		],
 		prizeChips: [
@@ -1025,7 +1106,7 @@ const eventData: Record<string, any> = {
 					className="ep-logo3"
 					alt="Date Icon"
 				/>
-				<div className="ep-date">April 13</div>
+				<div className="ep-date">April 12</div>
 			</div>,
 		],
 		prizeChips: [
@@ -1075,7 +1156,7 @@ const eventData: Record<string, any> = {
 					className="ep-logo3"
 					alt="Date Icon"
 				/>
-				<div className="ep-date">April 13</div>
+				<div className="ep-date">April 12</div>
 			</div>,
 		],
 		poster: "/assets/event_posters/REVOLUTIONIZING AI THE FUTURE OF GEN AI & CONVERSATIONAL AI.png",
@@ -1091,6 +1172,62 @@ const eventData: Record<string, any> = {
 		],
 	},
 
+	"Tournament of Strategies": {
+		eventType: "Technical Event",
+		eventName: "Tournament of Strategies",
+		eventDescription: `Tournament of Strategies (ToS) is a competition where participants submit game strategies, 
+		and the strategies compete against each other. The strategies compete in a novel, thought-provoking game 
+		designed by the organizers. With no strict rules or limitations, the challenge lies in crafting the most 
+		effective and resilient strategy to outsmart opponents.`,
+		roundsChips: [
+			<div className="ep-duration-chip" key="hack1">
+				<img
+					src="/assets/icons/duration.svg"
+					className="ep-logo2"
+					alt="Duration Icon"
+				/>
+				<div className="ep-round-text">Round Robin</div>
+				<div className="ep-duration">Max 1 hour</div>
+			</div>,
+		],
+		specifics: [
+			"You don’t code. We do. No debugging. Yes, you read that right. No syntax errors—just pure strategic brilliance from your side.",
+			"We invent the rules. A novel, thought-provoking, yet deceptively simple game, crafted to test your wits, not your typing speed.",
+			"You submit a strategy. No fancy algorithms, just a game plan. Can you outthink your opponents when the rules aren’t in your hands?",
+			"Your strategy competes for you. It enters the battlefield, clashes with rival minds, and fights for its existence. You, however, sit back and watch the chaos unfold.",
+			"There are no rules. Unlike other competitions, nothing is off-limits. You can cheat, exploit loopholes, collude with rivals, or even change your mind halfway.",
+			"Use the internet. Yes, Google is fair game. Stack Overflow your way to victory or copy-paste wisdom from the ancients. We won’t stop you.",
+		],
+		prizeChips: [
+			<div className="ep-prize-chip" key="tosPrize1">
+				<img
+					src="/assets/icons/trophy.svg"
+					className="ep-logo1"
+					alt="Prize Icon"
+				/>
+				<div className="ep-price-amount">₹5000</div>
+			</div>,
+			<div className="ep-prize-chip" key="tosPrize2">
+				<img
+					src="/assets/icons/trophy.svg"
+					className="ep-logo1"
+					alt="Prize Icon"
+				/>
+				<div className="ep-price-amount">₹2500</div>
+			</div>,
+		],
+		dateChips: [
+			<div className="ep-date-chip" key="tosDate1">
+				<img
+					src="/assets/icons/date.svg"
+					className="ep-logo3"
+					alt="Date Icon"
+				/>
+				<div className="ep-date">April 13</div>
+			</div>,
+		],
+		poster: "/assets/event_posters/TOURNAMENT OF STRATEGIES.png",
+	},
 	"MERN Stack": {
 		eventType: "Workshop",
 		eventName: "Mastering MERN - Build Scalable Apps",
@@ -1126,7 +1263,7 @@ const eventData: Record<string, any> = {
 					className="ep-logo3"
 					alt="Date Icon"
 				/>
-				<div className="ep-date">April 14</div>
+				<div className="ep-date">April 13</div>
 			</div>,
 		],
 		poster: "/assets/event_posters/MERN STACK.png",

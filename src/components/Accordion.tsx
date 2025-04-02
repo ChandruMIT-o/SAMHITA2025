@@ -16,20 +16,20 @@ interface FAQ {
 
 const faqs: FAQ[] = [
 	{
-		question: "What are the prices for the competitions?",
-		answer: "The prices vary based on the competition type. Please check the event page for details.",
+		question: "1) Are on spot registrations open ?",
+		answer: "Yes, on spot registration is available, participants can register at the registration desk on the date of the event.",
 	},
 	{
-		question: "Will lunch be arranged for all the participants?",
-		answer: "Yes, lunch will be provided to all registered participants.",
+		question: "2) Are there any discounts for bulk booking?",
+		answer: "Yes, there are huge discounts for bulk booking, please contact the organizers for more info.",
 	},
 	{
-		question: "What is the deadline for registration?",
-		answer: "The registration deadline is mentioned on the official event page.",
+		question: "3) Can i participate in multiple events?",
+		answer: "yes, each event is scheduled such that a person can attend every event. Time management is the key!",
 	},
 	{
-		question: "Can I participate in multiple competitions?",
-		answer: "Yes, participants can register for multiple competitions as long as schedules do not overlap.",
+		question: "4) Do the workshops in the combo overlap?",
+		answer: "No they do not. The combos are fixed such that participant can participate in all workshops mentioned in the combo.",
 	},
 ];
 

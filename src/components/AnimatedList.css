@@ -110,3 +110,8 @@
 		align-items: start;
 	}
 }
+
+.join-group-buttons {
+	display: flex;
+	gap: 10px;
+}

@@ -47,11 +47,12 @@ const AnimatedItem: React.FC<AnimatedItemProps> = ({
 interface AnimatedListProps {
 	eventNames: string[];
 	eventTimes: string[];
-	whatsappLinks: string[];
+	// Each element in whatsappLinks is an array of strings
+	whatsappLinks: string[][];
 	onItemSelect?: (
 		eventName: string,
 		eventTime: string,
-		whatsappLink: string,
+		whatsappLink: string[],
 		index: number
 	) => void;
 	showGradients?: boolean;
@@ -197,20 +198,30 @@ const AnimatedList: React.FC<AnimatedListProps> = ({
 						>
 							<p className="item-text">{eventName}</p>
 							<p className="item-text">{eventTimes[index]}</p>
-							<a
-								className="float-button"
-								target="_blank"
-								rel="noopener noreferrer"
-								href={whatsappLinks[index]}
-							>
-								<img
-									className="fa fa-whatsapp"
-									aria-hidden="true"
-									src="/assets/icons/wa.svg"
-									alt="WhatsApp"
-								/>
-								<span>Join Group</span>
-							</a>
+							<div className="join-group-buttons">
+								{whatsappLinks[index].map((link, linkIndex) => (
+									<a
+										key={linkIndex}
+										className="float-button"
+										target="_blank"
+										rel="noopener noreferrer"
+										href={link}
+									>
+										<img
+											className="fa fa-whatsapp"
+											aria-hidden="true"
+											src="/assets/icons/wa.svg"
+											alt="WhatsApp"
+										/>
+										<span>
+											Join Group{" "}
+											{whatsappLinks[index].length > 1
+												? linkIndex + 1
+												: ""}
+										</span>
+									</a>
+								))}
+							</div>
 						</div>
 					</AnimatedItem>
 				))}

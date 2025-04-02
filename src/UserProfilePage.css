@@ -73,6 +73,13 @@
 	gap: 1rem;
 }
 
+.detail-cards {
+	width: 100%;
+	display: flex;
+	gap: 20px;
+	flex-direction: column;
+}
+
 @media (max-width: 768px) {
 	.up-page-container {
 		padding-top: 100px;

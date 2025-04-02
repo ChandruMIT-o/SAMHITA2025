@@ -142,6 +142,19 @@
 	margin-top: 50px;
 }
 
+.copyright-text-link {
+	font-family: "Saira";
+	font-size: 1rem;
+	font-weight: 500;
+	letter-spacing: 0.5px;
+	text-align: center;
+	margin-top: 50px;
+	text-decoration: none;
+	color: #c086ff;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
 @keyframes glow {
 	0% {
 		box-shadow: 0 0 2px #c086ff;

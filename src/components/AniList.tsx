@@ -8,7 +8,6 @@ import React, {
 } from "react";
 import { motion, useInView } from "framer-motion";
 import "./AniList.css";
-import ShinyText from "./InstagramBtn";
 
 interface AnimatedItemProps {
 	children: ReactNode;

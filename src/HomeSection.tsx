@@ -62,7 +62,7 @@ const HomeSection: React.FC = () => {
 						<Magnet padding={50} magnetStrength={5}>
 							{
 								<a
-									href="https://www.instagram.com/ita_mit_india?igsh=emlnMWJ0cGk5bjN3"
+									href="https://www.instagram.com/samhita_mit/?igsh=aWp6OTJyZWR5cDFs#"
 									target="_blank"
 									rel="noopener noreferrer"
 								>

@@ -7,11 +7,11 @@ import AnimatedList from "./components/AnimatedList";
 import "./EventsPage.css";
 import "./UserProfilePage.css";
 
-// Define the interface for event details
+// Define the interface for event details with wa as an array of strings.
 interface EventData {
 	eventName: string;
 	date: string;
-	wa: string;
+	wa: string[];
 }
 
 const UserProfilePage: React.FC = () => {
@@ -82,7 +82,10 @@ const UserProfilePage: React.FC = () => {
 									return {
 										eventName: eventData.eventName,
 										date: eventData.date,
-										wa: eventData.wa,
+										// Normalize wa to always be an array of strings
+										wa: Array.isArray(eventData.wa)
+											? eventData.wa
+											: [eventData.wa],
 									} as EventData;
 								}
 								return null;
@@ -108,17 +111,14 @@ const UserProfilePage: React.FC = () => {
 	// Prepare arrays for the AnimatedList component based on the fetched events
 	const eventNames: string[] = events.map((ev) => ev.eventName);
 	const eventTimes: string[] = events.map((ev) => ev.date);
-	const whatsappLinks: string[] = events.map((ev) => ev.wa);
+	// whatsappLinks is now an array of string arrays
+	const whatsappLinks: string[][] = events.map((ev) => ev.wa);
 
 	return (
 		<div className="up-page-container">
 			<div
 				className="up-back-btn"
 				onClick={() => {
-					sessionStorage.setItem(
-						"scrollPosition",
-						String(window.scrollY)
-					);
 					navigate("/");
 				}}
 			>

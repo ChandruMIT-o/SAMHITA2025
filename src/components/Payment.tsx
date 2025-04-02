@@ -108,7 +108,8 @@ const Payment: React.FC<PaymentProps> = ({ amount, items, pass }) => {
 		}
 
 		const options = {
-			key: "rzp_test_cQf5jcExLIpXxz", // Replace with your Razorpay Key ID
+			// key: "rzp_live_kENOccTH8MltHT",
+			key: "rzp_test_cQf5jcExLIpXxz",
 			amount: amount * 100, // Amount in paisa (1 INR = 100 paisa)
 			currency: "INR",
 			name: "Samhita '25",
@@ -185,7 +186,7 @@ const Payment: React.FC<PaymentProps> = ({ amount, items, pass }) => {
 				contact: phoneNumber || "9999999999",
 				email: email || "test@example.com",
 			},
-			theme: { color: "#3399cc" },
+			theme: { color: "#92008E" },
 		};
 
 		const rzp1 = new window.Razorpay(options);

@@ -55,7 +55,9 @@ const EventsPage: React.FC = () => {
 										>
 								  ).map(([section, points], index) => (
 										<li key={index}>
-											<strong>{section}</strong>
+											<div className="ep-section-heading">
+												{section}
+											</div>
 											<ul>
 												{points.map(
 													(point, subIndex) => (

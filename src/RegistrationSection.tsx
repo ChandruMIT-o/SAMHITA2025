@@ -30,6 +30,27 @@ const RegistrationSection: React.FC = () => {
 					<div>
 						<ShinyText text="✦ Registration" />
 					</div>
+					<div className="gi-row1">
+						<Magnet disabled={false} magnetStrength={8}>
+							<a
+								href="https://forms.gle/F9kDNpBqT8uKd4Lw9"
+								target="_blank"
+								rel="noopener noreferrer"
+								style={{ textDecoration: "none" }}
+							>
+								<div className="acc-chip">
+									<img
+										className="insta-icon"
+										src="/assets/icons/acc.svg"
+										alt="Instagram Icon"
+									/>
+									<div className="insta-number">
+										Looking for Accomodations?
+									</div>
+								</div>
+							</a>
+						</Magnet>
+					</div>
 					<div className="r-heading">
 						Let’s get you here, shall we?
 					</div>

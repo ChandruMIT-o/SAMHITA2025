@@ -136,7 +136,7 @@ const eventData: Record<string, any> = {
 				"Some rounds will require collaboration with other participants.",
 				"The first 2 rounds will take place on Saturday, the 12th, while the remaining rounds will be held on Sunday, the 13th.",
 				"Further instructions will be provided during the event. Any violation will result in disqualification.",
-				"The survivor(s) will get a cash prize of INR 5000",
+				"The survivor gets the prize.",
 			],
 		},
 		prizeChips: [
@@ -146,15 +146,7 @@ const eventData: Record<string, any> = {
 					className="ep-logo1"
 					alt="Prize Icon"
 				/>
-				<div className="ep-price-amount">₹5000</div>
-			</div>,
-			<div className="ep-prize-chip" key="paperPresentationPrize2">
-				<img
-					src="/assets/icons/trophy2.svg"
-					className="ep-logo1"
-					alt="Prize Icon"
-				/>
-				<div className="ep-price-amount2">₹3500</div>
+				<div className="ep-price-amount">₹6000</div>
 			</div>,
 		],
 		dateChips: [
@@ -164,7 +156,15 @@ const eventData: Record<string, any> = {
 					className="ep-logo3"
 					alt="Date Icon"
 				/>
-				<div className="ep-date">April 12 - 13</div>
+				<div className="ep-date">April 12</div>
+			</div>,
+			<div className="ep-date-chip" key="squidDate2">
+				<img
+					src="/assets/icons/date.svg"
+					className="ep-logo3"
+					alt="Date Icon"
+				/>
+				<div className="ep-date">April 13</div>
 			</div>,
 		],
 		poster: "/assets/event_posters/SQUID GAMES.png",
@@ -436,7 +436,7 @@ const eventData: Record<string, any> = {
 		eventType: "Technical Event",
 		eventName: "Paper Presentation",
 		eventDescription:
-			"Showcase your research and innovative ideas in the field of IT and CT at SAMHITA'25! Present your findings in front of expert judges and gain valuable insights.",
+			"Showcase your research and innovative ideas in the field of IT and CS at SAMHITA'25! Present your findings in front of expert judges and gain valuable insights.",
 		roundsChips: [
 			<div className="ep-duration-chip" key="paperPresentation1">
 				<img
@@ -543,15 +543,14 @@ const eventData: Record<string, any> = {
 					alt="Prize Icon"
 				/>
 				<div className="ep-price-amount">₹5000</div>
-				<div className="ep-prize-chip" key="paperPresentationPrize2">
-					<img
-						src="/assets/icons/trophy2.svg"
-						className="ep-logo1"
-						alt="Prize Icon"
-					/>
-					<div className="ep-price-amount2">₹3500</div>
-				</div>
-				,
+			</div>,
+			<div className="ep-prize-chip" key="paperPresentationPrize2">
+				<img
+					src="/assets/icons/trophy2.svg"
+					className="ep-logo1"
+					alt="Prize Icon"
+				/>
+				<div className="ep-price-amount2">₹3500</div>
 			</div>,
 		],
 		dateChips: [
@@ -1209,11 +1208,11 @@ const eventData: Record<string, any> = {
 			</div>,
 			<div className="ep-prize-chip" key="tosPrize2">
 				<img
-					src="/assets/icons/trophy.svg"
+					src="/assets/icons/trophy2.svg"
 					className="ep-logo1"
 					alt="Prize Icon"
 				/>
-				<div className="ep-price-amount">₹2500</div>
+				<div className="ep-price-amount2">₹3500</div>
 			</div>,
 		],
 		dateChips: [

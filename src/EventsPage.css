@@ -151,6 +151,21 @@
 	margin-top: 10px;
 }
 
+.ep-specifics {
+	font-weight: 400;
+	font-size: 1rem;
+	line-height: 2em;
+}
+
+.ep-section-heading {
+	font-weight: 700;
+	font-size: 1.1rem;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	color: #bbf7d0;
+	letter-spacing: 1px;
+}
+
 @media (max-width: 768px) {
 	.event-page-container {
 		flex-direction: column;

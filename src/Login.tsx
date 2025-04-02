@@ -88,11 +88,15 @@ const Login: React.FC = () => {
 			{user ? (
 				<>
 					<div
-						className="login-btn"
+						className="profile-btn"
 						onClick={handleProfileClick}
 						style={{ cursor: "pointer" }}
 					>
-						<span style={{ color: "#92008E" }}>{fullName}</span>
+						<img
+							className="user-profile-icon"
+							src="/assets/icons/user-icon-white.svg"
+						></img>
+						{fullName}
 					</div>
 
 					<button className="login-btn" onClick={handleLogout}>

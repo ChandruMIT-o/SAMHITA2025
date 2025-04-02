@@ -14,7 +14,7 @@ interface UserData {
 	paid: boolean; // Payment status
 	registeredOn: Date[]; // Array of timestamps
 	eventsSelected: string[]; // Array of selected event IDs or names
-	pass: string | string[]; // Pass status (could be a single string or an array)
+	pass: string | string; // Pass status (could be a single string or an array)
 }
 
 interface PaymentProps {
@@ -29,6 +29,8 @@ const Payment: React.FC<PaymentProps> = ({ amount, items, pass }) => {
 	const [email, setEmail] = useState("");
 	const [userDocRef, setUserDocRef] = useState<any>(null); // The document reference for the user
 	const navigate = useNavigate();
+
+	console.log(amount, items, pass);
 
 	useEffect(() => {
 		if (
@@ -49,8 +51,6 @@ const Payment: React.FC<PaymentProps> = ({ amount, items, pass }) => {
 		const user = await new Promise<User | null>((resolve) =>
 			onAuthStateChanged(auth, resolve)
 		);
-
-		console.log(user?.email);
 
 		if (user) {
 			// Get the mapping of UID to docId
@@ -86,11 +86,6 @@ const Payment: React.FC<PaymentProps> = ({ amount, items, pass }) => {
 	) => {
 		event.preventDefault(); // Prevent unintended form submission
 
-		if (!fullName || !phoneNumber || !email) {
-			alert("User details not available. Please try again.");
-			return;
-		}
-
 		const auth = getAuth();
 		const user = await new Promise<User | null>((resolve) =>
 			onAuthStateChanged(auth, resolve)
@@ -102,11 +97,22 @@ const Payment: React.FC<PaymentProps> = ({ amount, items, pass }) => {
 			return;
 		}
 
+		if (!fullName || !phoneNumber || !email) {
+			alert("User details not available. Please try again.");
+			return;
+		}
+
+		if (amount < 20) {
+			alert("Select the events before paying!");
+			return;
+		}
+
 		const options = {
 			key: "rzp_test_cQf5jcExLIpXxz", // Replace with your Razorpay Key ID
 			amount: amount * 100, // Amount in paisa (1 INR = 100 paisa)
 			currency: "INR",
-			name: "Vignesh Store",
+			name: "Samhita '25",
+			image: "/safin.svg", // Replace with your logo URL
 			description: "Event Registration",
 			handler: async function (response: any) {
 				console.log("Payment successful!", response);
@@ -116,7 +122,7 @@ const Payment: React.FC<PaymentProps> = ({ amount, items, pass }) => {
 						const userDocSnap = await getDoc(userDocRef);
 						const userData = userDocSnap.data() as UserData;
 
-						// Update the arrays in the user's document with the new payment details
+						// Update arrays for payment details
 						const updatedAmountPaid = [
 							...(userData?.amountPaid || []),
 							amount,
@@ -130,39 +136,39 @@ const Payment: React.FC<PaymentProps> = ({ amount, items, pass }) => {
 							new Date(), // New payment timestamp
 						];
 
-						// For 'pass', ensure we convert to an array and append the new instance
-						const existingPass = Array.isArray(userData.pass)
-							? userData.pass
-							: userData.pass
-							? [userData.pass]
-							: [];
-						const updatedPass = [...existingPass, pass];
-
-						// For eventsSelected, assume 'items' is an array of new events to add.
+						// Update eventsSelected assuming 'items' is an array of new events to add.
 						const updatedEventsSelected = [
 							...(userData?.eventsSelected || []),
 							...items,
 						];
 
-						// Update the user's document
-						await updateDoc(userDocRef, {
+						// Build the update payload.
+						// Only update the pass field if the new pass value is not "none"
+						const updatePayload: any = {
 							amountPaid: updatedAmountPaid,
 							paymentId: updatedPaymentId,
 							registeredOn: updatedRegisteredOn,
 							paid: true,
-							pass: updatedPass,
 							eventsSelected: updatedEventsSelected,
-						});
+						};
+
+						if (pass !== "none") {
+							updatePayload.pass = pass;
+						}
+
+						// Update the user's document
+						await updateDoc(userDocRef, updatePayload);
 
 						// Save the current payment instance values in the 'payments' collection.
+						const paymentPayload = {
+							amountPaid: amount, // Current instance value
+							registeredOn: new Date(), // Current payment timestamp
+							eventsSelected: items,
+						};
+
 						await setDoc(
 							doc(db, "payments", response.razorpay_payment_id),
-							{
-								amountPaid: amount, // Current instance value
-								registeredOn: new Date(), // Current payment timestamp
-								pass: pass,
-								eventsSelected: items,
-							}
+							paymentPayload
 						);
 
 						alert("Payment details stored successfully!");
@@ -173,6 +179,7 @@ const Payment: React.FC<PaymentProps> = ({ amount, items, pass }) => {
 					alert("Error storing payment details.");
 				}
 			},
+
 			prefill: {
 				name: fullName || "Test User",
 				contact: phoneNumber || "9999999999",

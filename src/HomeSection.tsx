@@ -14,10 +14,11 @@ import { motion } from "framer-motion";
 
 const HomeSection: React.FC = () => {
 	useEffect(() => {
-		const scrollY = sessionStorage.getItem("scrollPosition");
-		if (scrollY) {
-			window.scrollTo(0, parseInt(scrollY, 10)); // Restore scroll position
-			sessionStorage.removeItem("scrollPosition"); // Clear after restoring
+		const storedScrollPosition = sessionStorage.getItem("scrollPosition");
+		if (storedScrollPosition) {
+			console.log("Restoring scroll position:", storedScrollPosition);
+			window.scrollTo(0, parseInt(storedScrollPosition, 10));
+			sessionStorage.removeItem("scrollPosition");
 		}
 	}, []);
 	return (
@@ -60,9 +61,15 @@ const HomeSection: React.FC = () => {
 						<img className="insta-icon" src={insta_icon}></img>
 						<Magnet padding={50} magnetStrength={5}>
 							{
-								<div className="insta-number">
-									<ShinyText text="Instagram ⤤"></ShinyText>
-								</div>
+								<a
+									href="https://www.instagram.com/ita_mit_india?igsh=emlnMWJ0cGk5bjN3"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									<div className="insta-number">
+										<ShinyText text="Instagram ⤤"></ShinyText>
+									</div>
+								</a>
 							}
 						</Magnet>
 					</motion.div>
@@ -70,11 +77,13 @@ const HomeSection: React.FC = () => {
 					<div>
 						<Magnet padding={50} magnetStrength={5}>
 							{
-								<img
-									className="RButton"
-									src={RegisterBtn}
-									draggable={false}
-								/>
+								<a href="#registration">
+									<img
+										className="RButton"
+										src={RegisterBtn}
+										draggable={false}
+									/>
+								</a>
 							}
 						</Magnet>
 					</div>

@@ -110,29 +110,43 @@ const RegistrationSection: React.FC = () => {
 								src={loc_icon}
 								alt="Location Icon"
 							/>
-							<div className="contact-name">
-								IT Department{" "}
-								<span style={{ color: "#c086ff" }}>.</span>{" "}
-								Madras Institute of Technology{" "}
-								<span style={{ color: "#c086ff" }}>.</span>{" "}
-								Chromepet{" "}
-								<span style={{ color: "#c086ff" }}>.</span>{" "}
-								Chennai
-							</div>
+							<a
+								href="https://maps.app.goo.gl/mKXMHkxsMthEqc9J9"
+								target="_blank"
+								rel="noopener noreferrer"
+								className="contact-name"
+							>
+								<div>
+									IT Department{" "}
+									<span style={{ color: "#c086ff" }}>.</span>{" "}
+									Madras Institute of Technology{" "}
+									<span style={{ color: "#c086ff" }}>.</span>{" "}
+									Chromepet{" "}
+									<span style={{ color: "#c086ff" }}>.</span>{" "}
+									Chennai
+								</div>
+							</a>
 						</div>
 					</div>
 					<div className="gi-row1">
 						<Magnet disabled={false} magnetStrength={8}>
-							<div className="insta-chip">
-								<img
-									className="insta-icon"
-									src={insta_icon}
-									alt="Instagram Icon"
-								/>
-								<div className="insta-number">
-									Follow us on Instagram!
+							<a
+								href="https://www.instagram.com/ita_mit_india?igsh=emlnMWJ0cGk5bjN3"
+								target="_blank"
+								rel="noopener noreferrer"
+								style={{ textDecoration: "none" }}
+							>
+								<div className="insta-chip">
+									<img
+										className="insta-icon"
+										src={insta_icon}
+										alt="Instagram Icon"
+									/>
+									<div className="insta-number">
+										Follow us on Instagram!
+									</div>
 								</div>
-							</div>
+							</a>
 						</Magnet>
 					</div>
 					<div className="gi-row1">

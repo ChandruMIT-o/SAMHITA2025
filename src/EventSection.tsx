@@ -23,7 +23,7 @@ const eventTypes = [
 	"Non-Technical",
 	"Signature Event",
 	"Workshops",
-	"Combo-Workshops",
+	"Workshop Combos",
 ];
 
 const EventSection: React.FC = () => {
@@ -47,9 +47,12 @@ const EventSection: React.FC = () => {
 						title: doc.data().eventName,
 						type: doc.data().eventType,
 						tag: `₹${doc.data().price}`, // Store price as tag
-						imageSrc: `/assets/event_posters/${doc
-							.data()
-							.eventName.toUpperCase()}.png`, // Convert to uppercase
+						imageSrc: `/assets/event_posters/${
+							doc
+								.data()
+								.eventName.toUpperCase() // Convert to uppercase
+								.replace(/:/g, "") // Remove characters not suitable for filenames
+						}.png`,
 					})
 				);
 
@@ -59,7 +62,7 @@ const EventSection: React.FC = () => {
 					"Technical",
 					"Non-Technical",
 					"Workshops",
-					"Combo-Workshops",
+					"Workshop Combos",
 				];
 
 				// Sort the events based on typeOrder
@@ -77,8 +80,6 @@ const EventSection: React.FC = () => {
 
 		fetchEvents();
 	}, []);
-
-	console.log(events);
 
 	const handlePassToggle = (passType: string) => {
 		updatePass(selectedPass === passType ? null : passType);
@@ -144,7 +145,7 @@ const EventSection: React.FC = () => {
 						imageSrc="assets/event_passes/TECH PASS.png"
 						eventTitle="TECH"
 						eventType="Pass"
-						eventTag="Rs. 249"
+						eventTag="Rs. 289"
 						overlayContent={<div style={{ color: "white" }} />}
 						isSelected={selectedPass === "TECH"}
 						onToggle={() => handlePassToggle("TECH")}
@@ -165,7 +166,7 @@ const EventSection: React.FC = () => {
 						imageSrc="assets/event_passes/GLOBAL PASS.png"
 						eventTitle="GLOBAL"
 						eventType="Pass"
-						eventTag="Rs.500"
+						eventTag="Rs.349"
 						overlayContent={<div style={{ color: "white" }} />}
 						containerHeight="480px"
 						containerWidth="339px"
@@ -190,7 +191,7 @@ const EventSection: React.FC = () => {
 						imageSrc="assets/event_passes/NONTECH PASS.png"
 						eventTitle="NON-TECH"
 						eventType="Pass"
-						eventTag="Rs. 249"
+						eventTag="Rs. 189"
 						overlayContent={<div style={{ color: "white" }} />}
 						isSelected={selectedPass === "NON-TECH"}
 						onToggle={() => handlePassToggle("NON-TECH")}
@@ -248,6 +249,9 @@ const EventSection: React.FC = () => {
 								isSelected={selected}
 								disableToggle={forced}
 								onToggle={() => handleEventToggle(event.title)}
+								displayOverlayContent={
+									event.type !== "Workshop Combos"
+								}
 							/>
 						</motion.div>
 					);

@@ -207,6 +207,14 @@ const SignUp: React.FC = () => {
 	return (
 		<div className="signup-section" id="signup">
 			<div className="signup-content">
+				<div
+					className="ep-back-btn"
+					onClick={() => {
+						navigate("/");
+					}}
+				>
+					Back
+				</div>
 				<motion.div
 					initial={{ opacity: 0, y: 50 }}
 					whileInView={{ opacity: 1, y: 0 }}

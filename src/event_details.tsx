@@ -1,7 +1,7 @@
 const eventData: Record<string, any> = {
 	"Coding Quest": {
 		eventType: "Technical Event",
-		eventName: "Hackathon Showdown",
+		eventName: "Coding Quest",
 		eventDescription:
 			"Join Code Hunt – where coding, clues, and creativity collide! 🧩 Solve challenges, race against time, and outsmart your rivals – no skipping, no shortcuts! 🚀 Fastest team wins, so gear up for the ultimate brain-bending adventure!",
 		roundsChips: [
@@ -29,15 +29,7 @@ const eventData: Record<string, any> = {
 					className="ep-logo1"
 					alt="Prize Icon"
 				/>
-				<div className="ep-price-amount">$5000</div>
-			</div>,
-			<div className="ep-prize-chip" key="hackPrize2">
-				<img
-					src="/assets/icons/trophy2.svg"
-					className="ep-logo1"
-					alt="Prize Icon"
-				/>
-				<div className="ep-price-amount2">$3500</div>
+				<div className="ep-price-amount">₹5000</div>
 			</div>,
 		],
 		dateChips: [
@@ -58,7 +50,7 @@ const eventData: Record<string, any> = {
 				<div className="ep-date">April 13</div>
 			</div>,
 		],
-		poster: "/assets/event_posters/HACKATHON.png",
+		poster: "/assets/event_posters/CODING QUEST.png",
 	},
 	"Ninja Coding": {
 		eventType: "Technical Event",
@@ -98,15 +90,7 @@ const eventData: Record<string, any> = {
 					className="ep-logo1"
 					alt="Prize Icon"
 				/>
-				<div className="ep-price-amount">$5000</div>
-			</div>,
-			<div className="ep-prize-chip" key="hackPrize2">
-				<img
-					src="/assets/icons/trophy2.svg"
-					className="ep-logo1"
-					alt="Prize Icon"
-				/>
-				<div className="ep-price-amount2">$3500</div>
+				<div className="ep-price-amount">₹5000</div>
 			</div>,
 		],
 		dateChips: [
@@ -129,7 +113,7 @@ const eventData: Record<string, any> = {
 		],
 		poster: "/assets/event_posters/NINJA CODING.png",
 	},
-	"Squid Games (Geeks’ Version)": {
+	"Squid Games": {
 		eventType: "Technical Event",
 		eventName: "Squid Games (Geeks’ Version)",
 		eventDescription:
@@ -162,15 +146,7 @@ const eventData: Record<string, any> = {
 					className="ep-logo1"
 					alt="Prize Icon"
 				/>
-				<div className="ep-price-amount">$5000</div>
-			</div>,
-			<div className="ep-prize-chip" key="squidPrize2">
-				<img
-					src="/assets/icons/trophy.svg"
-					className="ep-logo1"
-					alt="Prize Icon"
-				/>
-				<div className="ep-price-amount">$3500</div>
+				<div className="ep-price-amount">₹5000</div>
 			</div>,
 		],
 		dateChips: [
@@ -183,7 +159,7 @@ const eventData: Record<string, any> = {
 				<div className="ep-date">April 12 - 13</div>
 			</div>,
 		],
-		poster: "/assets/event_posters/SQUID_GAMES.png",
+		poster: "/assets/event_posters/SQUID GAMES.png",
 	},
 	"Call of Query": {
 		eventType: "Technical Event",
@@ -220,21 +196,13 @@ const eventData: Record<string, any> = {
 			],
 		},
 		prizeChips: [
-			<div className="ep-prize-chip" key="queryPrize1">
-				<img
-					src="/assets/icons/trophy.svg"
-					className="ep-logo1"
-					alt="Prize Icon"
-				/>
-				<div className="ep-price-amount">$5000</div>
-			</div>,
 			<div className="ep-prize-chip" key="queryPrize2">
 				<img
 					src="/assets/icons/trophy.svg"
 					className="ep-logo1"
 					alt="Prize Icon"
 				/>
-				<div className="ep-price-amount">$3500</div>
+				<div className="ep-price-amount">₹5000</div>
 			</div>,
 		],
 		dateChips: [
@@ -247,9 +215,9 @@ const eventData: Record<string, any> = {
 				<div className="ep-date">April 13</div>
 			</div>,
 		],
-		poster: "/assets/event_posters/CALL_OF_QUERY.png",
+		poster: "/assets/event_posters/CALL OF QUERY.png",
 	},
-	ReverseCoding: {
+	"Reverse Coding": {
 		eventType: "TechnicalEvent",
 		eventName: "Reverse Coding",
 		eventDescription:
@@ -288,15 +256,7 @@ const eventData: Record<string, any> = {
 					className="ep-logo1"
 					alt="Prize Icon"
 				/>
-				<div className="ep-price-amount">$5000</div>
-			</div>,
-			<div className="ep-prize-chip" key="reversePrize2">
-				<img
-					src="/assets/icons/trophy.svg"
-					className="ep-logo1"
-					alt="Prize Icon"
-				/>
-				<div className="ep-price-amount">$3500</div>
+				<div className="ep-price-amount">₹5000</div>
 			</div>,
 		],
 		dateChips: [
@@ -309,7 +269,7 @@ const eventData: Record<string, any> = {
 				<div className="ep-date">April 12</div>
 			</div>,
 		],
-		poster: "/assets/event_posters/REVERSE_CODING.png",
+		poster: "/assets/event_posters/REVERSE CODING.png",
 	},
 	"Street Coding": {
 		eventType: "Technical Event",
@@ -345,15 +305,7 @@ const eventData: Record<string, any> = {
 					className="ep-logo1"
 					alt="Prize Icon"
 				/>
-				<div className="ep-price-amount">$5000</div>
-			</div>,
-			<div className="ep-prize-chip" key="streetPrize2">
-				<img
-					src="/assets/icons/trophy.svg"
-					className="ep-logo1"
-					alt="Prize Icon"
-				/>
-				<div className="ep-price-amount">$3500</div>
+				<div className="ep-price-amount">₹5000</div>
 			</div>,
 		],
 		dateChips: [
@@ -366,13 +318,13 @@ const eventData: Record<string, any> = {
 				<div className="ep-date">April 13</div>
 			</div>,
 		],
-		poster: "/assets/event_posters/STREET_CODING.png",
+		poster: "/assets/event_posters/STREET CODING.png",
 	},
 	Hackathon: {
 		eventType: "Technical Event",
 		eventName: "Hackathon",
 		eventDescription:
-			"Gear up for the ultimate test of innovation at SAMHITA’25! An 8-hour coding marathon where brilliance meets endurance. Solve real-world challenges, push your limits, and prove you're the best in the game. Do you have what it takes to outthink, outcode, and outlast the competition? The clock is ticking—let the hacking begin!",
+			"Gear up for the ultimate test of innovation at SAMHITA'25! An 8-hour coding marathon where brilliance meets endurance. Solve real-world challenges, push your limits, and prove you're the best in the game. Do you have what it takes to outthink, outcode, and outlast the competition? The clock is ticking—let the hacking begin! LIMITED SLOTS ONLY! Slots will be given on a first come first serve basis.",
 		roundsChips: [
 			<div className="ep-duration-chip" key="hackathon1">
 				<img
@@ -381,55 +333,8 @@ const eventData: Record<string, any> = {
 					alt="Duration Icon"
 				/>
 				<div className="ep-round-text">Duration</div>
-				<div className="ep-duration">8 hours</div>
+				<div className="ep-duration">8 hours (9AM - 5PM)</div>
 			</div>,
-		],
-		specifics: {
-			"Team Formation": [
-				"Each team must consist of 2 to 4 members",
-				"Mixed teams from different institutions are allowed",
-			],
-			Rules: [
-				"The hackathon will run for 8 hours from 9 AM to 5 PM.",
-				"Teams must develop a working prototype within the given time and submit their project before the deadline.",
-				"Teams can use any programming language, framework, or tools of their choice.",
-				"Participants must bring their own laptops, chargers, and other necessary equipment.",
-			],
-			"Submission Guidelines": [
-				"Teams must submit their project before the deadline.",
-				"Submission should include:",
-				"- A GitHub repository or ZIP file of the codebase.",
-				"- A short presentation or demo video (if required).",
-				"- A brief project description explaining the solution.",
-			],
-			"Judging & Decision": [
-				"The decision of the judges and event coordinators is final and binding.",
-				"Any disputes must be addressed immediately to the event coordinators.",
-			],
-			Breaks: [
-				"Teams are free to move around and take breaks as needed.",
-				"The countdown will not pause during breaks, so teams must manage their time wisely.",
-			],
-		},
-		prizeChips: [
-			<div className="ep-prize-chip" key="hackathonPrize1">
-				<img
-					src="/assets/icons/trophy.svg"
-					className="ep-logo1"
-					alt="Prize Icon"
-				/>
-				<div className="ep-price-amount">$5000</div>
-			</div>,
-			<div className="ep-prize-chip" key="hackathonPrize2">
-				<img
-					src="/assets/icons/trophy.svg"
-					className="ep-logo1"
-					alt="Prize Icon"
-				/>
-				<div className="ep-price-amount">$3500</div>
-			</div>,
-		],
-		dateChips: [
 			<div className="ep-date-chip" key="hackathonDate1">
 				<img
 					src="/assets/icons/date.svg"
@@ -439,45 +344,40 @@ const eventData: Record<string, any> = {
 				<div className="ep-date">April 12</div>
 			</div>,
 		],
-		poster: "/assets/event_posters/HACKATHON.png",
-	},
-	"Paper Presentation": {
-		eventType: "Technical Event",
-		eventName: "Paper Presentation",
-		eventDescription:
-			"Showcase your research and innovative ideas in the field of IT and CT at SAMHITA’25! Present your findings in front of expert judges and gain valuable insights.",
-		roundsChips: [
-			<div className="ep-duration-chip" key="paperPresentation1">
-				<img
-					src="/assets/icons/duration.svg"
-					className="ep-logo2"
-					alt="Duration Icon"
-				/>
-				<div className="ep-round-text">Duration</div>
-				<div className="ep-duration">Varies</div>
-			</div>,
-		],
 		specifics: {
-			Eligibility: [
-				"Open to students from IT and CT departments.",
-				"Papers can be either published or yet-to-be-published.",
+			"Registration Process": [
+				"Only the team lead should register",
+				"Team member details collected later via Google Form",
+				"After registration, team lead receives email with idea submission form",
 			],
-			Participation: [
-				"Individual participation only.",
-				"Each participant can present only one paper.",
+			"Team Formation": [
+				"2-4 members per team",
+				"Mixed teams from different institutions allowed",
 			],
-			"Paper & Presentation Format": [
-				"The paper should be related to innovative and intriguing topics in IT/CT fields.",
-				"Presentation must be in PPT format and submitted before the event.",
-				"Maximum 15 slides (excluding title and references).",
-				"Presentation time: 8 minutes + 2-minute Q&A session.",
+			"Problem Domains": [
+				"Fintech",
+				"Healthcare",
+				"Sustainability",
+				"Education",
+				"Social Impact",
+			],
+			"Idea Submission": [
+				"Idea document should include: problem, solution, features, target audience, feasibility",
+				"Submission deadline: 5PM on April 11",
 			],
 			"Event Rules": [
-				"On-spot registrations are available.",
-				"This is a non-rolling event (participants cannot re-enter after elimination).",
-				"Tentative timing: 10:00 AM.",
-				"Participants should bring their own laptops or USB drives if needed.",
-				"Plagiarism will lead to disqualification.",
+				"Develop working prototype within 8 hours",
+				"Any programming language/framework/tools allowed",
+				"Bring your own laptops and equipment",
+			],
+			"Submission Guidelines": [
+				"GitHub repository or ZIP file of codebase",
+				"Short presentation/demo video (if required)",
+				"Brief project description",
+			],
+			Breaks: [
+				"Teams can take breaks as needed",
+				"Clock continues running during breaks",
 			],
 		},
 		prizeChips: [
@@ -487,18 +387,34 @@ const eventData: Record<string, any> = {
 					className="ep-logo1"
 					alt="Prize Icon"
 				/>
-				<div className="ep-price-amount">$5000</div>
+				<div className="ep-price-amount">₹10000 Price Pool</div>
 			</div>,
 			<div className="ep-prize-chip" key="paperPresentationPrize2">
 				<img
-					src="/assets/icons/trophy.svg"
-					className="ep-logo1"
+					src="/assets/icons/trophy2.svg"
+					className="ep-logo2"
 					alt="Prize Icon"
 				/>
-				<div className="ep-price-amount">$3500</div>
+				<div className="ep-price-amount2">Each Team ₹499</div>
 			</div>,
 		],
-		dateChips: [
+		poster: "/assets/event_posters/HACKATHON.png",
+	},
+	"Paper Presentation": {
+		eventType: "Technical Event",
+		eventName: "Paper Presentation",
+		eventDescription:
+			"Showcase your research and innovative ideas in the field of IT and CT at SAMHITA'25! Present your findings in front of expert judges and gain valuable insights.",
+		roundsChips: [
+			<div className="ep-duration-chip" key="paperPresentation1">
+				<img
+					src="/assets/icons/duration.svg"
+					className="ep-logo2"
+					alt="Duration Icon"
+				/>
+				<div className="ep-round-text">Presentation Time</div>
+				<div className="ep-duration">8 mins + 2 mins Q&A</div>
+			</div>,
 			<div className="ep-date-chip" key="paperPresentationDate1">
 				<img
 					src="/assets/icons/date.svg"
@@ -508,7 +424,44 @@ const eventData: Record<string, any> = {
 				<div className="ep-date">April 12</div>
 			</div>,
 		],
-		poster: "/assets/event_posters/PAPER_PRESENTATION.png",
+		specifics: {
+			"Eligibility & Registration": [
+				"Open to students from IT and CT departments",
+				"Team event (1-2 members per team)",
+				"Only one team member needs to register",
+				"On-spot registration available",
+			],
+			"Paper Guidelines": [
+				"Topics should be innovative and intriguing in IT/CT fields",
+				"Paper can be in any format, limited to 5 pages",
+				"Paper need not be published",
+				"Must submit paper before event (Drive link will be shared)",
+			],
+			"Presentation Rules": [
+				"PPT presentation on event day (max 15 slides excluding title/references)",
+				"8-minute presentation followed by 2-minute Q&A",
+				"All teams must carry a copy of their paper",
+			],
+		},
+		prizeChips: [
+			<div className="ep-prize-chip" key="paperPresentationPrize1">
+				<img
+					src="/assets/icons/trophy.svg"
+					className="ep-logo1"
+					alt="Prize Icon"
+				/>
+				<div className="ep-price-amount">$10000 Price Pool</div>
+			</div>,
+			<div className="ep-prize-chip" key="paperPresentationPrize2">
+				<img
+					src="/assets/icons/trophy2.svg"
+					className="ep-logo1"
+					alt="Prize Icon"
+				/>
+				<div className="ep-price-amount2">Each Team $499</div>
+			</div>,
+		],
+		poster: "/assets/event_posters/PAPER PRESENTATION.png",
 	},
 	"AI Impromptu": {
 		eventType: "Technical Event",
@@ -557,15 +510,7 @@ const eventData: Record<string, any> = {
 					className="ep-logo1"
 					alt="Prize Icon"
 				/>
-				<div className="ep-price-amount">$5000</div>
-			</div>,
-			<div className="ep-prize-chip" key="aiImpromptuPrize2">
-				<img
-					src="/assets/icons/trophy.svg"
-					className="ep-logo1"
-					alt="Prize Icon"
-				/>
-				<div className="ep-price-amount">$3500</div>
+				<div className="ep-price-amount">₹5000</div>
 			</div>,
 		],
 		dateChips: [
@@ -637,21 +582,13 @@ const eventData: Record<string, any> = {
 			</div>,
 		],
 		prizeChips: [
-			<div className="ep-prize-chip" key="adzapPrize1">
+			<div className="ep-prize-chip" key="aiImpromptuPrize1">
 				<img
-					src="/assets/icons/prize.svg"
-					className="ep-logo2"
+					src="/assets/icons/trophy.svg"
+					className="ep-logo1"
 					alt="Prize Icon"
 				/>
-				<div className="ep-prize">$4000</div>
-			</div>,
-			<div className="ep-prize-chip" key="adzapPrize2">
-				<img
-					src="/assets/icons/prize.svg"
-					className="ep-logo2"
-					alt="Prize Icon"
-				/>
-				<div className="ep-prize">$3000</div>
+				<div className="ep-price-amount">₹4000</div>
 			</div>,
 		],
 		poster: "/assets/event_posters/ADZAP.png",
@@ -704,15 +641,7 @@ const eventData: Record<string, any> = {
 					className="ep-logo1"
 					alt="Prize Icon"
 				/>
-				<div className="ep-price-amount">$4000</div>
-			</div>,
-			<div className="ep-prize-chip" key="huntPrize2">
-				<img
-					src="/assets/icons/trophy.svg"
-					className="ep-logo1"
-					alt="Prize Icon"
-				/>
-				<div className="ep-price-amount">$3000</div>
+				<div className="ep-price-amount">₹4000</div>
 			</div>,
 		],
 		dateChips: [
@@ -725,7 +654,7 @@ const eventData: Record<string, any> = {
 				<div className="ep-date">April 12</div>
 			</div>,
 		],
-		poster: "/assets/event_posters/TREASURE_HUNT.png",
+		poster: "/assets/event_posters/TREASURE HUNT.png",
 	},
 	"IPL Auction": {
 		eventType: "Non-Technical Event",
@@ -777,15 +706,7 @@ const eventData: Record<string, any> = {
 					className="ep-logo1"
 					alt="Prize Icon"
 				/>
-				<div className="ep-price-amount">$4000</div>
-			</div>,
-			<div className="ep-prize-chip" key="iplPrize2">
-				<img
-					src="/assets/icons/trophy.svg"
-					className="ep-logo1"
-					alt="Prize Icon"
-				/>
-				<div className="ep-price-amount">$3000</div>
+				<div className="ep-price-amount">₹4000</div>
 			</div>,
 		],
 		dateChips: [
@@ -798,7 +719,7 @@ const eventData: Record<string, any> = {
 				<div className="ep-date">April 13</div>
 			</div>,
 		],
-		poster: "/assets/event_posters/IPL_AUCTION.png",
+		poster: "/assets/event_posters/IPL AUCTION.png",
 	},
 	"Fandom Quiz": {
 		eventType: "Non-Technical Event",
@@ -842,15 +763,7 @@ const eventData: Record<string, any> = {
 					className="ep-logo1"
 					alt="Prize Icon"
 				/>
-				<div className="ep-price-amount">$4000</div>
-			</div>,
-			<div className="ep-prize-chip" key="fandomPrize2">
-				<img
-					src="/assets/icons/trophy.svg"
-					className="ep-logo1"
-					alt="Prize Icon"
-				/>
-				<div className="ep-price-amount">$3000</div>
+				<div className="ep-price-amount">₹4000</div>
 			</div>,
 		],
 		dateChips: [
@@ -863,7 +776,7 @@ const eventData: Record<string, any> = {
 				<div className="ep-date">April 14</div>
 			</div>,
 		],
-		poster: "/assets/event_posters/FANDOM_QUIZ.png",
+		poster: "/assets/event_posters/FANDOM QUIZ.png",
 	},
 	Connections: {
 		eventType: "Non-Technical Event",
@@ -910,14 +823,6 @@ const eventData: Record<string, any> = {
 					alt="Prize Icon"
 				/>
 				<div className="ep-price-amount">$4000</div>
-			</div>,
-			<div className="ep-prize-chip" key="connPrize2">
-				<img
-					src="/assets/icons/trophy.svg"
-					className="ep-logo1"
-					alt="Prize Icon"
-				/>
-				<div className="ep-price-amount">$3000</div>
 			</div>,
 		],
 		dateChips: [
@@ -967,15 +872,7 @@ const eventData: Record<string, any> = {
 					className="ep-logo1"
 					alt="Prize Icon"
 				/>
-				<div className="ep-price-amount">$4000</div>
-			</div>,
-			<div className="ep-prize-chip" key="escapePrize2">
-				<img
-					src="/assets/icons/trophy.svg"
-					className="ep-logo1"
-					alt="Prize Icon"
-				/>
-				<div className="ep-price-amount">$3000</div>
+				<div className="ep-price-amount">₹4000</div>
 			</div>,
 		],
 		dateChips: [
@@ -986,6 +883,261 @@ const eventData: Record<string, any> = {
 					alt="Date Icon"
 				/>
 				<div className="ep-date">April 14</div>
+			</div>,
+		],
+		poster: "/assets/event_posters/ESCAPE ROOM.png",
+	},
+
+	"DATA SCIENCE DECODED – Unlock Insights & Innovation": {
+		eventType: "Workshop",
+		eventName:
+			"DATA SCIENCE DECODED – Unlock Insights & Innovation By Google",
+		eventDescription:
+			"This workshop goes beyond theoretical concepts to explore real-world business applications of Data Science. Designed for professionals and aspiring data scientists, it focuses on leveraging data-driven insights to solve complex business challenges.",
+		roundsChips: [
+			<div className="ep-duration-chip" key="dsDuration">
+				<img
+					src="/assets/icons/duration.svg"
+					className="ep-logo2"
+					alt="Duration Icon"
+				/>
+				<div className="ep-round-text">Duration</div>
+				<div className="ep-duration">6 hours</div>
+			</div>,
+		],
+		specifics: {
+			"Topics Covered": [
+				"Business-Driven Data Science",
+				"Data Preprocessing & Cleaning",
+				"Exploratory Data Analysis (EDA)",
+				"Machine Learning in Business",
+				"Data-Driven Decision Making",
+			],
+			Speaker: ["Navyaa Sharma, Software Engineer @ Google"],
+		},
+		dateChips: [
+			<div className="ep-date-chip" key="dsDate">
+				<img
+					src="/assets/icons/date.svg"
+					className="ep-logo3"
+					alt="Date Icon"
+				/>
+				<div className="ep-date">April 12</div>
+			</div>,
+		],
+		prizeChips: [
+			<div className="ep-prize-chip" key="workshopCert">
+				<img
+					src="/assets/icons/trophy.svg"
+					className="ep-logo1"
+					alt="Prize Icon"
+				/>
+				<div className="ep-price-amount">Participation Certificate</div>
+			</div>,
+		],
+		poster: "/assets/event_posters/DATA SCIENCE DECODED – UNLOCK INSIGHTS & INNOVATION.png",
+	},
+
+	"Unleashing the Power of Cloud Computing and Data Managament": {
+		eventType: "Workshop",
+		eventName:
+			"Unleashing the Power of Cloud Computing and Data Management",
+		eventDescription:
+			"In today's data-driven world, cloud-based data management has become essential for businesses looking to scale, optimize performance, and ensure security. This workshop explores the key principles and best practices of managing data in the cloud.",
+		roundsChips: [
+			<div className="ep-duration-chip" key="cloudDuration">
+				<img
+					src="/assets/icons/duration.svg"
+					className="ep-logo2"
+					alt="Duration Icon"
+				/>
+				<div className="ep-round-text">Duration</div>
+				<div className="ep-duration">3 hours</div>
+			</div>,
+		],
+		specifics: {
+			"Topics Covered": [
+				"Introduction to Cloud Data Management",
+				"Cloud Storage & Databases",
+				"Data Security & Compliance",
+				"Scalability & Performance Optimization",
+				"Business Use Cases",
+			],
+			Speaker: ["Losshika S N, NatWest Group"],
+		},
+		dateChips: [
+			<div className="ep-date-chip" key="cloudDate">
+				<img
+					src="/assets/icons/date.svg"
+					className="ep-logo3"
+					alt="Date Icon"
+				/>
+				<div className="ep-date">April 12</div>
+			</div>,
+		],
+		prizeChips: [
+			<div className="ep-prize-chip" key="workshopCert">
+				<img
+					src="/assets/icons/trophy.svg"
+					className="ep-logo1"
+					alt="Prize Icon"
+				/>
+				<div className="ep-price-amount">Participation Certificate</div>
+			</div>,
+		],
+
+		poster: "/assets/event_posters/UNLEASHING THE POWER OF CLOUD COMPUTING AND DATA MANAGAMENT.png",
+	},
+
+	"The IT Behind Drones:Beginner to Advanced": {
+		eventType: "Workshop",
+		eventName: "The IT Behind Drones: Beginner to Advanced",
+		eventDescription:
+			"This workshop provides an in-depth exploration of the technological advancements shaping modern drone systems, including hands-on demonstration and live drone show.",
+		roundsChips: [
+			<div className="ep-duration-chip" key="droneDuration">
+				<img
+					src="/assets/icons/duration.svg"
+					className="ep-logo2"
+					alt="Duration Icon"
+				/>
+				<div className="ep-round-text">Duration</div>
+				<div className="ep-duration">6 hours</div>
+			</div>,
+		],
+		specifics: {
+			"Topics Covered": [
+				"Drone Architecture & Components",
+				"Flight Control & Navigation",
+				"Computer Vision & AI in Drones",
+				"IoT & Cloud Integration",
+				"Industry Use Cases",
+				"Live Drone Demonstration",
+			],
+			Speaker: [
+				"Dr. N. Suresh Kumar, Chairman, 360 Group of Companies and team",
+			],
+		},
+		dateChips: [
+			<div className="ep-date-chip" key="droneDate">
+				<img
+					src="/assets/icons/date.svg"
+					className="ep-logo3"
+					alt="Date Icon"
+				/>
+				<div className="ep-date">April 13</div>
+			</div>,
+		],
+		prizeChips: [
+			<div className="ep-prize-chip" key="workshopCert">
+				<img
+					src="/assets/icons/trophy.svg"
+					className="ep-logo1"
+					alt="Prize Icon"
+				/>
+				<div className="ep-price-amount">Participation Certificate</div>
+			</div>,
+		],
+		poster: "/assets/event_posters/THE IT BEHIND DRONESBEGINNER TO ADVANCED.png",
+	},
+
+	"REVOLUTIONIZING AI: The Future of Gen AI & Conversational AI": {
+		eventType: "Workshop",
+		eventName:
+			"REVOLUTIONIZING AI: The Future of Gen AI & Conversational AI",
+		eventDescription:
+			"This workshop explores the rapidly evolving landscape of Generative AI and Conversational AI, focusing on their real-world applications and impact on businesses.",
+		roundsChips: [
+			<div className="ep-duration-chip" key="aiDuration">
+				<img
+					src="/assets/icons/duration.svg"
+					className="ep-logo2"
+					alt="Duration Icon"
+				/>
+				<div className="ep-round-text">Duration</div>
+				<div className="ep-duration">3 hours</div>
+			</div>,
+		],
+		specifics: {
+			"Topics Covered": [
+				"Introduction to Generative AI",
+				"Conversational AI Fundamentals",
+				"Building AI-Powered Conversations",
+				"Business Applications",
+				"Future of Conversational AI",
+			],
+			Speaker: ["Cecil Samuel, Novacis Digital LLC, IITM Research Park"],
+		},
+		dateChips: [
+			<div className="ep-date-chip" key="aiDate">
+				<img
+					src="/assets/icons/date.svg"
+					className="ep-logo3"
+					alt="Date Icon"
+				/>
+				<div className="ep-date">April 13</div>
+			</div>,
+		],
+		poster: "/assets/event_posters/REVOLUTIONIZING AI THE FUTURE OF GEN AI & CONVERSATIONAL AI.png",
+		prizeChips: [
+			<div className="ep-prize-chip" key="workshopCert">
+				<img
+					src="/assets/icons/trophy.svg"
+					className="ep-logo1"
+					alt="Prize Icon"
+				/>
+				<div className="ep-price-amount">Participation Certificate</div>
+			</div>,
+		],
+	},
+
+	"MERN Stack": {
+		eventType: "Workshop",
+		eventName: "Mastering MERN - Build Scalable Apps",
+		eventDescription:
+			"This workshop provides a comprehensive introduction to the MERN (MongoDB, Express, React, Node.js) stack, equipping participants with the essential skills to build full-stack web applications.",
+		roundsChips: [
+			<div className="ep-duration-chip" key="mernDuration">
+				<img
+					src="/assets/icons/duration.svg"
+					className="ep-logo2"
+					alt="Duration Icon"
+				/>
+				<div className="ep-round-text">Duration</div>
+				<div className="ep-duration">6 hours</div>
+			</div>,
+		],
+		specifics: {
+			"Topics Covered": [
+				"MERN Stack Basics",
+				"React Fundamentals",
+				"React Tools",
+				"Express Backend",
+				"MongoDB Integration",
+			],
+			Speaker: [
+				"Jeevanandham D, Software Engineer @ Tekion Corp and team",
+			],
+		},
+		dateChips: [
+			<div className="ep-date-chip" key="mernDate">
+				<img
+					src="/assets/icons/date.svg"
+					className="ep-logo3"
+					alt="Date Icon"
+				/>
+				<div className="ep-date">April 14</div>
+			</div>,
+		],
+		poster: "/assets/event_posters/MERN STACK.png",
+		prizeChips: [
+			<div className="ep-prize-chip" key="workshopCert">
+				<img
+					src="/assets/icons/trophy.svg"
+					className="ep-logo1"
+					alt="Prize Icon"
+				/>
+				<div className="ep-price-amount">Participation Certificate</div>
 			</div>,
 		],
 	},

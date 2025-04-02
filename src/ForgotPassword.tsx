@@ -78,6 +78,14 @@ const ForgotPassword: React.FC = () => {
 
 	return (
 		<div className="signin-section">
+			<div
+				className="ep-back-btn"
+				onClick={() => {
+					navigate("/");
+				}}
+			>
+				Back
+			</div>
 			<motion.div
 				initial={{ opacity: 0, y: 50 }}
 				whileInView={{ opacity: 1, y: 0 }}

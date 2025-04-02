@@ -113,6 +113,9 @@ export default function TiltedCard({
 
 	function handleOverlayClick(e: React.MouseEvent<HTMLDivElement>) {
 		e.stopPropagation();
+		const currentScroll = window.scrollY;
+		console.log("Storing scroll position:", currentScroll);
+		sessionStorage.setItem("scrollPosition", currentScroll.toString());
 		navigate(`/event/${eventTitle}`);
 	}
 

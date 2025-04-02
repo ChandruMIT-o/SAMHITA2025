@@ -25,10 +25,6 @@ const EventsPage: React.FC = () => {
 			<div
 				className="ep-back-btn"
 				onClick={() => {
-					sessionStorage.setItem(
-						"scrollPosition",
-						String(window.scrollY)
-					); // Save scroll position
 					navigate("/");
 				}}
 			>

@@ -7,6 +7,48 @@
 	top: 3%;
 }
 
+@keyframes radiate {
+	0% {
+		box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+	}
+	50% {
+		box-shadow: 0 0 20px rgba(255, 255, 255, 1);
+		border: 2px solid rgba(255, 255, 255, 0.9);
+	}
+	100% {
+		box-shadow: 5 5 50px rgba(255, 255, 255, 0.5);
+	}
+}
+
+.profile-btn {
+	background-color: #92008e; /* Indigo background */
+	color: #fff; /* White text */
+	font-weight: bold;
+	padding: 12px 24px;
+	border: 2px solid transparent;
+	border-radius: 25px;
+	cursor: pointer;
+	position: relative;
+	transition: all 0.3s ease-in-out;
+	animation: radiate 2s infinite;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+}
+
+.profile-btn:hover {
+	background-color: #6a0dad; /* Darker purple on hover */
+	color: #ffffff;
+}
+
+.user-profile-icon {
+	width: 15px;
+	height: auto;
+	object-fit: contain;
+}
+
 .login-btn {
 	background-color: white;
 	width: fit-content;
@@ -25,4 +67,17 @@
 		align-self: center;
 		margin-top: 50px;
 	}
+}
+
+.login-btn:hover {
+	background-color: #f2f2f2;
+	color: #0d0d0d;
+	transition: background-color 0.3s ease;
+}
+
+.login-btn:active {
+	background-color: #d9d9d9;
+	color: #0d0d0d;
+	transition: background-color 0.3s ease;
+	transform: scale(0.95);
 }

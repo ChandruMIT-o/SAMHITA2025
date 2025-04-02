@@ -1,14 +1,63 @@
 import { useState, useEffect, useContext, useMemo } from "react";
 import { MultiSelect, MultiSelectChangeEvent } from "primereact/multiselect";
-import { DataTable } from "primereact/datatable";
-import { Column } from "primereact/column";
-import "primereact/resources/themes/vela-purple/theme.css";
+import "primereact/resources/themes/lara-dark-purple/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import { RegistrationContext } from "../RegistrationContext";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 import "./MultiEventSelect.css";
+import AniList from "./AniList";
+
+import { doc, getDoc } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
+
+// ---------------------------
+// Utility: Fetch Previously Purchased Events & Pass
+// ---------------------------
+export async function fetchUserEventsAndPass(): Promise<string[]> {
+	const auth = getAuth();
+	const user = auth.currentUser;
+	if (!user) {
+		console.error("No authenticated user found.");
+		return [];
+	}
+
+	// Get the UID mapping document to fetch the user document ID.
+	const uidMappingRef = doc(db, "uid_mapping", user.uid);
+	const uidMappingSnap = await getDoc(uidMappingRef);
+	if (!uidMappingSnap.exists()) {
+		console.error("UID mapping not found.");
+		return [];
+	}
+
+	const { docId } = uidMappingSnap.data() as { docId: string };
+
+	// Fetch the user document from the "users" collection.
+	const userDocRef = doc(db, "users", docId);
+	const userDocSnap = await getDoc(userDocRef);
+	if (!userDocSnap.exists()) {
+		console.error("User document not found.");
+		return [];
+	}
+
+	const userData = userDocSnap.data() as {
+		eventsSelected?: string[];
+		pass?: string | string[];
+	};
+	const eventsSelected: string[] = userData.eventsSelected || [];
+
+	// Convert pass to an array if it's not already, ignoring "none".
+	let passList: string[] = [];
+	if (Array.isArray(userData.pass)) {
+		passList = userData.pass;
+	} else if (userData.pass && userData.pass.toLowerCase() !== "none") {
+		passList = [userData.pass];
+	}
+
+	// Return the combined list.
+	return [...eventsSelected, ...passList];
+}
 
 // ---------------------------
 // Data Definitions
@@ -48,6 +97,23 @@ export default function MultiEventSelect({
 
 	const [groupedEvents, setGroupedEvents] = useState<EventGroup[]>([]);
 
+	const [disabledOptions, setDisabledOptions] = useState<string[]>([]);
+
+	useEffect(() => {
+		async function loadDisabledOptions() {
+			let alreadySelected = await fetchUserEventsAndPass();
+			const passTypes = ["Global Pass", "Tech Pass", "Non-Tech Pass"];
+			// If any pass type is found, add all three to the list.
+			if (alreadySelected.some((option) => passTypes.includes(option))) {
+				alreadySelected = Array.from(
+					new Set([...alreadySelected, ...passTypes])
+				);
+			}
+			setDisabledOptions(alreadySelected);
+		}
+		loadDisabledOptions();
+	}, []);
+
 	useEffect(() => {
 		const fetchEvents = async () => {
 			const querySnapshot = await getDocs(collection(db, "Samhita25"));
@@ -72,9 +138,9 @@ export default function MultiEventSelect({
 					label: "Passes",
 					code: "Pass",
 					items: [
-						{ label: "Global Pass", price: 100, group: "Pass" },
-						{ label: "Tech Pass", price: 80, group: "Pass" },
-						{ label: "Non-Tech Pass", price: 90, group: "Pass" },
+						{ label: "Global Pass", price: 349, group: "Pass" },
+						{ label: "Tech Pass", price: 289, group: "Pass" },
+						{ label: "Non-Tech Pass", price: 189, group: "Pass" },
 					],
 				},
 				{
@@ -267,6 +333,24 @@ export default function MultiEventSelect({
 			});
 
 		setFullAmount(total);
+		const labels = dataTableRows.map((row) => row.label);
+
+		// Define pass types
+		const passTypes = ["Global Pass", "Tech Pass", "Non-Tech Pass"];
+
+		// Find pass type
+		const pass = labels.find((label) => passTypes.includes(label)) || "";
+
+		// Remove pass types from labels
+		const filteredLabels = labels.filter(
+			(label) => !passTypes.includes(label)
+		);
+
+		console.log(filteredLabels, pass);
+		if (pass && pass !== selectedPass) {
+			setPass(pass);
+		}
+		setItems(filteredLabels);
 		return total;
 	}
 
@@ -332,26 +416,9 @@ export default function MultiEventSelect({
 		}
 	});
 
-	useEffect(() => {
-		const labels = dataTableRows.map((row) => row.label);
-
-		// Define pass types
-		const passTypes = ["Global Pass", "Tech Pass", "Non-Tech Pass"];
-
-		// Find pass type
-		const pass = labels.find((label) => passTypes.includes(label)) || "";
-
-		// Remove pass types from labels
-		const filteredLabels = labels.filter(
-			(label) => !passTypes.includes(label)
-		);
-
-		console.log(filteredLabels, pass);
-		if (pass && pass !== selectedPass) {
-			setPass(pass);
-		}
-		setItems(filteredLabels);
-	}, [selectedPass, setPass, setItems]);
+	console.log(dataTableRows);
+	const labels = dataTableRows.map((row) => row.label);
+	const prices = dataTableRows.map((row) => row.price.toString());
 
 	return (
 		<div className="right-side">
@@ -369,13 +436,30 @@ export default function MultiEventSelect({
 				// scrollHeight="400px"
 				virtualScrollerOptions={{ itemSize: 50 }}
 				className="multiselect"
+				optionDisabled={(option) =>
+					disabledOptions.includes(option.label)
+				}
 			/>
-			<DataTable value={dataTableRows} className="multi-select">
+			{/* <DataTable value={dataTableRows} className="multi-select">
 				<Column field="label" header="Name" />
 				<Column field="price" header="Price" />
-			</DataTable>
+			</DataTable> */}
 
-			<div className="total-price">Total Price: {totalPrice}</div>
+			<AniList
+				eventNames={labels}
+				eventTimes={prices}
+				onItemSelect={() => {
+					console.log("");
+				}}
+				showGradients={false}
+				enableArrowNavigation={true}
+				displayScrollbar={false}
+			/>
+
+			<div className="total-price-row">
+				<div className="total-price-text">Total Price:</div>
+				<div className="total-price">Rs. {totalPrice}</div>
+			</div>
 		</div>
 	);
 }

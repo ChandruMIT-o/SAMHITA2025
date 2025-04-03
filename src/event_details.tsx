@@ -911,7 +911,7 @@ const eventData: Record<string, any> = {
 	},
 	"Escape Room": {
 		eventType: "Non-Technical Event",
-		eventName: "Escape Room x TBO",
+		eventName: "SAMHITA x TBO ESCAPE ROOM",
 		eventDescription:
 			"A time thief is traveling through different eras and stealing important relics! As time cops, you must find the relics and return them to their designated place, and capture the time thief before he disrupts the timeline!",
 		roundsChips: [
@@ -944,18 +944,18 @@ const eventData: Record<string, any> = {
 					className="ep-logo1"
 					alt="Prize Icon"
 				/>
-				<div className="ep-price-amount">₹4000</div>
-			</div>,
-			<div className="ep-prize-chip" key="paperPresentationPrize2">
-				<img
-					src="/assets/icons/trophy2.svg"
-					className="ep-logo1"
-					alt="Prize Icon"
-				/>
-				<div className="ep-price-amount2">₹3000</div>
+				<div className="ep-price-amount">₹600</div>
 			</div>,
 		],
 		dateChips: [
+			<div className="ep-date-chip" key="escapeDate1">
+				<img
+					src="/assets/icons/date.svg"
+					className="ep-logo3"
+					alt="Date Icon"
+				/>
+				<div className="ep-date">April 12</div>
+			</div>,
 			<div className="ep-date-chip" key="escapeDate1">
 				<img
 					src="/assets/icons/date.svg"

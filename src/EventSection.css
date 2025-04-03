@@ -29,12 +29,16 @@
 	width: 100%;
 	text-align: left;
 	line-height: 60px;
+	text-align: center;
 }
 
 .e-section-headings {
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
 }
 
 .passcards-holder {

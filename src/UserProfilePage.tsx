@@ -126,9 +126,10 @@ const UserProfilePage: React.FC = () => {
 			</div>
 			<ShinyText text="Profile" />
 			<div className="headup">
-				<div className="user-name">
-					Hey {username} <span className="user-docid">({docId})</span>
-				</div>
+				<div className="user-name">Hey {username}</div>
+				<span className="up-date-chip">
+					UID: <ShinyText text={docId} speed={2} />
+				</span>
 				{/* Conditionally display the pass chip if pass is not "none" */}
 				{userPass !== "none" && (
 					<div className="up-date-chip" key="aiImpromptuDate1">
@@ -137,7 +138,7 @@ const UserProfilePage: React.FC = () => {
 							className="up-logo"
 							alt="Pass Icon"
 						/>
-						<ShinyText text={`${userPass}`} speed={1} />
+						<ShinyText text={`${userPass}`} speed={2} />
 					</div>
 				)}
 			</div>

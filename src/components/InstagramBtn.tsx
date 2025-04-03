@@ -5,6 +5,7 @@ interface ShinyTextProps {
 	disabled?: boolean;
 	speed?: number;
 	className?: string;
+	fontSize?: string;
 }
 
 const ShinyText: React.FC<ShinyTextProps> = ({
@@ -12,6 +13,7 @@ const ShinyText: React.FC<ShinyTextProps> = ({
 	disabled = false,
 	speed = 5,
 	className = "",
+	fontSize = "1.1rem",
 }) => {
 	const animationDuration = `${speed}s`;
 
@@ -21,7 +23,7 @@ const ShinyText: React.FC<ShinyTextProps> = ({
 			style={{
 				animationDuration,
 				fontFamily: "Hanken Grotesk",
-				fontSize: "1.1rem",
+				fontSize: fontSize,
 				letterSpacing: "1px",
 				fontWeight: "bold",
 			}}

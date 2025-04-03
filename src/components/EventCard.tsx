@@ -1,6 +1,6 @@
 // TiltedCard.tsx
 import type { SpringOptions } from "framer-motion";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import "./EventCard.css";
@@ -58,6 +58,22 @@ export default function TiltedCard({
 	onToggle,
 	altText = "",
 }: TiltedCardProps) {
+	const [isSmallScreen, setIsSmallScreen] = useState(
+		window.innerWidth <= 768
+	); // Initial check
+
+	useEffect(() => {
+		const handleResize = () => {
+			setIsSmallScreen(window.innerWidth <= 768);
+		};
+
+		window.addEventListener("resize", handleResize);
+
+		return () => {
+			window.removeEventListener("resize", handleResize);
+		};
+	}, []);
+
 	const ref = useRef<HTMLElement>(null);
 	const navigate = useNavigate();
 
@@ -199,6 +215,7 @@ export default function TiltedCard({
 						text={eventTag}
 						disabled={false}
 						speed={3}
+						fontSize={isSmallScreen ? "1.5rem" : "1.1rem"}
 					/>
 				</div>
 			</motion.div>

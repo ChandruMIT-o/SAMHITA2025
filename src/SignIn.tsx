@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./SignIn.css";
 import Input from "./components/InputBtn";
 import { MailIcon, PasswordIcon } from "./components/ICONS";
@@ -8,8 +8,25 @@ import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "./firebase";
 
+const containerVariants = {
+	initial: { opacity: 0, y: 50 },
+	animate: { opacity: 1, y: 0 },
+	exit: { opacity: 0, y: -50 },
+};
+
+const buttonVariants = {
+	hover: { scale: 1.05 },
+	tap: { scale: 0.95 },
+};
+
 const SignIn: React.FC = () => {
 	const navigate = useNavigate();
+
+	// Scroll to top when page loads
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
+
 	const handleSignInClick = () => {
 		navigate("/signup");
 	};
@@ -93,20 +110,26 @@ const SignIn: React.FC = () => {
 	};
 
 	return (
-		<div className="signin-section">
-			<div
+		<motion.div
+			className="signin-section"
+			variants={containerVariants}
+			initial="initial"
+			animate="animate"
+			exit="exit"
+			transition={{ duration: 0.6 }}
+		>
+			<motion.div
 				className="ep-back-btn"
-				onClick={() => {
-					navigate("/");
-				}}
+				whileHover={{ scale: 1.1 }}
+				whileTap={{ scale: 0.9 }}
+				onClick={() => navigate("/")}
 			>
 				Back
-			</div>
+			</motion.div>
 			<motion.div
-				initial={{ opacity: 0, y: 50 }}
-				whileInView={{ opacity: 1, y: 0 }}
-				exit={{ opacity: 0, y: -50 }}
-				transition={{ duration: 0.5 }}
+				initial={{ opacity: 0, y: 20 }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{ delay: 0.2, duration: 0.5 }}
 				className="signup-headings"
 			>
 				<div>
@@ -114,7 +137,12 @@ const SignIn: React.FC = () => {
 				</div>
 				<div className="signin-heading">Samhita'25 Sign In</div>
 			</motion.div>
-			<form className="signin-form-container">
+			<motion.form
+				className="signin-form-container"
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				transition={{ delay: 0.4, duration: 0.5 }}
+			>
 				<Input
 					label="Email"
 					placeholder="Enter your email"
@@ -140,30 +168,39 @@ const SignIn: React.FC = () => {
 					<div className="error auth-error">{authError}</div>
 				)}
 				<div className="signinuprow">
-					<button
+					<motion.button
 						type="button"
 						onClick={handleSignInClick}
 						className="toSignUp"
+						variants={buttonVariants}
+						whileHover="hover"
+						whileTap="tap"
 					>
 						To Sign Up
-					</button>
-					<button
+					</motion.button>
+					<motion.button
 						type="button"
 						onClick={handleRPClick}
 						className="forgotPassword"
+						variants={buttonVariants}
+						whileHover="hover"
+						whileTap="tap"
 					>
 						Password Reset
-					</button>
-					<button
+					</motion.button>
+					<motion.button
 						type="button"
 						onClick={handleSubmit}
 						className="signinbtn"
+						variants={buttonVariants}
+						whileHover="hover"
+						whileTap="tap"
 					>
 						Sign In
-					</button>
+					</motion.button>
 				</div>
-			</form>
-		</div>
+			</motion.form>
+		</motion.div>
 	);
 };
 

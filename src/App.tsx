@@ -14,14 +14,34 @@ import SignIn from "./SignIn";
 import ForgotPassword from "./ForgotPassword";
 import PrivacyPolicy from "./PrivacyPolicy";
 import CancellationPolicy from "./CancellationPolicy";
+import { useScroll, motion } from "framer-motion";
 
 function App() {
+	const { scrollYProgress } = useScroll();
 	return (
 		<Routes>
 			<Route
 				path="/"
 				element={
 					<>
+						<motion.div
+							id="scroll-indicator"
+							style={{
+								scaleX: scrollYProgress,
+								position: "fixed",
+								top: 0,
+								left: 0,
+								right: 0,
+								height: 5,
+								originX: 0,
+								background:
+									"linear-gradient(to right, #8D00CE, #FF277E)" /* Purple to Magenta to Purple */,
+								backgroundSize:
+									"200% 100%" /* Initial size for animation */,
+								animation:
+									"gradientAnimation 2s infinite alternate" /* Apply animation */,
+							}}
+						/>
 						<HomeSection />
 						<AboutSection />
 						<RegistrationProvider>

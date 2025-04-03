@@ -24,6 +24,22 @@ import {
 	setDoc,
 } from "firebase/firestore";
 
+const containerVariants = {
+	initial: { opacity: 0, y: 50 },
+	animate: { opacity: 1, y: 0 },
+	exit: { opacity: 0, y: -50 },
+};
+
+const elementVariants = {
+	initial: { opacity: 0, y: 20 },
+	animate: { opacity: 1, y: 0 },
+};
+
+const buttonFeedback = {
+	whileHover: { scale: 1.05 },
+	whileTap: { scale: 0.95 },
+};
+
 const db = getFirestore();
 
 const SignUp: React.FC = () => {
@@ -49,6 +65,9 @@ const SignUp: React.FC = () => {
 
 	// For general authentication errors
 	const [authError, setAuthError] = useState<string | null>(null);
+
+	// New state to track if submission is in progress
+	const [isSubmitting, setIsSubmitting] = useState(false);
 
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
@@ -145,7 +164,13 @@ const SignUp: React.FC = () => {
 	// Handle click on the Sign Up button
 	const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault();
+
+		// Prevent duplicate submissions
+		if (isSubmitting) return;
+
+		setIsSubmitting(true);
 		setAuthError(null); // Reset any previous error
+
 		if (validate()) {
 			try {
 				// Create the user with email and password
@@ -196,7 +221,12 @@ const SignUp: React.FC = () => {
 				} else {
 					setAuthError(error.message);
 				}
+				// Reset submission flag on error to allow retry
+				setIsSubmitting(false);
 			}
+		} else {
+			// Reset submission flag if validation fails
+			setIsSubmitting(false);
 		}
 	};
 
@@ -205,22 +235,33 @@ const SignUp: React.FC = () => {
 	};
 
 	return (
-		<div className="signup-section" id="signup">
+		<motion.div
+			className="signup-section"
+			id="signup"
+			variants={containerVariants}
+			initial="initial"
+			animate="animate"
+			exit="exit"
+			transition={{ duration: 0.6 }}
+		>
 			<div className="signup-content">
-				<div
+				<motion.div
 					className="ep-back-btn"
-					onClick={() => {
-						navigate("/");
-					}}
+					{...buttonFeedback}
+					onClick={() => navigate("/")}
+					variants={elementVariants}
+					initial="initial"
+					animate="animate"
+					transition={{ duration: 0.4 }}
 				>
 					Back
-				</div>
+				</motion.div>
 				<motion.div
-					initial={{ opacity: 0, y: 50 }}
-					whileInView={{ opacity: 1, y: 0 }}
-					exit={{ opacity: 0, y: -50 }}
-					transition={{ duration: 0.5 }}
 					className="signup-headings"
+					variants={elementVariants}
+					initial="initial"
+					animate="animate"
+					transition={{ delay: 0.2, duration: 0.5 }}
 				>
 					<div>
 						<ShinyText text="✦ Sign Up" />
@@ -228,7 +269,13 @@ const SignUp: React.FC = () => {
 					<div className="signup-heading">Samhita '25 Sign Up</div>
 				</motion.div>
 
-				<form className="signup-form-container">
+				<motion.form
+					className="signup-form-container"
+					variants={elementVariants}
+					initial="initial"
+					animate="animate"
+					transition={{ delay: 0.4, duration: 0.5 }}
+				>
 					<div className="signup-rows">
 						<div className="signup-row">
 							<div
@@ -375,25 +422,28 @@ const SignUp: React.FC = () => {
 							<div className="error auth-error">{authError}</div>
 						)}
 						<div className="signinuprow">
-							<button
+							<motion.button
 								type="button"
 								onClick={handleSignInClick}
 								className="toSignIn"
+								{...buttonFeedback}
 							>
 								Take me to Sign In
-							</button>
-							<button
+							</motion.button>
+							<motion.button
 								type="button"
 								onClick={handleSubmit}
 								className="signupbtn"
+								disabled={isSubmitting}
+								{...buttonFeedback}
 							>
-								Sign Up
-							</button>
+								{isSubmitting ? "Processing..." : "Sign Up"}
+							</motion.button>
 						</div>
 					</div>
-				</form>
+				</motion.form>
 			</div>
-		</div>
+		</motion.div>
 	);
 };
 

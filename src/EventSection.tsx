@@ -1,5 +1,5 @@
 // EventSection.tsx
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import TiltedCard from "./components/EventCard";
 import EventMenu from "./components/EventMenu";
 import { motion } from "framer-motion";
@@ -9,6 +9,7 @@ import PassCard from "./components/PassCard";
 import { RegistrationContext } from "./RegistrationContext";
 import { db } from "./firebase"; // Import Firestore instance
 import { collection, getDocs } from "firebase/firestore";
+import { Toast } from "primereact/toast"; // Import PrimeReact Toast
 
 interface Event {
 	title: string;
@@ -33,8 +34,24 @@ const EventSection: React.FC = () => {
 		updatePass,
 		updateIndividualEvents,
 	} = useContext(RegistrationContext);
-	const [selectedType, setSelectedType] = React.useState<string>("All");
+	const [selectedType, setSelectedType] = useState<string>("All");
 	const [events, setEvents] = useState<Event[]>([]);
+	const [isSmallScreen, setIsSmallScreen] = useState(
+		window.innerWidth <= 768
+	);
+	const toast = useRef<any>(null);
+
+	useEffect(() => {
+		const handleResize = () => {
+			setIsSmallScreen(window.innerWidth <= 768);
+		};
+
+		window.addEventListener("resize", handleResize);
+
+		return () => {
+			window.removeEventListener("resize", handleResize);
+		};
+	}, []);
 
 	useEffect(() => {
 		const fetchEvents = async () => {
@@ -47,12 +64,10 @@ const EventSection: React.FC = () => {
 						title: doc.data().eventName,
 						type: doc.data().eventType,
 						tag: `₹${doc.data().price}`, // Store price as tag
-						imageSrc: `/assets/event_posters/${
-							doc
-								.data()
-								.eventName.toUpperCase() // Convert to uppercase
-								.replace(/:/g, "") // Remove characters not suitable for filenames
-						}.png`,
+						imageSrc: `/assets/event_posters/${doc
+							.data()
+							.eventName.toUpperCase()
+							.replace(/:/g, "")}.png`,
 					})
 				);
 
@@ -82,7 +97,24 @@ const EventSection: React.FC = () => {
 	}, []);
 
 	const handlePassToggle = (passType: string) => {
-		updatePass(selectedPass === passType ? null : passType);
+		// Toggle the pass
+		if (selectedPass === passType) {
+			updatePass(null);
+			toast.current?.show({
+				severity: "warn",
+				summary: "Pass removed",
+				detail: "Check registration",
+				life: 3000,
+			});
+		} else {
+			updatePass(passType);
+			toast.current?.show({
+				severity: "info",
+				summary: "Pass applied",
+				detail: "Check registration",
+				life: 3000,
+			});
+		}
 	};
 
 	const handleEventToggle = (eventTitle: string) => {
@@ -90,15 +122,27 @@ const EventSection: React.FC = () => {
 			updateIndividualEvents(
 				selectedIndividualEventTitles.filter((t) => t !== eventTitle)
 			);
+			toast.current?.show({
+				severity: "warn",
+				summary: "Event removed",
+				detail: "Removed from registration input",
+				life: 3000,
+			});
 		} else {
 			updateIndividualEvents([
 				...selectedIndividualEventTitles,
 				eventTitle,
 			]);
+			toast.current?.show({
+				severity: "success",
+				summary: "Event added",
+				detail: "Added to registration input",
+				life: 3000,
+			});
 		}
 	};
 
-	const isEventForced = (event: (typeof events)[number]) => {
+	const isEventForced = (event: Event) => {
 		if (selectedPass === "TECH" && event.type === "Technical") return true;
 		if (
 			selectedPass === "GLOBAL" &&
@@ -110,7 +154,7 @@ const EventSection: React.FC = () => {
 		return false;
 	};
 
-	const getEventSelection = (event: (typeof events)[number]): boolean => {
+	const getEventSelection = (event: Event): boolean => {
 		if (isEventForced(event)) return true;
 		return selectedIndividualEventTitles.includes(event.title);
 	};
@@ -122,8 +166,9 @@ const EventSection: React.FC = () => {
 
 	return (
 		<div className="event-container" id="events">
-			<motion.div className="r-section-headings">
-				<ShinyText text="✦ Events" />
+			<Toast ref={toast} />
+			<motion.div className="e-section-headings">
+				<ShinyText text="✦ Events" speed={3} />
 				<div className="e-heading">
 					Come and show us what you have got!
 				</div>
@@ -168,10 +213,10 @@ const EventSection: React.FC = () => {
 						eventType="Pass"
 						eventTag="Rs.349"
 						overlayContent={<div style={{ color: "white" }} />}
-						containerHeight="480px"
-						containerWidth="339px"
-						imageHeight="480px"
-						imageWidth="339px"
+						containerHeight={isSmallScreen ? "400px" : "480px"}
+						containerWidth={isSmallScreen ? "283px" : "339px"}
+						imageHeight={isSmallScreen ? "400px" : "480px"}
+						imageWidth={isSmallScreen ? "283px" : "339px"}
 						isSelected={selectedPass === "GLOBAL"}
 						onToggle={() => handlePassToggle("GLOBAL")}
 					/>
@@ -216,7 +261,7 @@ const EventSection: React.FC = () => {
 				animate={{ opacity: 1 }}
 				transition={{ duration: 1 }}
 			>
-				{filteredEvents.map((event, index) => {
+				{filteredEvents.map((event, _) => {
 					const forced = isEventForced(event);
 					const selected = getEventSelection(event);
 					const displayTag =
@@ -228,11 +273,11 @@ const EventSection: React.FC = () => {
 							key={event.title}
 							layout
 							initial={{ opacity: 0, y: 50 }}
-							animate={{ opacity: 1, y: 0 }}
+							whileInView={{ opacity: 1, y: 0 }}
 							exit={{ opacity: 0, y: -50 }}
 							transition={{
-								opacity: { duration: 0.5, delay: index * 0.1 },
-								layout: { duration: 1.2, ease: "easeInOut" },
+								layout: { duration: 0.5, ease: "easeInOut" },
+								y: { duration: 0.7, ease: "easeInOut" },
 							}}
 							className="inside-event-grid"
 						>

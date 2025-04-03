@@ -87,7 +87,13 @@ const RegistrationSection: React.FC = () => {
 					</form>
 				</motion.div>
 
-				<div className="general-info">
+				<motion.div
+					initial={{ opacity: 0, y: 50 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					exit={{ opacity: 0, y: -50 }}
+					transition={{ duration: 0.5 }}
+					className="general-info"
+				>
 					<div id="contact">
 						<ShinyText text="✦ Contact & Location ✦" />
 					</div>
@@ -189,7 +195,7 @@ const RegistrationSection: React.FC = () => {
 							| Privacy Policy
 						</div>
 					</div>
-				</div>
+				</motion.div>
 			</div>
 		</div>
 	);

@@ -152,4 +152,13 @@
 	.contact-number {
 		font-size: 1rem;
 	}
+
+	.signinuprow {
+		flex-direction: column-reverse;
+		align-self: center;
+		display: flex;
+		gap: 20px;
+		align-items: center;
+		margin-top: 10px;
+	}
 }

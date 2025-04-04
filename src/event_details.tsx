@@ -458,7 +458,7 @@ const eventData: Record<string, any> = {
 		],
 		specifics: {
 			"Eligibility & Registration": [
-				"Open to students from IT and CT departments",
+				"Paper must be within the domains of IT and CT departments",
 				"Team event (1-2 members per team)",
 				"Only one team member needs to register",
 				"On-spot registration available",
@@ -968,55 +968,58 @@ const eventData: Record<string, any> = {
 		poster: "/assets/event_posters/ESCAPE ROOM.png",
 	},
 
-	"DATA SCIENCE DECODED – Unlock Insights & Innovation": {
-		eventType: "Workshop",
-		eventName:
-			"DATA SCIENCE DECODED – Unlock Insights & Innovation By Google",
-		eventDescription:
-			"This workshop goes beyond theoretical concepts to explore real-world business applications of Data Science. Designed for professionals and aspiring data scientists, it focuses on leveraging data-driven insights to solve complex business challenges.",
-		roundsChips: [
-			<div className="ep-duration-chip" key="dsDuration">
-				<img
-					src="/assets/icons/duration.svg"
-					className="ep-logo2"
-					alt="Duration Icon"
-				/>
-				<div className="ep-round-text">Duration</div>
-				<div className="ep-duration">6 hours</div>
-			</div>,
-		],
-		specifics: {
-			"Topics Covered": [
-				"Business-Driven Data Science",
-				"Data Preprocessing & Cleaning",
-				"Exploratory Data Analysis (EDA)",
-				"Machine Learning in Business",
-				"Data-Driven Decision Making",
+	"Data to Decisions - An Applied Data Science and Machine Learning Workshop":
+		{
+			eventType: "Workshop",
+			eventName:
+				"Data to Decisions - An Applied Data Science and Machine Learning Workshop",
+			eventDescription:
+				"This workshop goes beyond theoretical concepts to explore real-world business applications of Data Science. Designed for professionals and aspiring data scientists, it focuses on leveraging data-driven insights to solve complex business challenges.",
+			roundsChips: [
+				<div className="ep-duration-chip" key="dsDuration">
+					<img
+						src="/assets/icons/duration.svg"
+						className="ep-logo2"
+						alt="Duration Icon"
+					/>
+					<div className="ep-round-text">Duration</div>
+					<div className="ep-duration">6 hours</div>
+				</div>,
 			],
-			Speaker: ["Navyaa Sharma, Software Engineer @ Google"],
+			specifics: {
+				"Topics Covered": [
+					"Business-Driven Data Science",
+					"Data Preprocessing & Cleaning",
+					"Exploratory Data Analysis (EDA)",
+					"Machine Learning in Business",
+					"Data-Driven Decision Making",
+				],
+				Speaker: ["Navyaa Sharma, Software Engineer @ Google"],
+			},
+			dateChips: [
+				<div className="ep-date-chip" key="dsDate">
+					<img
+						src="/assets/icons/date.svg"
+						className="ep-logo3"
+						alt="Date Icon"
+					/>
+					<div className="ep-date">April 13</div>
+				</div>,
+			],
+			prizeChips: [
+				<div className="ep-prize-chip" key="workshopCert">
+					<img
+						src="/assets/icons/trophy.svg"
+						className="ep-logo1"
+						alt="Prize Icon"
+					/>
+					<div className="ep-price-amount">
+						Participation Certificate
+					</div>
+				</div>,
+			],
+			poster: "/assets/event_posters/DATA TO DECISIONS - AN APPLIED DATA SCIENCE AND MACHINE LEARNING WORKSHOP.png",
 		},
-		dateChips: [
-			<div className="ep-date-chip" key="dsDate">
-				<img
-					src="/assets/icons/date.svg"
-					className="ep-logo3"
-					alt="Date Icon"
-				/>
-				<div className="ep-date">April 13</div>
-			</div>,
-		],
-		prizeChips: [
-			<div className="ep-prize-chip" key="workshopCert">
-				<img
-					src="/assets/icons/trophy.svg"
-					className="ep-logo1"
-					alt="Prize Icon"
-				/>
-				<div className="ep-price-amount">Participation Certificate</div>
-			</div>,
-		],
-		poster: "/assets/event_posters/DATA SCIENCE DECODED – UNLOCK INSIGHTS & INNOVATION.png",
-	},
 
 	"Unleashing the Power of Cloud Computing and Data Managament": {
 		eventType: "Workshop",

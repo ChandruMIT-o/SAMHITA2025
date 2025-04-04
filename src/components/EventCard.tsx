@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import "./EventCard.css";
 import ShinyText from "./InstagramBtn";
 import Switch from "./ToggleBtn";
-import CircularText from "./MoreBtn";
 import { MoreBtn2 } from "./MoreBtn2";
 
 interface TiltedCardProps {

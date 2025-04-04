@@ -1,0 +1,22 @@
+.pay_flex {
+	display: flex;
+	justify-content: space-between;
+}
+
+.pay-cancel {
+	color: black;
+	background-color: plum;
+	border-radius: 50px;
+	padding: 10px 20px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.pay-button {
+	color: black;
+	background-color: white;
+	border-radius: 50px;
+	padding: 10px 20px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}

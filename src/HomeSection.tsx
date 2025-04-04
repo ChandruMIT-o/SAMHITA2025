@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import Magnet from "./components/RegistrationButton";
 import RegisterBtn from "/assets/button.png";
@@ -12,6 +12,24 @@ import Login from "./Login";
 const HomeSection: React.FC = () => {
 	const sectionRef = useRef(null);
 	const isInView = useInView(sectionRef, { once: false, amount: 0.2 });
+
+	// Restore scroll position on mount and save position on scroll
+	useEffect(() => {
+		// Restore scroll position if it exists
+		const savedPosition = sessionStorage.getItem("scrollPosition");
+		if (savedPosition) {
+			window.scrollTo(0, parseInt(savedPosition, 10));
+		}
+
+		const handleScroll = () => {
+			sessionStorage.setItem("scrollPosition", window.scrollY.toString());
+		};
+
+		window.addEventListener("scroll", handleScroll);
+		return () => {
+			window.removeEventListener("scroll", handleScroll);
+		};
+	}, []);
 
 	return (
 		<div id="home" className="home-section-container" ref={sectionRef}>
@@ -111,7 +129,7 @@ const HomeSection: React.FC = () => {
 								rel="noopener noreferrer"
 							>
 								<div className="insta-number">
-									<ShinyText text="Instagram ⤤" />
+									<ShinyText text="SAMHITA_MIT LINK ⤤" />
 								</div>
 							</a>
 						</Magnet>

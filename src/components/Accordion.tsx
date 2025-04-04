@@ -5,8 +5,6 @@ import {
 	AccordionTabChangeEvent,
 } from "primereact/accordion";
 import "primereact/resources/themes/lara-dark-purple/theme.css";
-import "primereact/resources/primereact.min.css";
-import "primeicons/primeicons.css";
 import "./Accordion.css";
 
 interface FAQ {

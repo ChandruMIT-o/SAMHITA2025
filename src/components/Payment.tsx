@@ -28,7 +28,21 @@ const Payment: React.FC<PaymentProps> = ({ amount, items, pass }) => {
 	const [phoneNumber, setPhoneNumber] = useState("");
 	const [email, setEmail] = useState("");
 	const [userDocRef, setUserDocRef] = useState<any>(null);
+	const [isProcessingPayment, setIsProcessingPayment] = useState(false); // State to track payment processing
 	const navigate = useNavigate();
+
+	useEffect(() => {
+		// Reset processing state when the window regains focus.
+		const handleFocus = () => {
+			setIsProcessingPayment(false);
+		};
+
+		window.addEventListener("focus", handleFocus);
+
+		return () => {
+			window.removeEventListener("focus", handleFocus);
+		};
+	}, []);
 
 	useEffect(() => {
 		const scriptExists = document.querySelector(
@@ -74,6 +88,14 @@ const Payment: React.FC<PaymentProps> = ({ amount, items, pass }) => {
 		event: React.MouseEvent<HTMLButtonElement>
 	) => {
 		event.preventDefault();
+
+		// Prevent multiple clicks while processing payment
+		if (isProcessingPayment) {
+			return;
+		}
+
+		setIsProcessingPayment(true); // Set state to processing
+
 		const auth = getAuth();
 		const user = await new Promise<User | null>((resolve) =>
 			onAuthStateChanged(auth, resolve)
@@ -82,16 +104,19 @@ const Payment: React.FC<PaymentProps> = ({ amount, items, pass }) => {
 		if (!user) {
 			alert("Please log in first.");
 			navigate("/signin");
+			setIsProcessingPayment(false); // Reset state on error
 			return;
 		}
 
 		if (!fullName || !phoneNumber || !email) {
 			alert("User details not available. Please try again.");
+			setIsProcessingPayment(false); // Reset state on error
 			return;
 		}
 
 		if (amount < 20) {
 			alert("Select the events before paying!");
+			setIsProcessingPayment(false); // Reset state on error
 			return;
 		}
 
@@ -168,6 +193,8 @@ const Payment: React.FC<PaymentProps> = ({ amount, items, pass }) => {
 					} catch (error) {
 						console.error("Error updating payment:", error);
 						alert("Error storing payment details.");
+					} finally {
+						setIsProcessingPayment(false); // Reset state after completion
 					}
 				},
 				prefill: {
@@ -182,12 +209,14 @@ const Payment: React.FC<PaymentProps> = ({ amount, items, pass }) => {
 			rzp1.on("payment.failed", function (response: any) {
 				console.error("Payment failed:", response.error);
 				alert("Payment failed! Try again.");
+				setIsProcessingPayment(false); // Reset state on failure
 			});
 
 			rzp1.open();
 		} catch (error) {
 			console.error("Error creating Razorpay order:", error);
 			alert("Error creating payment order.");
+			setIsProcessingPayment(false); // Reset state on error
 		}
 	};
 
@@ -196,8 +225,12 @@ const Payment: React.FC<PaymentProps> = ({ amount, items, pass }) => {
 	}, []);
 
 	return (
-		<button className="payportelbtn" onClick={handlePayment}>
-			Pay Now
+		<button
+			className="payportelbtn"
+			onClick={handlePayment}
+			disabled={isProcessingPayment}
+		>
+			{isProcessingPayment ? "Processing..." : "Pay Now"}
 		</button>
 	);
 };

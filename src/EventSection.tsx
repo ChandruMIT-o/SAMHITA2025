@@ -176,13 +176,13 @@ const EventSection: React.FC = () => {
 			<ShinyText text="Passes & Combo tickets" />
 			<div className="passcards-holder">
 				<motion.div
-					initial={{ opacity: 0 }}
-					whileInView={{ opacity: 1 }}
-					exit={{ opacity: 0 }}
+					initial={{ opacity: 0, y: 50 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					exit={{ opacity: 0, y: -50 }}
 					transition={{
-						duration: 0.2,
+						duration: 0.3,
 						ease: "easeInOut",
-						delay: 0.5,
+						delay: 0.1,
 					}}
 					className="tpass"
 				>
@@ -197,13 +197,13 @@ const EventSection: React.FC = () => {
 					/>
 				</motion.div>
 				<motion.div
-					initial={{ opacity: 0 }}
-					whileInView={{ opacity: 1 }}
-					exit={{ opacity: 0 }}
+					initial={{ opacity: 0, y: 50 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					exit={{ opacity: 0, y: -50 }}
 					transition={{
-						duration: 0.2,
+						duration: 0.3,
 						ease: "easeInOut",
-						delay: 0.3,
+						delay: 0,
 					}}
 					className="gpass"
 				>
@@ -222,13 +222,13 @@ const EventSection: React.FC = () => {
 					/>
 				</motion.div>
 				<motion.div
-					initial={{ opacity: 0 }}
-					whileInView={{ opacity: 1 }}
-					exit={{ opacity: 0 }}
+					initial={{ opacity: 0, y: 50 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					exit={{ opacity: 0, y: -50 }}
 					transition={{
-						duration: 0.2,
+						duration: 0.3,
 						ease: "easeInOut",
-						delay: 0.5,
+						delay: 0.2,
 					}}
 					className="npass"
 				>

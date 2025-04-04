@@ -7,6 +7,7 @@ import "./EventCard.css";
 import ShinyText from "./InstagramBtn";
 import Switch from "./ToggleBtn";
 import CircularText from "./MoreBtn";
+import { MoreBtn2 } from "./MoreBtn2";
 
 interface TiltedCardProps {
 	imageSrc: React.ComponentProps<"img">["src"];
@@ -185,12 +186,13 @@ export default function TiltedCard({
 						className="tilted-card-overlay"
 						onClick={handleOverlayClick}
 					>
-						<CircularText
+						{/* <CircularText
 							text="MORE*ON*THIS*EVENT*"
 							onHover="speedUp"
 							spinDuration={20}
 							className="custom-class"
-						/>
+						/> */}
+						<MoreBtn2></MoreBtn2>
 					</motion.div>
 				)}
 				<div className="tilted-card-title-row">
@@ -205,6 +207,11 @@ export default function TiltedCard({
 					>
 						{eventTitle}
 					</motion.div>
+
+					{/* <motion.div
+						className="event-page-link"
+						onClick={handleOverlayClick}
+					></motion.div> */}
 
 					<Switch isOn={isSelected} />
 				</div>
